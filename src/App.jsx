@@ -291,6 +291,54 @@ function MediaFrame({ aspect = "aspect-[16/10]", className, imgClassName, src, f
   );
 }
 
+function FeatureRow({ image, eyebrow, title, body, reverse = false, tone = "cyan", aspect = "aspect-[4/3]" }) {
+  return (
+    <div className="grid items-center gap-6 md:grid-cols-2 lg:gap-12">
+      <MediaFrame
+        aspect={aspect}
+        className={cn(
+          tone === "yellow" && "border-campus-yellow/25",
+          reverse && "md:order-2",
+        )}
+        src={image}
+      />
+      <div className={cn("flex flex-col gap-4", reverse && "md:order-1")}>
+        <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
+        <h3 className="text-balance font-display text-2xl font-bold uppercase leading-tight tracking-tight text-white sm:text-3xl">
+          {title}
+        </h3>
+        {body ? (
+          <p className="text-pretty text-base leading-relaxed text-white/65 sm:text-lg">{body}</p>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+function BandImage({ src, caption, tone = "cyan" }) {
+  return (
+    <figure className="relative">
+      <MediaFrame
+        aspect="aspect-[21/9]"
+        className={cn(tone === "yellow" && "border-campus-yellow/25")}
+        src={src}
+      />
+      {caption ? (
+        <figcaption
+          className={cn(
+            "absolute bottom-0 left-0 z-20 m-3 border bg-[#0a0a0a]/85 px-3 py-2 font-mono text-[11px] uppercase tracking-wider backdrop-blur-sm",
+            tone === "yellow"
+              ? "border-campus-yellow/40 text-campus-yellow"
+              : "border-pixel-border text-pixel-cyan",
+          )}
+        >
+          {caption}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
 function CtaLink({ children, to, tone = "cyan" }) {
   return (
     <Link
@@ -590,11 +638,24 @@ function ServicesPage() {
         </p>
       </div>
 
-      <div className="mt-16">
-        <Eyebrow tone="magenta">Live broadcast & production</Eyebrow>
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {gallery.map((image) => (
-            <MediaFrame key={image.path} src={image.path} />
+      <div className="mt-20 flex flex-col gap-6">
+        <SectionHeader
+          eyebrow="Live broadcast & production"
+          title="On the ground and on air."
+          tone="magenta"
+          intro={servicesContent.service_live_broadcast_gallery}
+        />
+        <div className="mt-6 flex flex-col gap-16 lg:gap-24">
+          {gallery.map((image, index) => (
+            <FeatureRow
+              aspect="aspect-[16/10]"
+              eyebrow={`Production ${String(index + 1).padStart(2, "0")}`}
+              image={image.path}
+              key={image.path}
+              reverse={index % 2 === 1}
+              title={image.desc}
+              tone={index % 2 === 1 ? "magenta" : "cyan"}
+            />
           ))}
         </div>
       </div>
@@ -735,8 +796,32 @@ function CaseStudyPanel({ panel }) {
 /* ----------------------------- campus masters ----------------------------- */
 
 function CampusMastersShell() {
-  const eventImages = assetList(campusMedia.events_masonry_gallery);
+  const eventImages = assetList(campusMedia.events_masonry_gallery).map((image) => image.path);
   const sponsors = assetList(campusMedia.sponsors_marquee);
+
+  const venues = [
+    {
+      eyebrow: "Venue 01",
+      name: "Wafi City takeover",
+      blurb: "A mall-scale student arena drawing crowds through five days of open play and stage finals.",
+      lead: eventImages[0],
+      thumbs: eventImages.slice(1, 4),
+    },
+    {
+      eyebrow: "Venue 02",
+      name: "Yugo residence circuit",
+      blurb: "Pop-up tournaments inside student accommodation, bringing the league to where players live.",
+      lead: eventImages[5],
+      thumbs: eventImages.slice(6, 9),
+    },
+    {
+      eyebrow: "Venue 03",
+      name: "DEF showmatch finals",
+      blurb: "Headline showmatches with full broadcast production and a live student audience.",
+      lead: eventImages[9],
+      thumbs: eventImages.slice(10, 12),
+    },
+  ];
 
   return (
     <div className="bg-campus-bg">
@@ -757,19 +842,20 @@ function CampusMastersShell() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1280px] px-4 pb-16 sm:px-6 lg:px-8">
-        <Eyebrow tone="yellow">On-ground events</Eyebrow>
-        <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-          {eventImages.map((image, index) => (
-            <MediaFrame
-              aspect={index === 0 ? "aspect-square" : "aspect-[4/3]"}
-              className={cn(
-                "border-campus-yellow/20",
-                index === 0 && "col-span-2 row-span-2 lg:aspect-auto",
-              )}
-              key={image.path}
-              src={image.path}
-            />
+      <section className="mx-auto max-w-[1280px] px-4 pb-4 sm:px-6 lg:px-8">
+        <BandImage caption="On-ground // Season 3" src={eventImages[4]} tone="yellow" />
+      </section>
+
+      <section className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="On-ground events"
+          title="Three venues, one league."
+          tone="yellow"
+          intro="From mall arenas to residence pop-ups and broadcast finals, the league showed up across the country."
+        />
+        <div className="mt-12 flex flex-col gap-16 lg:gap-24">
+          {venues.map((venue, index) => (
+            <CampusVenueFeature key={venue.name} reverse={index % 2 === 1} venue={venue} />
           ))}
         </div>
       </section>
@@ -791,11 +877,22 @@ function CampusMastersShell() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[1280px] gap-4 px-4 py-16 sm:px-6 md:grid-cols-2 lg:px-8">
-        <CampusInfoCard label="Brand integration">{campusContent.brand_integration}</CampusInfoCard>
-        <CampusInfoCard label="On-ground activations">
-          {campusContent.on_ground_activations}
-        </CampusInfoCard>
+      <section className="mx-auto flex max-w-[1280px] flex-col gap-16 px-4 py-16 sm:px-6 lg:gap-24 lg:px-8">
+        <FeatureRow
+          eyebrow="Brand integration"
+          image={eventImages[2]}
+          title="Your brand, built into the play."
+          tone="yellow"
+          body={campusContent.brand_integration}
+        />
+        <FeatureRow
+          eyebrow="On-ground activations"
+          image={eventImages[7]}
+          reverse
+          title="Activations students actually join."
+          tone="yellow"
+          body={campusContent.on_ground_activations}
+        />
       </section>
 
       <section className="mx-auto max-w-[1280px] px-4 pb-16 sm:px-6 lg:px-8">
@@ -887,14 +984,36 @@ function CampusHero() {
   );
 }
 
-function CampusInfoCard({ children, label }) {
+function CampusVenueFeature({ venue, reverse }) {
   return (
-    <article className="border border-campus-yellow/25 bg-[#0b1322] p-6 sm:p-8">
-      <Eyebrow tone="yellow">{label}</Eyebrow>
-      <p className="mt-4 text-pretty text-base leading-relaxed text-white/75 sm:text-lg">
-        {children}
-      </p>
-    </article>
+    <div className="grid items-center gap-6 md:grid-cols-2 lg:gap-12">
+      <MediaFrame
+        aspect="aspect-[4/3]"
+        className={cn("border-campus-yellow/25", reverse && "md:order-2")}
+        src={venue.lead}
+      />
+      <div className={cn("flex flex-col gap-4", reverse && "md:order-1")}>
+        <Eyebrow tone="yellow">{venue.eyebrow}</Eyebrow>
+        <h3 className="text-balance font-display text-2xl font-bold uppercase leading-tight tracking-tight text-white sm:text-3xl">
+          {venue.name}
+        </h3>
+        <p className="text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
+          {venue.blurb}
+        </p>
+        {venue.thumbs.length ? (
+          <div className="mt-2 grid grid-cols-3 gap-2">
+            {venue.thumbs.map((thumb) => (
+              <MediaFrame
+                aspect="aspect-square"
+                className="border-campus-yellow/15"
+                key={thumb}
+                src={thumb}
+              />
+            ))}
+          </div>
+        ) : null}
+      </div>
+    </div>
   );
 }
 
