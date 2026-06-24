@@ -1,0 +1,116 @@
+
+
+===== PAGE 1 | 47 chars =====
+PROJECT YEAR 2024
+UAE SWAT
+CHALLENGE
+CUSTOM
+MAP
+
+===== PAGE 2 | 495 chars =====
+2
+As part of the SWAT Challenge event, we developed
+a custom Counter-Strike 2 map that brings the
+intensity of the live competition into a digital
+experience. The map recreates the event’s visual
+identity, layout, and tactical atmosphere, allowing
+players to immerse themselves in a gamified
+THE
+version of the SWAT Challenge.
+The game consists of four core challenges. Each
+challenge is inspired by real SWAT scenarios and
+designed to deliver a dynamic, skill-based
+gameplay experience.
+CONCEPT
+
+===== PAGE 3 | 460 chars =====
+RESPONSIBILITIES
+G a m e D e v e l o p m e n t : D e s i g n a n d d e v e l o p t h e g a m e i n s i d e C o u n t e r - S t r i k e 2 f r o m A t o Z
+R u n a n o n - g r o u n d a c t i v a t i o n a t t h e S W A T C h a l l e n g e e v e n t , w i t h a s e t u p o f g a m i n g
+c o m p u t e r s a n d a l e a d e r b o a r d t o e n g a g e t h e l i v e a u d i e n c e . P l a y t h e m a p , s c o r e t h e
+b e s t t i m e , a n d w i n p r i z e s
+
+===== PAGE 4 | 186 chars =====
+EEXXPPOOSSUURREE
+His Excellency Lieutenant General
+Abdullah Khalifa Al Marri
+the Commander-in-chief of Dubai Police,
+visiting the Counter Strike 2 Map of the
+UAE SWAT Challenge
+READ MORE
+
+===== PAGE 5 | 82 chars =====
+COUNTER
+PLAY NOW
+CCOOUUNNTTEERR
+STRIKE
+SSTTRRIIKKEE
+CUSTOM
+CCUUSSTTOOMM
+MAP
+MMAAPP
+
+===== PAGE 6 | 45 chars =====
+TTTRRRAAAIIILLLEEERRR
+TRAILER
+TRAILER
+TRAILER
+
+===== PAGE 7 | 262 chars =====
+GAME
+MECHANICS
+The game features FOUR CHALLENGES
+OBSTACLE COURSE
+PISTOL SHOOTING RANGE
+SNIPER SHOOTING RANGE
+HOSTAGE RESCUE
+The timer begins at the start line, and the goal is
+to achieve the fastest time by completing all
+challenges and reaching the finish line.
+
+===== PAGE 8 | 161 chars =====
+7
+OBSTACLE
+The FIRST CHALLENGE players will face is an obstacle
+course, where they must climb, jump, and navigate
+through various obstacles along the way.
+COURSE
+
+===== PAGE 9 | 209 chars =====
+PISTOL 8
+SHOOTING
+RANGE
+The SECOND CHALLENGE takes place in a room where
+participants must shoot down four target plates. Once all
+targets are hit, a door opens, allowing them to proceed to
+the next challenge.
+
+===== PAGE 10 | 238 chars =====
+SNIPER
+SSNNIIPPEERR 9
+SHOOTING
+SSHHOOOOTTIINNGG
+RANGE
+RRAANNGGEE
+The THIRD CHALLENGE is a sniper shooting range. The player
+must shoot down three plate targets, and once all targets
+are hit, a door will open leading to the next challenge.
+
+===== PAGE 11 | 292 chars =====
+10
+HOSTAGE
+RESCUE
+The FOURTH CHALLENGE is a hostage rescue mission, where
+the player must use smoke to block the terrorist’s vision,
+secure the hostage, and safely escort them to the finish line
+The FINAL SCORE is determined by the total time taken to
+complete all four challenges in sequence
+
+===== PAGE 12 | 77 chars =====
+SOFTWARE STACK
+ADOBE ADOBE AFTER ADOBE
+BLENDER
+PHOTOSHOP EFFECTS PREMIERE PRO
+
+===== PAGE 13 | 20 chars =====
+TTHHAANNKK YYOOUU !!

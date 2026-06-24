@@ -1,0 +1,216 @@
+
+
+===== PAGE 1 | 128 chars =====
+PROJECT YEAR 2023
+METACLUB
+MMEETTAACCLLUUBB
+N F T W E A R A B L E S
+ALL PROCEEDS WILL GO TO
+E X C L U S I V E
+LOUNGE & GIVEAWAYS
+
+===== PAGE 2 | 551 chars =====
+THE CONCEPT
+NESTLÉ METACLUB IS THE FIRST NESTLÉ CEREALS
+METAVERSE EXPERIENCE.
+THE CONCEPT
+THE CONCEPT
+Nestlé Metaclub built in Unity and launched in 2023
+on Decentraland. The project features 10 interactive
+THE CONCEPT
+attractions, combining mini-games, NFT commerce,
+and educational storytelling.
+THE CONCEPT
+THE CONCEPT
+The experience includes sustainability challenges in
+THE CONCEPT partnership with Rainforest Alliance, wearable NFTs
+with real-life rewards, and a digital Anghami lounge
+with curated playlists and free Anghami Plus
+subscriptions.
+
+===== PAGE 3 | 136 chars =====
+3
+VIRTUAL
+THE DECENTRALAND
+PARTNERSHIP
+LAND
+Free virtual land allocation:
+5×4 parcels. Each parcel
+measures 16 × 16 meters
+BRANDS
+BRANDS
+
+===== PAGE 4 | 193 chars =====
+4
+MEDIA &
+MARKETING
+CONTENT
+As part of the Nestlé Metaclub project, a
+range of marketing video and digital
+posters was created to promote the
+experience across media channels.
+ANNOUNCEMENT POST
+
+===== PAGE 5 | 29 chars =====
+SLAUSIV
+YEK
+ANNOUNCEMENT POST
+
+===== PAGE 6 | 19 chars =====
+NNFFTT
+LLAAUUNNCCHH
+
+===== PAGE 7 | 603 chars =====
+7
+THE NFT LAUNCH
+THE LION CEREALS WEARABLE NFT COLLECTION LAUNCHED ON
+THE DECENTRALAND MARKETPLACE ON APRIL 11 AND SOLD 93%
+OF ITS SUPPLY WITHIN 24 HOURS. A TOTAL OF 1,884 NFTS WERE
+MINTED, WITH THE LION CEREALS JACKET SELLING OUT ACROSS
+ALL RARITIES (EPIC, MYTHIC, AND UNIQUE). THE COLLECTION
+WAS ALSO FEATURED ON DECENTRALAND’S MAIN WEBSITE PAGE.
+MARKET RESPONSE
+THE COLLECTION TRENDED IN DECENTRALAND’S
+BEST SELLERS SINCE LAUNCH, WITH MYTHIC AND
+UNIQUE JACKETS SELLING OUT WITHIN 2 HOURS.
+ITEMS WERE LATER RELISTED WITH OVER 1,000%
+PROFIT, AND 2 LION CEREALS WEARABLES
+RANKED IN THE PLATFORM’S TOP 5.
+
+===== PAGE 8 | 35 chars =====
+COMMUNITY
+FAVORITE POSTS !
+FEEDBACK
+
+===== PAGE 9 | 241 chars =====
+MEDIA COVERAGE
+The launch of Nestlé Cereals Metaclub was covered by
+major media outlets, generating significant PR
+exposure. Over 50 international news sources
+published articles about the launch, delivering an
+estimated $2M+ in media value.
+
+===== PAGE 10 | 90 chars =====
+INFLUENCERS
+WE PARTNERED UP WITH LEADING GAMING
+INFLUENCERS IN GCC & PHILIPPINES.
+CAMPAIGN
+
+===== PAGE 11 | 52 chars =====
+PROJECT OVERVIEW
+METACLUB
+METACLUB
+METACLUB
+METACLUB
+
+===== PAGE 12 | 42 chars =====
+SSPPAACCEE
+SPACE
+OOVVEERRVVIIEEWW
+OVERVIEW
+
+===== PAGE 13 | 476 chars =====
+The roof top is designed as a
+vibrant disco dancing area,
+NESTLÉ MAIN
+fully branded for Anghami,
+creating a social, music-driven
+environment
+BUILDING
+3rd floor presents an
+educational experience
+explaining how cereals are
+produced in factories
+THE METACLUB MAIN BUILDING IS
+2nd floor features a dedicated
+space for purchasing Koko
+A FOUR-FLOOR INTERACTIVE HUB AT
+Krunch NFT wearables.
+THE CENTER OF THE EXPERIENCE
+1st floor serves as the entrance
+to the Hot Air Balloon launch
+
+===== PAGE 14 | 400 chars =====
+LION’S DEN
+LLIIOONN’’SS DDEENN
+Lion’s Den is a jungle-themed adventure game where players
+climb through a natural environment to reach the Lion’s Cave
+and collect a reward coin.
+Along the journey, players overcome various obstacles and
+challenges, while engaging with informational posters that
+introduce the Lion brand, combining exploration, gameplay,
+and brand storytelling in a single experience.
+
+===== PAGE 15 | 212 chars =====
+KOKO KRUNCH
+KKOOKKOO KKRRUUNNCCHH
+A multiplayer mini-game where players
+gather to play basketball against each
+other in a social, fast-paced environment,
+designed to reflect the energetic identity
+of Koko Krunch.
+
+===== PAGE 16 | 336 chars =====
+3
+LION
+LLIIOONN
+WEARABLES
+WEARABLES
+Lion Wearables Cave is a dedicated selling area located inside a themed cave,
+designed around the Lion brand. The space features six fully branded NFT
+wearables available for purchase, which players can buy and then equip to use
+directly in Decentraland, extending the brand experience into gameplay.
+
+===== PAGE 17 | 318 chars =====
+HOT
+AIR
+BALLOON TOUR
+The Hot Air Balloon Tour invites players into a balloon cabin for a scenic flight
+across the Metaclub space. During the journey, players fly above the environment
+and experience panoramic views of the park, allowing them to see all branded
+areas and key locations from a unique aerial perspective.
+
+===== PAGE 18 | 379 chars =====
+NESTLE
+FARM
+The Koko Krunch Cocoa Plant Plantation is a
+mini-game set in a Nestlé Farm area. Players
+begin by collecting a seed from the seed
+house, then plant it in the soil, water it, and
+grow a cocoa tree through interactive
+actions. Once the tree fully grows, the player
+is rewarded, turning the process of cocoa
+cultivation into an engaging, educational
+gameplay experience.
+
+===== PAGE 19 | 408 chars =====
+SSSSUUUUSSSSTTTTAAAAIIIINNNNAAAABBBBIIIILLLLIIIITTTTYYYY
+CCCCOOOORRRRNNNNEEEERRRR
+The Sustainability Corner is an outdoor, eco-themed stage
+designed to represent Rainforest Alliance. Powered by a clean,
+green energy concept, the space features video content that
+introduces the brand, highlights its mission, and explains its
+efforts toward sustainability, responsible sourcing, and
+environmental protection.
+
+===== PAGE 20 | 378 chars =====
+core engine for gameplay
+development, interactive
+UNITY
+SSSOOOFFFTTTWWWAAARRREEE environments, and real-
+time optimization
+BLENDER 3D modeling environment
+assets, and optimization
+SSTTAACCKK
+STACK
+ADOBE
+textures, UI elements, and
+visual assets
+PHOTOSHOP
+ADOBE AFTER
+motion graphics and visual
+EFFECTS presentation assets
+ADOBE
+video editing and project
+presentation
+PREMIERE PRO

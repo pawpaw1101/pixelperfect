@@ -1,0 +1,84 @@
+{
+  "pages": [
+    {
+      "path": "/",
+      "sections": [
+        "hero_video_brutalist",
+        "mission_statement_avatars",
+        "tech_stack_ticker",
+        "global_impact_stats",
+        "services_expanded_grid",
+        "portfolio_preview_grid",
+        "footer_global"
+      ]
+    },
+    {
+      "path": "/services",
+      "sections": [
+        "services_header",
+        "service_live_broadcast_gallery",
+        "service_island_dev_spotlight",
+        "service_influencer_campaigns",
+        "service_content_production",
+        "service_event_management",
+        "software_capabilities_grid",
+        "footer_global"
+      ]
+    },
+    {
+      "path": "/portfolio",
+      "sections": [
+        "portfolio_intro",
+        "case_study_grid",
+        "footer_global"
+      ]
+    },
+    {
+      "path": "/portfolio/nestle",
+      "sections": [
+        "case_study_hero",
+        "fortnite_island_overview",
+        "physical_pos_gallery",
+        "campaign_results",
+        "campaign_responsibilities",
+        "footer_global"
+      ]
+    },
+    {
+      "path": "/portfolio/swat",
+      "sections": [
+        "case_study_hero",
+        "project_overview",
+        "game_mechanics",
+        "on_ground_activation",
+        "exposure",
+        "footer_global"
+      ]
+    },
+    {
+      "path": "/portfolio/meta",
+      "sections": [
+        "case_study_hero",
+        "project_overview",
+        "nft_results",
+        "media_coverage",
+        "space_overview",
+        "footer_global"
+      ]
+    },
+    {
+      "path": "/campus-masters",
+      "sections": [
+        "cm_hero_main_logo",
+        "season_3_metrics_grid",
+        "on_ground_events_masonry",
+        "brand_integration",
+        "on_ground_activations",
+        "sponsor_visibility_marquee",
+        "partnership_tiers_brutalist",
+        "previous_partnership_results",
+        "footer_cm"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "/": {
+    "nav_logo_global": { "path": "/images/logo-pp-main.png", "desc": "Main Pixel Perfect logo for the global navigation bar." },
+    "hero_video": { "path": "/videos/home-hero-video.mp4", "desc": "Primary high-energy mp4 background for the brutalist hero." },
+    "hero_fallback": { "path": "/images/Main_Logo_Animation.gif", "desc": "Fallback loading gif if the mp4 is unsupported." },
+    "mission_avatars": { "path": "/images/home-mission-avatars.png", "desc": "3D Gen Z gamers graphic to accompany the mission statement." }
+  },
+  "/services": {
+    "broadcast_gallery": [
+      { "path": "/images/services-SWAT-challenge-production.jpg", "desc": "Live broadcast control room." },
+      { "path": "/images/services-dubai-police-production.jpg", "desc": "Dubai Police SWAT Challenge stage." },
+      { "path": "/images/portfolio-UAE-SWAT.jpg", "desc": "UAE SWAT Challenge key visual." },
+      { "path": "/images/services-star-ladder-budapest.JPG", "desc": "StarLadder Budapest production." },
+      { "path": "/images/services-DEF-women-showmatch.png", "desc": "DEF women's showmatch stage production." }
+    ]
+  },
+  "/portfolio/nestle": {
+    "nestle_metaverse": { "path": "/images/portfolio-nestle.jpg", "desc": "3D render of the Nestle metaverse island." },
+    "nestle_pos": { "path": "/images/home-featured-nestle.jpg", "desc": "Fortnite characters integrated into the physical POS display." }
+  },
+  "/portfolio/swat": {
+    "swat_cover": { "path": "/images/portfolio-UAE-SWAT.jpg", "desc": "UAE SWAT Challenge key visual." },
+    "swat_event": { "path": "/images/portfolio-UAE-SWAT.jpg", "desc": "UAE SWAT Challenge key visual." }
+  },
+  "/portfolio/meta": {
+    "meta_cover": { "path": "/images/portfolio-nestle.jpg", "desc": "Nestle Metaclub key visual." },
+    "meta_world": { "path": "/images/portfolio-nestle.jpg", "desc": "3D render of a Nestle interactive world." }
+  },
+  "/campus-masters": {
+    "nav_logo_cm_button": { "path": "/images/logo-cm-navbar.png", "desc": "Distinct CM logo used strictly as the navbar routing button." },
+    "hero_logo_main": { "path": "/images/logo-cm-main.png", "desc": "The giant main CM logo used in the center of the Campus Masters hero section." },
+    "sponsors_marquee": [
+      { "path": "/images/cm-partner-dzzrt.png", "desc": "DZZRT" },
+      { "path": "/images/cm-partner-exitlag.png", "desc": "ExitLag" },
+      { "path": "/images/cm-partner-link.png", "desc": "Link" },
+      { "path": "/images/cm-partner-propath.png", "desc": "Propath" },
+      { "path": "/images/cm-partner-redbull.png", "desc": "Red Bull" },
+      { "path": "/images/cm-partner-streetorigins.png", "desc": "Street Origins" },
+      { "path": "/images/cm-partner-wafi.png", "desc": "Wafi City" },
+      { "path": "/images/cm-partner-zgames.png", "desc": "ZGames" }
+    ],
+    "events_masonry_gallery": [
+      { "path": "/images/cm-event-wafi-1.JPG", "desc": "Wafi student engagement" },
+      { "path": "/images/cm-event-wafi-2.JPG", "desc": "Wafi gaming setups" },
+      { "path": "/images/cm-event-wafi-3.JPG", "desc": "Wafi stage and crowd" },
+      { "path": "/images/cm-event-wafi-4.JPG", "desc": "Wafi event wide shot" },
+      { "path": "/images/cm-event-wafi-5.JPG", "desc": "Wafi event activation" },
+      { "path": "/images/cm-event-yugo-1.JPG", "desc": "Yugo student event" },
+      { "path": "/images/cm-event-yugo-2.JPG", "desc": "Yugo student event setups" },
+      { "path": "/images/cm-event-yugo-3.JPG", "desc": "Yugo student matches" },
+      { "path": "/images/cm-event-yugo-4.JPG", "desc": "Yugo event activation" },
+      { "path": "/images/cm-event-DEF-1.png", "desc": "DEF event showcase" },
+      { "path": "/images/cm-event-DEF-2.png", "desc": "DEF event production" },
+      { "path": "/images/cm-event-DEF-3.png", "desc": "DEF event stage" }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "/": {
+    "hero_video_brutalist": "BRIDGING BRANDS AND THE DYNAMIC WORLD OF GAMING.",
+    "mission_statement_avatars": "Pixel Perfect is a creative agency based in the United Arab Emirates, building in-game experiences, branded content, esports partnerships, and gamified storytelling for gaming audiences.",
+    "global_impact_stats": "6 YEARS. 90+ DELIVERED PROJECTS. BRANDS, GOVERNMENT ENTITIES, BROADCAST NETWORKS, EVENTS, GAME PUBLISHERS.",
+    "tech_stack_ticker": "UNREAL ENGINE // UEFN // UNITY // COUNTER-STRIKE 2 // DECENTRALAND // BLENDER // ADOBE PHOTOSHOP // AFTER EFFECTS // PREMIERE PRO",
+    "client_trust_marquee": "TRUSTED BY: TENCENT, EPIC GAMES, RIOT GAMES, BLIZZARD, DUBAI POLICE, RED BULL."
+  },
+  "/services": {
+    "services_header": "MARKETING CAMPAIGNS. LIVE BROADCAST. CONTENT PRODUCTION. EVENT MANAGEMENT.",
+    "service_marketing_campaigns": "Pixel Perfect helps brands use the most trending and effective tools that the gaming and esports landscape offers.",
+    "service_live_broadcast_gallery": "Live broadcast and TV production for esports, including custom stages, virtual studios, tournament organization, and VOD packages like Masters of Esports on ADtv.",
+    "service_island_dev_spotlight": "Creative island and map development from A to Z inside Fortnite Creative, UEFN, Unity, Decentraland, and Counter-Strike 2.",
+    "service_influencer_campaigns": "Influencer campaigns that connect brands with the right gaming and esports creators, driving authentic engagement and measurable ROI.",
+    "service_content_production": "Gaming and esports content production at every scale, from campaign key visuals and digital posters to influencer videos, ads, trailers, and documentary filming.",
+    "service_event_management": "Online and offline gaming event management, including convention participation, on-ground activations, product showcases, and community experiences.",
+    "software_capabilities_grid": "Unity for gameplay and real-time optimization. Unreal Engine and UEFN for playable environments. Blender for 3D assets. Adobe tools for UI, motion, video, and campaign visuals."
+  },
+  "/portfolio": {
+    "portfolio_intro": "Selected work across playable brand worlds, custom maps, metaverse experiences, broadcast ecosystems, and campus esports."
+  },
+  "/portfolio/nestle": {
+    "case_study_hero": "Nestle Cereal Season: a playable Fortnite Creative campaign with mall activations, ecommerce integration, and point-of-sale materials across the Gulf.",
+    "fortnite_island_overview": "The campaign introduced a fully playable Nestle-themed world inside Fortnite, where players explored branded spaces, played themed mini-games, and completed challenges.",
+    "physical_pos_gallery": "Pixel Perfect secured an intellectual property rights agreement between Nestle and Epic Games, allowing point-of-sale stands to be placed in key mall locations across the UAE, Qatar, Bahrain, Oman, and Saudi Arabia.",
+    "campaign_results": "Reached over 10 million people through integrated mall activations and digital exposure. Delivered a 30% return on investment.",
+    "campaign_responsibilities": "Game development from A to Z inside Fortnite, campaign key visuals, video trailers, point-of-sale stands, intellectual property coordination, giveaways, and a corporate event activation in Dubai."
+  },
+  "/portfolio/swat": {
+    "case_study_hero": "UAE SWAT Challenge: a custom Counter-Strike 2 map built for Dubai Police and the live SWAT Challenge event.",
+    "project_overview": "The map recreates the event's visual identity, layout, and tactical atmosphere, turning the physical competition into a digital skill-based experience.",
+    "game_mechanics": "The game features four challenges: obstacle course, pistol shooting range, sniper shooting range, and hostage rescue. The final score is determined by total completion time.",
+    "on_ground_activation": "The activation included gaming computers and a leaderboard at the SWAT Challenge event, inviting visitors to play the map, set the best time, and win prizes.",
+    "exposure": "His Excellency Lieutenant General Abdullah Khalifa Al Marri, Commander-in-chief of Dubai Police, visited the Counter-Strike 2 map of the UAE SWAT Challenge."
+  },
+  "/portfolio/meta": {
+    "case_study_hero": "Nestle Metaclub: the first Nestle Cereals metaverse experience, built in Unity and launched on Decentraland.",
+    "project_overview": "The project features 10 interactive attractions, combining mini-games, NFT commerce, educational storytelling, sustainability challenges, wearable NFTs, and a digital Anghami lounge.",
+    "nft_results": "The Lion Cereals wearable NFT collection sold 93% of its supply within 24 hours. A total of 1,884 NFTs were minted, with Mythic and Unique jackets selling out within 2 hours.",
+    "media_coverage": "The launch was covered by over 50 international news sources, delivering an estimated $2M+ in media value.",
+    "space_overview": "The experience included a four-floor interactive hub, Lion's Den, Koko Krunch basketball, Hot Air Balloon Tour, Nestle Farm, and Sustainability Corner."
+  },
+  "/campus-masters": {
+    "cm_hero_main_logo": "CAMPUS MASTERS: A LEAGUE FOR EXTRAORDINARY GAMERS.",
+    "season_3_metrics_grid": "OVER 51 UNIVERSITIES ONBOARD. 3 COMPLETED SEASONS. $31,000+ USD COMBINED PRIZE POOL. 20,000+ STUDENT REACH.",
+    "on_ground_events_masonry": "Campus Masters unites universities across the UAE, Saudi Arabia, Jordan, Qatar, Bahrain, and Oman through structured esports tournaments.",
+    "brand_integration": "The league is livestreamed on YouTube and Twitch with visible logo placement, break-time commercial video, chat and livestream link integration, QR code pop-outs, and ecommerce prompts.",
+    "on_ground_activations": "On-ground brand activations include registration areas, product spotlight zones, direct sales opportunities, sponsored watch parties, giveaways, and student challenges.",
+    "partnership_tiers_brutalist": "TITLE SPONSOR: $50,000 // GOLD PARTNER: $30,000 // SILVER PARTNER: $12,000.",
+    "previous_partnership_results": "67+ social media posts. 150,000+ social media views. 6 on-ground activations. 10,100+ students reached. 27 livestreams. 15,632+ live stream viewership. 167,000 livestream impressions.",
+    "closing_statement": "EMPOWERING STUDENTS. BUILDING A COMMUNITY. ELEVATING COMPETITION. CREATING LASTING BRAND IMPACT."
+  }
+}
