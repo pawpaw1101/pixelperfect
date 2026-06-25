@@ -514,7 +514,7 @@ function HeroVideoBrutalist() {
         <source src={assetPath(homeMedia.hero_video)} type="video/mp4" />
       </video>
       <div className="absolute inset-0 -z-20 bg-[linear-gradient(270deg,rgba(17,17,17,0.84),rgba(17,17,17,0.44)_48%,rgba(17,17,17,0.74)),linear-gradient(0deg,rgba(17,17,17,0.88),rgba(17,17,17,0)_52%)]" />
-      <WebGLBackdrop className="-z-10 opacity-[0.16] mix-blend-screen" variant="hero" />
+      <WebGLBackdrop className="-z-10 opacity-[0.42] mix-blend-screen" variant="hero" />
 
       <div className="w-full pl-4 pr-3 sm:pl-6 sm:pr-3 lg:pl-8 lg:pr-3">
         <div className="ml-auto flex max-w-[760px] translate-y-[8svh] flex-col items-end text-right sm:translate-y-[10svh]">

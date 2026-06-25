@@ -88,11 +88,11 @@ void main() {
   float glitch = step(0.985, noise(vec2(floor(uv.y * 160.0), floor(t * 7.0)))) * smoothstep(0.18, 0.0, abs(fract(uv.x * 5.0 + t) - 0.5));
   float vignette = smoothstep(1.45, 0.2, length(p));
   float scan = 0.018 + 0.018 * sin(uv.y * 620.0 + t * 16.0);
-  float gridStrength = mix(1.0, 0.26, hero);
-  float motionStrength = mix(1.0, 0.34, hero);
-  float barsStrength = mix(1.0, 0.18, hero);
-  float scanStrength = mix(1.0, 0.28, hero);
-  float glitchStrength = mix(1.0, 0.2, hero);
+  float gridStrength = mix(1.0, 0.52, hero);
+  float motionStrength = mix(1.0, 0.78, hero);
+  float barsStrength = mix(1.0, 0.0, hero);
+  float scanStrength = mix(1.0, 0.0, hero);
+  float glitchStrength = mix(1.0, 0.3, hero);
 
   vec3 color = base;
   color += accent * (gridA * 0.16 * gridStrength + gridB * 0.08 * gridStrength + beams * 0.16 * motionStrength + bars * 0.09 * barsStrength);
