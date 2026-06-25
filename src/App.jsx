@@ -513,8 +513,8 @@ function HeroVideoBrutalist() {
       >
         <source src={assetPath(homeMedia.hero_video)} type="video/mp4" />
       </video>
-      <div className="absolute inset-0 -z-20 bg-[linear-gradient(270deg,rgba(17,17,17,0.92),rgba(17,17,17,0.62)_48%,rgba(17,17,17,0.88)),linear-gradient(0deg,rgba(17,17,17,0.96),rgba(17,17,17,0)_52%)]" />
-      <WebGLBackdrop className="-z-10 opacity-35 mix-blend-screen" variant="pixel" />
+      <div className="absolute inset-0 -z-20 bg-[linear-gradient(270deg,rgba(17,17,17,0.84),rgba(17,17,17,0.44)_48%,rgba(17,17,17,0.74)),linear-gradient(0deg,rgba(17,17,17,0.88),rgba(17,17,17,0)_52%)]" />
+      <WebGLBackdrop className="-z-10 opacity-[0.16] mix-blend-screen" variant="hero" />
 
       <div className="w-full pl-4 pr-3 sm:pl-6 sm:pr-3 lg:pl-8 lg:pr-3">
         <div className="ml-auto flex max-w-[760px] translate-y-[8svh] flex-col items-end text-right sm:translate-y-[10svh]">
@@ -560,12 +560,12 @@ function PartnerLogoCarousel() {
         <div className="flex w-max animate-ticker items-center gap-4 whitespace-nowrap">
           {marqueeLogos.map((logo, index) => (
             <div
-              className="grid h-20 w-40 place-items-center border border-white/10 bg-white/[0.88] px-5 py-4 shadow-[0_0_24px_rgba(0,0,0,0.18)] sm:w-48"
+              className="grid h-20 w-40 place-items-center px-5 py-4 sm:w-48"
               key={`${logo.label}-${index}`}
             >
               <img
                 alt={logo.label}
-                className="max-h-12 max-w-full object-contain grayscale contrast-125 transition duration-200 hover:grayscale-0"
+                className="max-h-12 max-w-full object-contain"
                 src={logo.src}
               />
             </div>
@@ -1043,12 +1043,12 @@ function CampusPartnersCarousel({ sponsors }) {
         <div className="flex w-max animate-ticker items-center gap-4 whitespace-nowrap">
           {sponsorLogos.map((sponsor, index) => (
             <div
-              className="grid h-24 w-44 place-items-center border border-campus-yellow/20 bg-[#07101f]/92 px-6 py-4 shadow-[0_0_24px_rgba(0,0,0,0.22)] sm:w-52"
+              className="grid h-24 w-44 place-items-center px-6 py-4 sm:w-52"
               key={`${sponsor.path}-${index}`}
             >
               <img
                 alt={sponsor.desc ?? ""}
-                className="max-h-14 max-w-full object-contain opacity-85 brightness-0 invert transition duration-200 hover:opacity-100"
+                className="max-h-14 max-w-full object-contain"
                 src={sponsor.path}
               />
             </div>

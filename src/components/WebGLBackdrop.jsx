@@ -60,7 +60,8 @@ void main() {
   vec2 p = uv * 2.0 - 1.0;
   p.x *= u_resolution.x / max(u_resolution.y, 1.0);
 
-  float campus = step(1.5, u_variant);
+  float hero = step(2.5, u_variant);
+  float campus = step(1.5, u_variant) * (1.0 - hero);
   vec3 cyan = vec3(0.08, 1.0, 1.0);
   vec3 magenta = vec3(1.0, 0.17, 0.39);
   vec3 yellow = vec3(1.0, 0.92, 0.0);
@@ -72,8 +73,8 @@ void main() {
   vec2 parallax = (u_pointer - 0.5) * vec2(0.18, -0.1);
   vec2 drift = p + parallax + vec2(t * 0.028, -t * 0.018);
 
-  float gridA = gridLine(drift, 6.0, 0.018);
-  float gridB = gridLine(mat2(0.82, -0.57, 0.57, 0.82) * (p - parallax * 0.8) + vec2(-t * 0.018, t * 0.02), 12.0, 0.01);
+  float gridA = gridLine(drift, mix(6.0, 14.0, hero), mix(0.018, 0.006, hero));
+  float gridB = gridLine(mat2(0.82, -0.57, 0.57, 0.82) * (p - parallax * 0.8) + vec2(-t * 0.018, t * 0.02), mix(12.0, 28.0, hero), mix(0.01, 0.003, hero));
   float bars = dataBars(p + vec2(t * 0.12, 0.0), t);
 
   float beams = 0.0;
@@ -87,11 +88,16 @@ void main() {
   float glitch = step(0.985, noise(vec2(floor(uv.y * 160.0), floor(t * 7.0)))) * smoothstep(0.18, 0.0, abs(fract(uv.x * 5.0 + t) - 0.5));
   float vignette = smoothstep(1.45, 0.2, length(p));
   float scan = 0.018 + 0.018 * sin(uv.y * 620.0 + t * 16.0);
+  float gridStrength = mix(1.0, 0.26, hero);
+  float motionStrength = mix(1.0, 0.34, hero);
+  float barsStrength = mix(1.0, 0.18, hero);
+  float scanStrength = mix(1.0, 0.28, hero);
+  float glitchStrength = mix(1.0, 0.2, hero);
 
   vec3 color = base;
-  color += accent * (gridA * 0.16 + gridB * 0.08 + beams * 0.16 + bars * 0.09);
-  color += secondary * (beams * 0.09 + glitch * 0.18);
-  color += accent * scan;
+  color += accent * (gridA * 0.16 * gridStrength + gridB * 0.08 * gridStrength + beams * 0.16 * motionStrength + bars * 0.09 * barsStrength);
+  color += secondary * (beams * 0.09 * motionStrength + glitch * 0.18 * glitchStrength);
+  color += accent * scan * scanStrength;
   color *= 0.62 + vignette * 0.55;
 
   gl_FragColor = vec4(color, 0.95);
@@ -194,7 +200,10 @@ export default function WebGLBackdrop({ className = "", variant = "pixel" }) {
         gl.uniform2f(resolution, canvas.width, canvas.height);
         gl.uniform1f(time, (now - startedAt) * 0.001);
         gl.uniform2f(pointerUniform, pointer.x, pointer.y);
-        gl.uniform1f(variantUniform, variant === "campus" ? 2 : variant === "magenta" ? 1 : 0);
+        gl.uniform1f(
+          variantUniform,
+          variant === "hero" ? 3 : variant === "campus" ? 2 : variant === "magenta" ? 1 : 0,
+        );
         gl.drawArrays(gl.TRIANGLES, 0, 3);
 
         if (!reduceMotion) {
