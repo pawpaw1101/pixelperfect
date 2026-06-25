@@ -17,9 +17,9 @@ export default {
         },
       },
       fontFamily: {
-        display: ["Orbitron", "Montserrat Black", "Space Grotesk", "Arial Black", "sans-serif"],
+        display: ["Roboto", "Inter", "Arial", "sans-serif"],
         mono: ["Roboto Mono", "Consolas", "Courier New", "monospace"],
-        body: ["Inter", "Arial", "sans-serif"],
+        body: ["Roboto", "Inter", "Arial", "sans-serif"],
       },
       boxShadow: {
         cyan: "0 0 0 1px #15ffff, 0 0 28px rgba(21, 255, 255, 0.2)",

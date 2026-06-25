@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {
+  ArrowLeft,
+  ArrowRight,
+  BriefcaseBusiness,
+  Home as HomeIcon,
+  RadioTower,
+  Trophy,
+} from "lucide-react";
 
 import contentRaw from "../content.JSON?raw";
 import mediaMappingRaw from "../media_mapping.JSON?raw";
+import WebGLBackdrop from "./components/WebGLBackdrop";
 import { cn } from "./lib/utils";
 
 const content = JSON.parse(contentRaw);
@@ -64,6 +73,25 @@ const portfolioCases = [
   },
 ];
 
+const partnerLogos = [
+  { label: "Abu Dhabi Gaming", src: "/images/carousel/partners/pp-partner-abudhabigaming.png" },
+  { label: "Anghami", src: "/images/carousel/partners/pp-partner-anghami.png" },
+  { label: "Blizzard", src: "/images/carousel/partners/pp-partner-blizzard.png" },
+  { label: "Dubai Media", src: "/images/carousel/partners/pp-partner-dubaimedia.png" },
+  { label: "Geekay", src: "/images/carousel/partners/pp-partner-geekay.png" },
+  { label: "Honor", src: "/images/carousel/partners/pp-partner-honor.png" },
+  { label: "HyperX", src: "/images/carousel/partners/pp-partner-hyperx.png" },
+  { label: "Inzone", src: "/images/carousel/partners/pp-partner-inzone.png" },
+  { label: "MBC", src: "/images/carousel/partners/pp-partner-mbc.png" },
+  { label: "Nestle", src: "/images/carousel/partners/pp-partner-nestle.png" },
+  { label: "Rainforest Alliance", src: "/images/carousel/partners/pp-partner-rainforestalliance.png" },
+  { label: "Subaru", src: "/images/carousel/partners/pp-partner-subaru.png" },
+  { label: "Tencent", src: "/images/carousel/partners/Tencent-Logo.png" },
+  { label: "Red Bull", src: "/images/carousel/partners/Red-Bull-Logo.png" },
+  { label: "StarLadder", src: "/images/carousel/partners/Starladder_logo.png" },
+  { label: "YaLLa Compass", src: "/images/carousel/partners/YaLLa_Compass_2025_lightmode.png" },
+];
+
 const services = [
   { label: "Marketing Campaigns", copy: servicesContent.service_marketing_campaigns },
   { label: "Live Broadcast", copy: servicesContent.service_live_broadcast_gallery },
@@ -86,24 +114,11 @@ const homeSectors = [
   "Game publishers",
 ];
 
-const campusStats = [
+const campusProvenResults = [
   { value: "51+", label: "Universities onboard" },
-  { value: "3", label: "Completed seasons" },
-  { value: "$31K+", label: "Combined prize pool" },
   { value: "20K+", label: "Student reach" },
-];
-
-const campusResults = [
-  { value: "150K+", label: "Social media views" },
-  { value: "10,100+", label: "Students reached" },
   { value: "27", label: "Livestreams" },
   { value: "167K", label: "Livestream impressions" },
-];
-
-const partnershipTiers = [
-  { tier: "Title Sponsor", price: "$50,000", featured: true },
-  { tier: "Gold Partner", price: "$30,000", featured: false },
-  { tier: "Silver Partner", price: "$12,000", featured: false },
 ];
 
 /* --------------------------------- shell ---------------------------------- */
@@ -125,60 +140,116 @@ function App({ children, routeKey }) {
 }
 
 function GlobalNav({ isCampus, routeKey }) {
-  return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-pixel-border bg-[#1a1a1a]/90 backdrop-blur-md">
-      <nav className="mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-3 px-4 sm:h-20 sm:px-6 lg:px-8">
-        <Link
-          aria-label="Pixel Perfect home"
-          className="group flex h-10 items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pixel-cyan"
-          to="/"
-        >
-          <img
-            alt="Pixel Perfect"
-            className="max-h-9 w-auto object-contain transition duration-150 group-hover:drop-shadow-[0_0_16px_rgba(21,255,255,0.45)] sm:max-h-10"
-            src={assetPath(homeMedia.nav_logo_global)}
-          />
-        </Link>
+  const navItems = [
+    { active: routeKey === "/", icon: HomeIcon, label: "Home", to: "/" },
+    { active: routeKey === "/services", icon: RadioTower, label: "Services", to: "/services" },
+    {
+      active: routeKey.startsWith("/portfolio"),
+      icon: BriefcaseBusiness,
+      label: "Portfolio",
+      to: "/portfolio",
+    },
+    {
+      active: routeKey === "/campus-masters",
+      icon: Trophy,
+      label: "Campus Masters",
+      logo: assetPath(campusMedia.nav_logo_cm_button),
+      to: "/campus-masters",
+      tone: "yellow",
+    },
+  ];
 
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          <NavTextLink active={routeKey === "/services"} to="/services">
-            Services
-          </NavTextLink>
-          <NavTextLink active={routeKey.startsWith("/portfolio")} to="/portfolio">
-            Portfolio
-          </NavTextLink>
-          <Link
-            aria-label="Campus Masters"
-            className={cn(
-              "ml-1 flex h-10 items-center justify-center border bg-[#0d0d0d] px-3 transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-campus-yellow",
-              isCampus
-                ? "border-campus-yellow"
-                : "border-pixel-border hover:border-campus-yellow",
-            )}
-            to="/campus-masters"
-          >
-            <img
-              alt="Campus Masters"
-              className="max-h-7 w-auto object-contain"
-              src={assetPath(campusMedia.nav_logo_cm_button)}
-            />
-          </Link>
-        </div>
-      </nav>
-    </header>
+  return (
+    <>
+      <header className="fixed left-3 top-1/2 z-50 hidden -translate-y-1/2 sm:block">
+        <nav
+          aria-label="Primary navigation"
+          className={cn(
+            "relative flex w-16 flex-col items-start overflow-visible border-l border-white/10 bg-[#070707]/72 py-3 shadow-[0_0_34px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-colors duration-300 ease-out",
+            isCampus ? "hover:border-campus-yellow/60" : "hover:border-pixel-cyan/60",
+          )}
+        >
+          <div className="flex flex-col">
+            {navItems.map((item) => (
+              <NavTextLink key={item.to} {...item}>
+                {item.label}
+              </NavTextLink>
+            ))}
+          </div>
+        </nav>
+      </header>
+
+      <header className="fixed inset-x-0 top-3 z-50 px-3 sm:hidden">
+        <nav
+          aria-label="Primary navigation"
+          className={cn(
+            "mx-auto flex w-fit items-center gap-1 border-l border-white/10 bg-[#070707]/78 px-2 py-2 shadow-[0_0_26px_rgba(0,0,0,0.45)] backdrop-blur-xl",
+            isCampus ? "text-campus-yellow" : "text-pixel-cyan",
+          )}
+        >
+          {navItems.map((item) => (
+            <MobileNavLink key={item.to} {...item} />
+          ))}
+        </nav>
+      </header>
+    </>
   );
 }
 
-function NavTextLink({ active, children, to }) {
+function NavTextLink({ active, children, icon: Icon, label, logo, to, tone = "cyan" }) {
+  const activeTone = tone === "yellow" ? "text-campus-yellow" : "text-pixel-cyan";
+
   return (
     <Link
+      aria-label={label}
       className={cn(
-        "border border-pixel-border bg-[#0d0d0d] px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider text-white/70 transition-colors duration-150 hover:border-pixel-cyan hover:text-pixel-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan sm:text-xs",
-        active && "border-pixel-cyan text-pixel-cyan",
+        "group/item relative flex h-12 w-16 items-center overflow-hidden bg-transparent px-4 font-mono text-[11px] uppercase tracking-wider text-white/52 shadow-[0_0_0_rgba(0,0,0,0)] transition-[width,color,background-color,box-shadow] duration-300 ease-out hover:z-10 hover:w-56 hover:bg-[#070707]/95 hover:text-white hover:shadow-[18px_0_34px_rgba(0,0,0,0.32)] focus-visible:z-10 focus-visible:w-56 focus-visible:bg-[#070707]/95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan",
+        active && activeTone,
       )}
       to={to}
     >
-      {children}
+      <span
+        aria-hidden="true"
+        className={cn(
+          "absolute left-0 top-1/2 h-6 w-px -translate-y-1/2 bg-white/15 transition-colors duration-150",
+          active && (tone === "yellow" ? "bg-campus-yellow" : "bg-pixel-cyan"),
+        )}
+      />
+      <Icon aria-hidden="true" className="h-5 w-5 shrink-0" strokeWidth={1.7} />
+      {logo ? (
+        <span className="ml-0 max-w-0 overflow-hidden opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/item:ml-3 group-hover/item:max-w-[150px] group-hover/item:opacity-100 group-focus-visible/item:ml-3 group-focus-visible/item:max-w-[150px] group-focus-visible/item:opacity-100">
+          <img alt="" aria-hidden="true" className="h-7 w-auto max-w-[150px] object-contain" src={logo} />
+        </span>
+      ) : (
+        <span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/item:ml-3 group-hover/item:max-w-[150px] group-hover/item:opacity-100 group-focus-visible/item:ml-3 group-focus-visible/item:max-w-[150px] group-focus-visible/item:opacity-100">
+          {children}
+        </span>
+      )}
+    </Link>
+  );
+}
+
+function MobileNavLink({ active, icon: Icon, label, logo, to, tone = "cyan" }) {
+  return (
+    <Link
+      aria-label={label}
+      className={cn(
+        "group/mobile flex h-10 w-10 items-center justify-center overflow-hidden px-0 font-mono text-[10px] uppercase tracking-wider text-white/55 transition-[width,color,background-color,padding] duration-300 ease-out hover:bg-white/[0.045] hover:px-3 hover:text-white focus-visible:bg-white/[0.045] focus-visible:px-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan",
+        logo ? "hover:w-44 focus-visible:w-44" : "hover:w-32 focus-visible:w-32",
+        active && (tone === "yellow" ? "text-campus-yellow" : "text-pixel-cyan"),
+      )}
+      to={to}
+    >
+      <Icon aria-hidden="true" className="h-5 w-5 shrink-0" strokeWidth={1.8} />
+      {logo ? (
+        <span className="ml-0 max-w-0 overflow-hidden opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/mobile:ml-2 group-hover/mobile:max-w-[118px] group-hover/mobile:opacity-100 group-focus-visible/mobile:ml-2 group-focus-visible/mobile:max-w-[118px] group-focus-visible/mobile:opacity-100">
+          <img alt="" aria-hidden="true" className="h-6 w-auto max-w-[118px] object-contain" src={logo} />
+        </span>
+      ) : (
+        <span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/mobile:ml-2 group-hover/mobile:max-w-[100px] group-hover/mobile:opacity-100 group-focus-visible/mobile:ml-2 group-focus-visible/mobile:max-w-[100px] group-focus-visible/mobile:opacity-100">
+          {label}
+        </span>
+      )}
     </Link>
   );
 }
@@ -209,7 +280,17 @@ function Eyebrow({ children, tone = "cyan" }) {
   );
 }
 
-function SectionHeader({ index, eyebrow, title, intro, tone = "cyan", align = "left" }) {
+function SectionHeader({
+  align = "left",
+  eyebrow,
+  index,
+  intro,
+  level = "h2",
+  title,
+  tone = "cyan",
+}) {
+  const HeadingTag = level === "h1" ? "h1" : "h2";
+
   return (
     <div
       className={cn(
@@ -230,9 +311,9 @@ function SectionHeader({ index, eyebrow, title, intro, tone = "cyan", align = "l
         ) : null}
         <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
       </div>
-      <h2 className="text-balance font-display text-3xl font-bold uppercase leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-5xl">
+      <HeadingTag className="text-balance font-display text-3xl font-light italic uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl">
         {title}
-      </h2>
+      </HeadingTag>
       {intro ? (
         <p className="text-pretty text-base leading-relaxed text-white/60 sm:text-lg">{intro}</p>
       ) : null}
@@ -252,7 +333,7 @@ function StatCard({ value, label, tone = "cyan" }) {
     >
       <p
         className={cn(
-          "font-display text-4xl font-bold tracking-tight sm:text-5xl",
+          "font-display text-4xl font-normal italic sm:text-5xl",
           tone === "yellow" ? "text-campus-yellow" : "text-pixel-cyan",
         )}
       >
@@ -265,7 +346,14 @@ function StatCard({ value, label, tone = "cyan" }) {
   );
 }
 
-function MediaFrame({ aspect = "aspect-[16/10]", className, imgClassName, src, fit = "cover" }) {
+function MediaFrame({
+  aspect = "aspect-[16/10]",
+  className,
+  fit = "cover",
+  imgClassName,
+  src,
+  tone = "cyan",
+}) {
   return (
     <div
       className={cn(
@@ -274,7 +362,14 @@ function MediaFrame({ aspect = "aspect-[16/10]", className, imgClassName, src, f
         className,
       )}
     >
-      <div className="absolute inset-0 z-10 opacity-30 [background-image:linear-gradient(rgba(21,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(21,255,255,0.1)_1px,transparent_1px)] [background-size:34px_34px]" />
+      <div
+        className={cn(
+          "absolute inset-0 z-10 opacity-30 [background-size:34px_34px]",
+          tone === "yellow"
+            ? "[background-image:linear-gradient(rgba(255,234,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,234,0,0.1)_1px,transparent_1px)]"
+            : "[background-image:linear-gradient(rgba(21,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(21,255,255,0.1)_1px,transparent_1px)]",
+        )}
+      />
       {src ? (
         <img
           alt=""
@@ -301,10 +396,11 @@ function FeatureRow({ image, eyebrow, title, body, reverse = false, tone = "cyan
           reverse && "md:order-2",
         )}
         src={image}
+        tone={tone === "yellow" ? "yellow" : "cyan"}
       />
       <div className={cn("flex flex-col gap-4", reverse && "md:order-1")}>
         <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
-        <h3 className="text-balance font-display text-2xl font-bold uppercase leading-tight tracking-tight text-white sm:text-3xl">
+        <h3 className="text-balance font-display text-2xl font-light italic uppercase leading-tight text-white sm:text-3xl">
           {title}
         </h3>
         {body ? (
@@ -322,6 +418,7 @@ function BandImage({ src, caption, tone = "cyan" }) {
         aspect="aspect-[21/9]"
         className={cn(tone === "yellow" && "border-campus-yellow/25")}
         src={src}
+        tone={tone === "yellow" ? "yellow" : "cyan"}
       />
       {caption ? (
         <figcaption
@@ -352,14 +449,25 @@ function CtaLink({ children, to, tone = "cyan" }) {
       to={to}
     >
       {children}
-      <span aria-hidden="true">{"->"}</span>
+      <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} />
     </Link>
   );
 }
 
-function PageShell({ children }) {
+function PageShell({ backdrop = "pixel", children }) {
+  const glowClass =
+    backdrop === "magenta"
+      ? "bg-[radial-gradient(circle_at_20%_12%,rgba(255,44,99,0.1),transparent_30%),linear-gradient(180deg,rgba(17,17,17,0.66),rgba(36,36,36,0.94))]"
+      : "bg-[radial-gradient(circle_at_20%_12%,rgba(21,255,255,0.08),transparent_30%),linear-gradient(180deg,rgba(17,17,17,0.66),rgba(36,36,36,0.94))]";
+
   return (
-    <div className="mx-auto max-w-[1280px] px-4 pb-20 pt-28 sm:px-6 lg:px-8">{children}</div>
+    <div className="relative isolate min-h-screen overflow-hidden">
+      <WebGLBackdrop className="fixed -z-20 opacity-35" variant={backdrop} />
+      <div className={cn("absolute inset-0 -z-10", glowClass)} />
+      <div className="relative mx-auto max-w-[1280px] px-4 pb-20 pt-28 sm:px-6 lg:px-8">
+        {children}
+      </div>
+    </div>
   );
 }
 
@@ -369,24 +477,35 @@ function Home() {
   return (
     <>
       <HeroVideoBrutalist />
-      <TechStackTicker />
-      <MissionStatementAvatars />
-      <GlobalImpactStats />
-      <ServicesPreview />
-      <PortfolioPreviewGrid />
-      <ClientTrust />
-      <FooterGlobal />
+      <HomeBodyShell>
+        <PartnerLogoCarousel />
+        <MissionStatementAvatars />
+        <GlobalImpactStats />
+        <ServicesPreview />
+        <PortfolioPreviewGrid />
+        <FooterGlobal />
+      </HomeBodyShell>
     </>
+  );
+}
+
+function HomeBodyShell({ children }) {
+  return (
+    <div className="relative isolate overflow-hidden">
+      <WebGLBackdrop className="absolute -z-20 opacity-25 mix-blend-screen" variant="pixel" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_82%_8%,rgba(21,255,255,0.12),transparent_28%),radial-gradient(circle_at_16%_48%,rgba(255,44,99,0.09),transparent_24%),linear-gradient(180deg,rgba(36,36,36,0.76),rgba(17,17,17,0.92))]" />
+      {children}
+    </div>
   );
 }
 
 function HeroVideoBrutalist() {
   return (
-    <section className="relative isolate flex min-h-[88svh] items-center overflow-hidden border-b border-pixel-border pt-16">
+    <section className="relative isolate flex min-h-[calc(100svh-180px)] items-center overflow-hidden border-b border-pixel-border pt-20 sm:pt-0">
       <video
         aria-hidden="true"
         autoPlay
-        className="absolute inset-0 -z-20 h-full w-full object-cover"
+        className="absolute inset-0 -z-30 h-full w-full object-cover"
         loop
         muted
         playsInline
@@ -394,33 +513,27 @@ function HeroVideoBrutalist() {
       >
         <source src={assetPath(homeMedia.hero_video)} type="video/mp4" />
       </video>
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(17,17,17,0.92),rgba(17,17,17,0.55)_55%,rgba(17,17,17,0.35)),linear-gradient(0deg,rgba(17,17,17,0.95),rgba(17,17,17,0)_50%)]" />
-      <div className="absolute inset-0 -z-10 opacity-30 [background-image:linear-gradient(rgba(21,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(21,255,255,0.12)_1px,transparent_1px)] [background-size:56px_56px]" />
+      <div className="absolute inset-0 -z-20 bg-[linear-gradient(270deg,rgba(17,17,17,0.92),rgba(17,17,17,0.62)_48%,rgba(17,17,17,0.88)),linear-gradient(0deg,rgba(17,17,17,0.96),rgba(17,17,17,0)_52%)]" />
+      <WebGLBackdrop className="-z-10 opacity-35 mix-blend-screen" variant="pixel" />
 
-      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <Eyebrow>Pixel Perfect // Gaming Creative Agency // UAE</Eyebrow>
-          <h1 className="mt-6 text-balance font-display text-4xl font-bold uppercase leading-[0.98] tracking-tight text-white drop-shadow-[0_0_24px_rgba(21,255,255,0.2)] sm:text-6xl lg:text-7xl">
+      <div className="w-full pl-4 pr-3 sm:pl-6 sm:pr-3 lg:pl-8 lg:pr-3">
+        <div className="ml-auto flex max-w-[760px] translate-y-[8svh] flex-col items-end text-right sm:translate-y-[10svh]">
+          <img
+            alt="Pixel Perfect"
+            className="mb-5 h-auto w-[88px] object-contain drop-shadow-[0_0_18px_rgba(21,255,255,0.22)] sm:w-[96px] lg:w-[104px]"
+            src={assetPath(homeMedia.nav_logo_global)}
+          />
+          <h1 className="text-balance font-display text-4xl font-light italic uppercase leading-[0.98] text-white drop-shadow-[0_0_24px_rgba(21,255,255,0.2)] sm:text-6xl lg:text-7xl">
             {homeContent.hero_video_brutalist}
           </h1>
-          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-white/70 sm:text-lg">
-            We build in-game experiences, branded content, esports partnerships, and gamified
-            storytelling for the world&apos;s gaming audiences.
-          </p>
           <div
             aria-hidden="true"
-            className="mt-8 grid h-3 max-w-md grid-cols-[1.5fr_0.5fr_1fr_0.3fr] gap-2"
+            className="mt-8 grid h-3 w-full max-w-md grid-cols-[1.5fr_0.5fr_1fr_0.3fr] gap-2"
           >
             <span className="bg-pixel-cyan" />
             <span className="bg-pixel-magenta" />
             <span className="border border-pixel-cyan" />
             <span className="animate-pulseLine bg-white" />
-          </div>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <CtaLink to="/portfolio" tone="solid">
-              View our work
-            </CtaLink>
-            <CtaLink to="/services">Explore services</CtaLink>
           </div>
         </div>
       </div>
@@ -428,20 +541,36 @@ function HeroVideoBrutalist() {
   );
 }
 
-function TechStackTicker() {
-  const ticker = homeContent.tech_stack_ticker;
+function PartnerLogoCarousel() {
+  const marqueeLogos = [...partnerLogos, ...partnerLogos];
 
   return (
     <section
-      aria-label="Tools we use"
-      className="overflow-hidden border-b border-pixel-border bg-pixel-surface py-3 font-mono text-xs text-pixel-cyan sm:text-sm"
+      aria-label="Pixel Perfect partners"
+      className="relative overflow-hidden border-b border-pixel-border bg-[#090909]/82 py-7 backdrop-blur-sm"
     >
-      <div className="flex w-max animate-ticker whitespace-nowrap">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <span className="px-8" key={index}>
-            {ticker}
-          </span>
-        ))}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-pixel-cyan to-transparent" />
+      <div className="mx-auto mb-5 flex max-w-[1280px] items-center gap-3 px-4 sm:px-6 lg:px-8">
+        <Eyebrow>Partners</Eyebrow>
+        <div className="h-px flex-1 bg-white/10" />
+      </div>
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#090909] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#090909] to-transparent" />
+        <div className="flex w-max animate-ticker items-center gap-4 whitespace-nowrap">
+          {marqueeLogos.map((logo, index) => (
+            <div
+              className="grid h-20 w-40 place-items-center border border-white/10 bg-white/[0.88] px-5 py-4 shadow-[0_0_24px_rgba(0,0,0,0.18)] sm:w-48"
+              key={`${logo.label}-${index}`}
+            >
+              <img
+                alt={logo.label}
+                className="max-h-12 max-w-full object-contain grayscale contrast-125 transition duration-200 hover:grayscale-0"
+                src={logo.src}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -449,10 +578,16 @@ function TechStackTicker() {
 
 function MissionStatementAvatars() {
   return (
-    <section className="relative border-b border-pixel-border bg-pixel-bg">
-      <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:38px_38px]" />
-      <div className="relative mx-auto grid max-w-[1280px] items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
-        <div className="flex flex-col gap-6">
+    <section className="relative overflow-hidden border-b border-pixel-border bg-pixel-bg/78 backdrop-blur-sm">
+      <div className="absolute inset-0 opacity-14 [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:38px_38px]" />
+      <img
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 right-[-12%] z-0 w-[min(86vw,780px)] opacity-35 mix-blend-screen sm:right-[-6%] md:opacity-45"
+        src={assetPath(homeMedia.mission_avatars)}
+      />
+      <div className="relative z-10 mx-auto grid min-h-[520px] max-w-[1280px] items-center px-4 py-16 sm:px-6 md:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
+        <div className="flex max-w-3xl flex-col gap-6">
           <SectionHeader
             index="01"
             eyebrow="Who we are"
@@ -460,11 +595,7 @@ function MissionStatementAvatars() {
             intro={homeContent.mission_statement_avatars}
           />
         </div>
-        <MediaFrame
-          aspect="aspect-[4/3]"
-          fit="contain"
-          src={assetPath(homeMedia.mission_avatars)}
-        />
+        <div aria-hidden="true" className="hidden md:block" />
       </div>
     </section>
   );
@@ -472,7 +603,7 @@ function MissionStatementAvatars() {
 
 function GlobalImpactStats() {
   return (
-    <section className="border-b border-pixel-border bg-[#191919] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <section className="border-b border-pixel-border bg-[#191919]/74 px-4 py-16 backdrop-blur-sm sm:px-6 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-[1280px]">
         <SectionHeader index="02" eyebrow="By the numbers" title="Six years of measurable impact." />
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -500,7 +631,7 @@ function GlobalImpactStats() {
 
 function ServicesPreview() {
   return (
-    <section className="border-b border-pixel-border bg-pixel-bg px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <section className="border-b border-pixel-border bg-pixel-bg/72 px-4 py-16 backdrop-blur-sm sm:px-6 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-[1280px]">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeader
@@ -533,7 +664,7 @@ function ServiceCard({ index, service }) {
           className="h-2.5 w-2.5 bg-pixel-border transition-colors duration-150 group-hover:bg-pixel-cyan"
         />
       </div>
-      <h3 className="mt-4 font-display text-lg font-semibold uppercase leading-tight tracking-tight text-white group-hover:text-pixel-cyan sm:text-xl">
+      <h3 className="mt-4 font-display text-lg font-light italic uppercase leading-tight text-white group-hover:text-pixel-cyan sm:text-xl">
         {service.label}
       </h3>
       <p className="mt-3 text-sm leading-relaxed text-white/60">{service.copy}</p>
@@ -543,7 +674,7 @@ function ServiceCard({ index, service }) {
 
 function PortfolioPreviewGrid() {
   return (
-    <section className="border-b border-pixel-border bg-[#191919] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <section className="border-b border-pixel-border bg-[#191919]/74 px-4 py-16 backdrop-blur-sm sm:px-6 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-[1280px]">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeader
@@ -576,12 +707,12 @@ function PortfolioCard({ item }) {
         <span className="font-mono text-xs uppercase tracking-wider text-pixel-magenta">
           {item.tag}
         </span>
-        <h3 className="mt-2 font-display text-lg font-semibold uppercase leading-tight tracking-tight text-white group-hover:text-pixel-cyan sm:text-xl">
+        <h3 className="mt-2 font-display text-lg font-light italic uppercase leading-tight text-white group-hover:text-pixel-cyan sm:text-xl">
           {item.title}
         </h3>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">{item.copy}</p>
         <span className="mt-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-pixel-cyan">
-          Case study <span aria-hidden="true">{"->"}</span>
+          Case study <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} />
         </span>
       </div>
     </Link>
@@ -599,7 +730,7 @@ function ClientTrust() {
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
           {brands.map((brand) => (
             <span
-              className="font-display text-lg font-semibold uppercase tracking-tight text-white/40 sm:text-xl"
+              className="font-display text-lg font-light italic uppercase text-white/40 sm:text-xl"
               key={brand}
             >
               {brand}
@@ -617,10 +748,11 @@ function ServicesPage() {
   const gallery = assetList(servicesMedia.broadcast_gallery);
 
   return (
-    <PageShell>
+    <PageShell backdrop="pixel">
       <SectionHeader
-        index="—"
+        index="00"
         eyebrow="Services"
+        level="h1"
         title={servicesContent.services_header}
         intro={servicesContent.service_marketing_campaigns}
       />
@@ -667,10 +799,11 @@ function ServicesPage() {
 
 function PortfolioPage() {
   return (
-    <PageShell>
+    <PageShell backdrop="magenta">
       <SectionHeader
-        index="—"
+        index="00"
         eyebrow="Portfolio"
+        level="h1"
         title="Selected work."
         tone="magenta"
         intro={portfolioContent.portfolio_intro}
@@ -740,19 +873,19 @@ function PortfolioMetaPage() {
 
 function CaseStudyLayout({ tag, title, heroCopy, heroImage, panels, secondaryImage }) {
   return (
-    <PageShell>
+    <PageShell backdrop="magenta">
       <Link
         className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/50 transition-colors hover:text-pixel-cyan"
         to="/portfolio"
       >
-        <span aria-hidden="true">{"<-"}</span> Back to portfolio
+        <ArrowLeft aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} /> Back to portfolio
       </Link>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
         <MediaFrame aspect="aspect-[4/3]" className="border-0 border border-pixel-border" src={heroImage} />
         <div className="flex flex-col justify-center border border-pixel-border bg-[#141414] p-6 sm:p-9">
           <span className="font-mono text-xs uppercase tracking-wider text-pixel-magenta">{tag}</span>
-          <h1 className="mt-3 font-display text-3xl font-bold uppercase leading-[1.05] tracking-tight text-white sm:text-4xl">
+          <h1 className="mt-3 font-display text-3xl font-light italic uppercase leading-[1.05] text-white sm:text-4xl">
             {title}
           </h1>
           <p className="mt-5 text-pretty text-base leading-relaxed text-white/70 sm:text-lg">
@@ -824,19 +957,21 @@ function CampusMastersShell() {
   ];
 
   return (
-    <div className="bg-campus-bg">
-      <CampusHero />
+    <div className="relative isolate overflow-hidden bg-campus-bg">
+      <WebGLBackdrop className="fixed -z-20 opacity-38" variant="campus" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(15,23,42,0.76),rgba(15,23,42,0.96))]" />
+      <CampusHero heroImage={eventImages[4]} />
 
       <section className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeader
           index="01"
-          eyebrow="Season 3 metrics"
-          title="A league at national scale."
+          eyebrow="Proven results"
+          title="Reach that brands can measure."
           tone="yellow"
-          intro={campusContent.on_ground_events_masonry}
+          intro="A consolidated snapshot of university reach, broadcast output, and sponsor-facing visibility across the league."
         />
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {campusStats.map((stat) => (
+          {campusProvenResults.map((stat) => (
             <StatCard key={stat.label} tone="yellow" {...stat} />
           ))}
         </div>
@@ -860,23 +995,6 @@ function CampusMastersShell() {
         </div>
       </section>
 
-      <section className="border-y border-campus-yellow/20 bg-[#0b1322] px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-[1280px]">
-          <SectionHeader
-            index="02"
-            eyebrow="Proven results"
-            title="Reach that brands can measure."
-            tone="yellow"
-            intro={campusContent.previous_partnership_results}
-          />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {campusResults.map((stat) => (
-              <StatCard key={stat.label} tone="yellow" {...stat} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="mx-auto flex max-w-[1280px] flex-col gap-16 px-4 py-16 sm:px-6 lg:gap-24 lg:px-8">
         <FeatureRow
           eyebrow="Brand integration"
@@ -895,61 +1013,11 @@ function CampusMastersShell() {
         />
       </section>
 
-      <section className="mx-auto max-w-[1280px] px-4 pb-16 sm:px-6 lg:px-8">
-        <SectionHeader
-          index="03"
-          eyebrow="Partnership tiers"
-          title="Pick your level of presence."
-          tone="yellow"
-        />
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          {partnershipTiers.map((tier) => (
-            <div
-              className={cn(
-                "flex flex-col border bg-[#0b1322] p-7",
-                tier.featured ? "border-campus-yellow" : "border-campus-yellow/25",
-              )}
-              key={tier.tier}
-            >
-              {tier.featured ? (
-                <span className="mb-4 inline-flex w-fit bg-campus-yellow px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-black">
-                  Most visible
-                </span>
-              ) : null}
-              <span className="font-mono text-xs uppercase tracking-wider text-campus-yellow/70">
-                {tier.tier}
-              </span>
-              <p className="mt-3 font-display text-4xl font-bold tracking-tight text-campus-yellow sm:text-5xl">
-                {tier.price}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-t border-campus-yellow/20 bg-[#0b1322] px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-[1280px]">
-          <Eyebrow tone="yellow">Our partners</Eyebrow>
-          <div className="mt-6 grid grid-cols-2 gap-px bg-campus-yellow/15 sm:grid-cols-3 lg:grid-cols-4">
-            {sponsors.map((sponsor) => (
-              <div
-                className="grid min-h-28 place-items-center bg-[#0b1322] p-6"
-                key={sponsor.path}
-              >
-                <img
-                  alt={sponsor.desc ?? ""}
-                  className="max-h-14 max-w-[160px] object-contain opacity-70 transition-opacity hover:opacity-100"
-                  src={sponsor.path}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CampusPartnersCarousel sponsors={sponsors} />
 
       <section className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-balance font-display text-3xl font-bold uppercase leading-[1.1] tracking-tight text-campus-yellow sm:text-4xl lg:text-5xl">
+          <h2 className="text-balance font-display text-3xl font-light italic uppercase leading-[1.1] text-campus-yellow sm:text-4xl lg:text-5xl">
             {campusContent.closing_statement}
           </h2>
         </div>
@@ -958,26 +1026,71 @@ function CampusMastersShell() {
   );
 }
 
-function CampusHero() {
+function CampusPartnersCarousel({ sponsors }) {
+  const sponsorLogos = [...sponsors, ...sponsors];
+
   return (
-    <section className="relative overflow-hidden border-b border-campus-yellow/20 px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pt-36">
-      <div className="absolute inset-0 -z-10 opacity-25 [background-image:linear-gradient(rgba(255,234,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,234,0,0.08)_1px,transparent_1px)] [background-size:48px_48px]" />
-      <div className="mx-auto grid max-w-[1280px] items-center gap-10 md:grid-cols-[0.85fr_1.15fr]">
-        <div className="border border-campus-yellow bg-[#0b1322] p-6 sm:p-8">
-          <img
-            alt="Campus Masters"
-            className="mx-auto max-h-44 w-auto object-contain"
-            src={assetPath(campusMedia.hero_logo_main)}
-          />
+    <section className="overflow-hidden border-t border-campus-yellow/20 bg-[#0b1322]/86 px-4 py-16 backdrop-blur-sm sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="mb-6 flex items-center gap-3">
+          <Eyebrow tone="yellow">Our partners</Eyebrow>
+          <div className="h-px flex-1 bg-campus-yellow/20" />
         </div>
-        <div>
-          <Eyebrow tone="yellow">Campus Masters // University Esports League</Eyebrow>
-          <h1 className="mt-6 text-balance font-display text-4xl font-bold uppercase leading-[1] tracking-tight text-campus-yellow sm:text-6xl">
-            {campusContent.cm_hero_main_logo}
-          </h1>
-          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-white/70 sm:text-lg">
-            {campusContent.season_3_metrics_grid}
-          </p>
+      </div>
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#0b1322] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#0b1322] to-transparent" />
+        <div className="flex w-max animate-ticker items-center gap-4 whitespace-nowrap">
+          {sponsorLogos.map((sponsor, index) => (
+            <div
+              className="grid h-24 w-44 place-items-center border border-campus-yellow/20 bg-[#07101f]/92 px-6 py-4 shadow-[0_0_24px_rgba(0,0,0,0.22)] sm:w-52"
+              key={`${sponsor.path}-${index}`}
+            >
+              <img
+                alt={sponsor.desc ?? ""}
+                className="max-h-14 max-w-full object-contain opacity-85 brightness-0 invert transition duration-200 hover:opacity-100"
+                src={sponsor.path}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CampusHero({ heroImage }) {
+  return (
+    <section className="relative overflow-hidden border-b border-campus-yellow/20 px-4 pb-16 pt-24 sm:px-6 lg:px-8 lg:pt-20">
+      <div className="absolute inset-0 -z-10 opacity-20 [background-image:linear-gradient(rgba(255,234,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,234,0,0.08)_1px,transparent_1px)] [background-size:48px_48px]" />
+      <div className="mx-auto max-w-[1280px]">
+        <img
+          alt="Campus Masters"
+          className="mb-8 h-14 w-auto object-contain sm:mb-10 sm:h-16"
+          src={assetPath(campusMedia.hero_logo_main)}
+        />
+        <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+          <div>
+            <Eyebrow tone="yellow">Campus Masters // University Esports League</Eyebrow>
+            <h1 className="mt-6 text-balance font-display text-4xl font-light italic uppercase leading-[1] text-campus-yellow sm:text-6xl">
+              {campusContent.cm_hero_main_logo}
+            </h1>
+            <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-white/70 sm:text-lg">
+              {campusContent.season_3_metrics_grid}
+            </p>
+          </div>
+          <figure className="relative overflow-hidden border border-campus-yellow/30 bg-[#0b1322]">
+            <MediaFrame
+              aspect="aspect-[16/10]"
+              className="border-0"
+              imgClassName="saturate-125"
+              src={heroImage}
+              tone="yellow"
+            />
+            <figcaption className="absolute bottom-0 left-0 z-20 m-3 bg-campus-yellow px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-black">
+              Season 3 // On-ground arena
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -991,10 +1104,11 @@ function CampusVenueFeature({ venue, reverse }) {
         aspect="aspect-[4/3]"
         className={cn("border-campus-yellow/25", reverse && "md:order-2")}
         src={venue.lead}
+        tone="yellow"
       />
       <div className={cn("flex flex-col gap-4", reverse && "md:order-1")}>
         <Eyebrow tone="yellow">{venue.eyebrow}</Eyebrow>
-        <h3 className="text-balance font-display text-2xl font-bold uppercase leading-tight tracking-tight text-white sm:text-3xl">
+        <h3 className="text-balance font-display text-2xl font-light italic uppercase leading-tight text-white sm:text-3xl">
           {venue.name}
         </h3>
         <p className="text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
@@ -1008,6 +1122,7 @@ function CampusVenueFeature({ venue, reverse }) {
                 className="border-campus-yellow/15"
                 key={thumb}
                 src={thumb}
+                tone="yellow"
               />
             ))}
           </div>
@@ -1030,9 +1145,9 @@ function FooterGlobal() {
             src={assetPath(homeMedia.nav_logo_global)}
           />
           <nav className="flex flex-wrap gap-2">
-            <NavTextLink to="/services">Services</NavTextLink>
-            <NavTextLink to="/portfolio">Portfolio</NavTextLink>
-            <NavTextLink to="/campus-masters">Campus Masters</NavTextLink>
+            <FooterLink to="/services">Services</FooterLink>
+            <FooterLink to="/portfolio">Portfolio</FooterLink>
+            <FooterLink to="/campus-masters">Campus Masters</FooterLink>
           </nav>
         </div>
         <div className="flex flex-col gap-2 pt-8 sm:flex-row sm:items-center sm:justify-between">
@@ -1043,6 +1158,17 @@ function FooterGlobal() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterLink({ children, to }) {
+  return (
+    <Link
+      className="font-mono text-xs uppercase tracking-wider text-white/45 transition-colors hover:text-pixel-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan"
+      to={to}
+    >
+      {children}
+    </Link>
   );
 }
 
