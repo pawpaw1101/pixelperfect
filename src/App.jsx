@@ -127,12 +127,7 @@ function App({ children, routeKey }) {
   const isCampus = routeKey === "/campus-masters";
 
   return (
-    <div
-      className={cn(
-        "min-h-screen overflow-x-hidden font-body text-white antialiased",
-        isCampus ? "bg-campus-bg" : "bg-pixel-bg",
-      )}
-    >
+    <div className="min-h-screen overflow-x-hidden bg-black font-body text-white antialiased">
       <GlobalNav isCampus={isCampus} routeKey={routeKey} />
       <main>{children}</main>
     </div>
@@ -160,50 +155,34 @@ function GlobalNav({ isCampus, routeKey }) {
   ];
 
   return (
-    <>
-      <header className="fixed left-3 top-1/2 z-50 hidden -translate-y-1/2 sm:block">
-        <nav
-          aria-label="Primary navigation"
-          className={cn(
-            "relative flex w-16 flex-col items-start overflow-visible border-l border-white/10 bg-[#070707]/72 py-3 shadow-[0_0_34px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-colors duration-300 ease-out",
-            isCampus ? "hover:border-campus-yellow/60" : "hover:border-pixel-cyan/60",
-          )}
-        >
-          <div className="flex flex-col">
-            {navItems.map((item) => (
-              <NavTextLink key={item.to} {...item}>
-                {item.label}
-              </NavTextLink>
-            ))}
-          </div>
-        </nav>
-      </header>
-
-      <header className="fixed inset-x-0 top-3 z-50 px-3 sm:hidden">
-        <nav
-          aria-label="Primary navigation"
-          className={cn(
-            "mx-auto flex w-fit items-center gap-1 border-l border-white/10 bg-[#070707]/78 px-2 py-2 shadow-[0_0_26px_rgba(0,0,0,0.45)] backdrop-blur-xl",
-            isCampus ? "text-campus-yellow" : "text-pixel-cyan",
-          )}
-        >
-          {navItems.map((item) => (
-            <MobileNavLink key={item.to} {...item} />
-          ))}
-        </nav>
-      </header>
-    </>
+    <header className="fixed inset-x-0 top-3 z-50 px-3">
+      <nav
+        aria-label="Primary navigation"
+        className={cn(
+          "mx-auto flex w-fit max-w-[calc(100vw-1.5rem)] items-center gap-1 overflow-visible border border-white/10 bg-black/72 px-2 py-2 shadow-[0_0_30px_rgba(0,0,0,0.52)] backdrop-blur-xl transition-[border-color,box-shadow] duration-300 ease-out",
+          isCampus
+            ? "text-campus-yellow hover:border-campus-yellow/50 hover:shadow-[0_0_28px_rgba(255,234,0,0.12)]"
+            : "text-pixel-cyan hover:border-pixel-cyan/50 hover:shadow-[0_0_28px_rgba(21,255,255,0.12)]",
+        )}
+      >
+        {navItems.map((item) => (
+          <HudNavLink key={item.to} {...item} />
+        ))}
+      </nav>
+    </header>
   );
 }
 
-function NavTextLink({ active, children, icon: Icon, label, logo, to, tone = "cyan" }) {
+function HudNavLink({ active, icon: Icon, label, logo, to, tone = "cyan" }) {
   const activeTone = tone === "yellow" ? "text-campus-yellow" : "text-pixel-cyan";
+  const expandedWidth = logo ? "hover:w-48 focus-visible:w-48" : "hover:w-32 focus-visible:w-32";
 
   return (
     <Link
       aria-label={label}
       className={cn(
-        "group/item relative flex h-12 w-16 items-center overflow-hidden bg-transparent px-4 font-mono text-[11px] uppercase tracking-wider text-white/52 shadow-[0_0_0_rgba(0,0,0,0)] transition-[width,color,background-color,box-shadow] duration-300 ease-out hover:z-10 hover:w-56 hover:bg-[#070707]/95 hover:text-white hover:shadow-[18px_0_34px_rgba(0,0,0,0.32)] focus-visible:z-10 focus-visible:w-56 focus-visible:bg-[#070707]/95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan",
+        "group/hud relative flex h-11 w-11 items-center justify-center overflow-hidden bg-transparent px-0 font-mono text-[10px] uppercase tracking-wider text-white/55 transition-[width,color,background-color,padding] duration-300 ease-out hover:z-10 hover:bg-white/[0.045] hover:px-3 hover:text-white focus-visible:z-10 focus-visible:bg-white/[0.045] focus-visible:px-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan",
+        expandedWidth,
         active && activeTone,
       )}
       to={to}
@@ -211,42 +190,17 @@ function NavTextLink({ active, children, icon: Icon, label, logo, to, tone = "cy
       <span
         aria-hidden="true"
         className={cn(
-          "absolute left-0 top-1/2 h-6 w-px -translate-y-1/2 bg-white/15 transition-colors duration-150",
+          "absolute bottom-1 left-1/2 h-px w-4 -translate-x-1/2 bg-white/0 transition-colors duration-150",
           active && (tone === "yellow" ? "bg-campus-yellow" : "bg-pixel-cyan"),
         )}
       />
-      <Icon aria-hidden="true" className="h-5 w-5 shrink-0" strokeWidth={1.7} />
-      {logo ? (
-        <span className="ml-0 max-w-0 overflow-hidden opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/item:ml-3 group-hover/item:max-w-[150px] group-hover/item:opacity-100 group-focus-visible/item:ml-3 group-focus-visible/item:max-w-[150px] group-focus-visible/item:opacity-100">
-          <img alt="" aria-hidden="true" className="h-7 w-auto max-w-[150px] object-contain" src={logo} />
-        </span>
-      ) : (
-        <span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/item:ml-3 group-hover/item:max-w-[150px] group-hover/item:opacity-100 group-focus-visible/item:ml-3 group-focus-visible/item:max-w-[150px] group-focus-visible/item:opacity-100">
-          {children}
-        </span>
-      )}
-    </Link>
-  );
-}
-
-function MobileNavLink({ active, icon: Icon, label, logo, to, tone = "cyan" }) {
-  return (
-    <Link
-      aria-label={label}
-      className={cn(
-        "group/mobile flex h-10 w-10 items-center justify-center overflow-hidden px-0 font-mono text-[10px] uppercase tracking-wider text-white/55 transition-[width,color,background-color,padding] duration-300 ease-out hover:bg-white/[0.045] hover:px-3 hover:text-white focus-visible:bg-white/[0.045] focus-visible:px-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan",
-        logo ? "hover:w-44 focus-visible:w-44" : "hover:w-32 focus-visible:w-32",
-        active && (tone === "yellow" ? "text-campus-yellow" : "text-pixel-cyan"),
-      )}
-      to={to}
-    >
       <Icon aria-hidden="true" className="h-5 w-5 shrink-0" strokeWidth={1.8} />
       {logo ? (
-        <span className="ml-0 max-w-0 overflow-hidden opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/mobile:ml-2 group-hover/mobile:max-w-[118px] group-hover/mobile:opacity-100 group-focus-visible/mobile:ml-2 group-focus-visible/mobile:max-w-[118px] group-focus-visible/mobile:opacity-100">
-          <img alt="" aria-hidden="true" className="h-6 w-auto max-w-[118px] object-contain" src={logo} />
+        <span className="ml-0 max-w-0 overflow-hidden opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/hud:ml-2.5 group-hover/hud:max-w-[128px] group-hover/hud:opacity-100 group-focus-visible/hud:ml-2.5 group-focus-visible/hud:max-w-[128px] group-focus-visible/hud:opacity-100">
+          <img alt="" aria-hidden="true" className="h-6 w-auto max-w-[128px] object-contain" src={logo} />
         </span>
       ) : (
-        <span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/mobile:ml-2 group-hover/mobile:max-w-[100px] group-hover/mobile:opacity-100 group-focus-visible/mobile:ml-2 group-focus-visible/mobile:max-w-[100px] group-focus-visible/mobile:opacity-100">
+        <span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/hud:ml-2.5 group-hover/hud:max-w-[92px] group-hover/hud:opacity-100 group-focus-visible/hud:ml-2.5 group-focus-visible/hud:max-w-[92px] group-focus-visible/hud:opacity-100">
           {label}
         </span>
       )}
@@ -455,15 +409,10 @@ function CtaLink({ children, to, tone = "cyan" }) {
 }
 
 function PageShell({ backdrop = "pixel", children }) {
-  const glowClass =
-    backdrop === "magenta"
-      ? "bg-[radial-gradient(circle_at_20%_12%,rgba(255,44,99,0.1),transparent_30%),linear-gradient(180deg,rgba(17,17,17,0.66),rgba(36,36,36,0.94))]"
-      : "bg-[radial-gradient(circle_at_20%_12%,rgba(21,255,255,0.08),transparent_30%),linear-gradient(180deg,rgba(17,17,17,0.66),rgba(36,36,36,0.94))]";
-
   return (
-    <div className="relative isolate min-h-screen overflow-hidden">
-      <WebGLBackdrop className="fixed -z-20 opacity-35" variant={backdrop} />
-      <div className={cn("absolute inset-0 -z-10", glowClass)} />
+    <div className="relative isolate min-h-screen overflow-hidden bg-black">
+      <WebGLBackdrop className="fixed -z-20 opacity-[0.08]" variant={backdrop} />
+      <div className="absolute inset-0 -z-10 bg-black/88" />
       <div className="relative mx-auto max-w-[1280px] px-4 pb-20 pt-28 sm:px-6 lg:px-8">
         {children}
       </div>
@@ -491,9 +440,9 @@ function Home() {
 
 function HomeBodyShell({ children }) {
   return (
-    <div className="relative isolate overflow-hidden">
-      <WebGLBackdrop className="absolute -z-20 opacity-25 mix-blend-screen" variant="pixel" />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_82%_8%,rgba(21,255,255,0.12),transparent_28%),radial-gradient(circle_at_16%_48%,rgba(255,44,99,0.09),transparent_24%),linear-gradient(180deg,rgba(36,36,36,0.76),rgba(17,17,17,0.92))]" />
+    <div className="relative isolate overflow-hidden bg-black">
+      <WebGLBackdrop className="absolute -z-20 opacity-[0.07]" variant="pixel" />
+      <div className="absolute inset-0 -z-10 bg-black/90" />
       {children}
     </div>
   );
@@ -501,7 +450,10 @@ function HomeBodyShell({ children }) {
 
 function HeroVideoBrutalist() {
   return (
-    <section className="relative isolate flex min-h-[calc(100svh-180px)] items-center overflow-hidden border-b border-pixel-border pt-20 sm:pt-0">
+    <section
+      aria-label="Pixel Perfect video"
+      className="relative isolate min-h-[calc(100svh-180px)] overflow-hidden border-b border-pixel-border"
+    >
       <video
         aria-hidden="true"
         autoPlay
@@ -513,30 +465,6 @@ function HeroVideoBrutalist() {
       >
         <source src={assetPath(homeMedia.hero_video)} type="video/mp4" />
       </video>
-      <div className="absolute inset-0 -z-20 bg-[linear-gradient(270deg,rgba(17,17,17,0.84),rgba(17,17,17,0.44)_48%,rgba(17,17,17,0.74)),linear-gradient(0deg,rgba(17,17,17,0.88),rgba(17,17,17,0)_52%)]" />
-      <WebGLBackdrop className="-z-10 opacity-[0.42] mix-blend-screen" variant="hero" />
-
-      <div className="w-full pl-4 pr-3 sm:pl-6 sm:pr-3 lg:pl-8 lg:pr-3">
-        <div className="ml-auto flex max-w-[760px] translate-y-[8svh] flex-col items-end text-right sm:translate-y-[10svh]">
-          <img
-            alt="Pixel Perfect"
-            className="mb-5 h-auto w-[88px] object-contain drop-shadow-[0_0_18px_rgba(21,255,255,0.22)] sm:w-[96px] lg:w-[104px]"
-            src={assetPath(homeMedia.nav_logo_global)}
-          />
-          <h1 className="text-balance font-display text-4xl font-light italic uppercase leading-[0.98] text-white drop-shadow-[0_0_24px_rgba(21,255,255,0.2)] sm:text-6xl lg:text-7xl">
-            {homeContent.hero_video_brutalist}
-          </h1>
-          <div
-            aria-hidden="true"
-            className="mt-8 grid h-3 w-full max-w-md grid-cols-[1.5fr_0.5fr_1fr_0.3fr] gap-2"
-          >
-            <span className="bg-pixel-cyan" />
-            <span className="bg-pixel-magenta" />
-            <span className="border border-pixel-cyan" />
-            <span className="animate-pulseLine bg-white" />
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
@@ -579,7 +507,6 @@ function PartnerLogoCarousel() {
 function MissionStatementAvatars() {
   return (
     <section className="relative overflow-hidden border-b border-pixel-border bg-pixel-bg/78 backdrop-blur-sm">
-      <div className="absolute inset-0 opacity-14 [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:38px_38px]" />
       <img
         alt=""
         aria-hidden="true"
@@ -957,9 +884,9 @@ function CampusMastersShell() {
   ];
 
   return (
-    <div className="relative isolate overflow-hidden bg-campus-bg">
-      <WebGLBackdrop className="fixed -z-20 opacity-38" variant="campus" />
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(15,23,42,0.76),rgba(15,23,42,0.96))]" />
+    <div className="relative isolate overflow-hidden bg-black">
+      <WebGLBackdrop className="fixed -z-20 opacity-[0.08]" variant="campus" />
+      <div className="absolute inset-0 -z-10 bg-black/88" />
       <CampusHero heroImage={eventImages[4]} />
 
       <section className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 lg:px-8">
@@ -1062,7 +989,6 @@ function CampusPartnersCarousel({ sponsors }) {
 function CampusHero({ heroImage }) {
   return (
     <section className="relative overflow-hidden border-b border-campus-yellow/20 px-4 pb-16 pt-24 sm:px-6 lg:px-8 lg:pt-20">
-      <div className="absolute inset-0 -z-10 opacity-20 [background-image:linear-gradient(rgba(255,234,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,234,0,0.08)_1px,transparent_1px)] [background-size:48px_48px]" />
       <div className="mx-auto max-w-[1280px]">
         <img
           alt="Campus Masters"

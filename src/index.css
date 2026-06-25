@@ -6,7 +6,7 @@
 
 :root {
   color-scheme: dark;
-  background: #242424;
+  background: #000000;
   font-synthesis: none;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
@@ -25,7 +25,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  background: #242424;
+  background: #000000;
 }
 
 button,

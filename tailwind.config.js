@@ -5,14 +5,14 @@ export default {
     extend: {
       colors: {
         pixel: {
-          bg: "#242424",
+          bg: "#000000",
           surface: "#111111",
           border: "#333333",
           cyan: "#15ffff",
           magenta: "#ff2c63",
         },
         campus: {
-          bg: "#0f172a",
+          bg: "#000000",
           yellow: "#ffea00",
         },
       },

@@ -67,7 +67,7 @@ void main() {
   vec3 yellow = vec3(1.0, 0.92, 0.0);
   vec3 accent = mix(cyan, yellow, campus);
   vec3 secondary = mix(magenta, vec3(0.35, 0.72, 1.0), campus);
-  vec3 base = mix(vec3(0.018, 0.018, 0.018), vec3(0.02, 0.035, 0.08), campus);
+  vec3 base = vec3(0.0);
 
   float t = u_time;
   vec2 parallax = (u_pointer - 0.5) * vec2(0.18, -0.1);
@@ -88,19 +88,19 @@ void main() {
   float glitch = step(0.985, noise(vec2(floor(uv.y * 160.0), floor(t * 7.0)))) * smoothstep(0.18, 0.0, abs(fract(uv.x * 5.0 + t) - 0.5));
   float vignette = smoothstep(1.45, 0.2, length(p));
   float scan = 0.018 + 0.018 * sin(uv.y * 620.0 + t * 16.0);
-  float gridStrength = mix(1.0, 0.52, hero);
-  float motionStrength = mix(1.0, 0.78, hero);
-  float barsStrength = mix(1.0, 0.0, hero);
-  float scanStrength = mix(1.0, 0.0, hero);
-  float glitchStrength = mix(1.0, 0.3, hero);
+  float gridStrength = mix(0.22, 0.16, hero);
+  float motionStrength = mix(0.18, 0.12, hero);
+  float barsStrength = mix(0.08, 0.0, hero);
+  float scanStrength = mix(0.04, 0.0, hero);
+  float glitchStrength = mix(0.1, 0.04, hero);
 
   vec3 color = base;
-  color += accent * (gridA * 0.16 * gridStrength + gridB * 0.08 * gridStrength + beams * 0.16 * motionStrength + bars * 0.09 * barsStrength);
-  color += secondary * (beams * 0.09 * motionStrength + glitch * 0.18 * glitchStrength);
+  color += accent * (gridA * 0.1 * gridStrength + gridB * 0.05 * gridStrength + beams * 0.1 * motionStrength + bars * 0.05 * barsStrength);
+  color += secondary * (beams * 0.05 * motionStrength + glitch * 0.08 * glitchStrength);
   color += accent * scan * scanStrength;
-  color *= 0.62 + vignette * 0.55;
+  color *= 0.28 + vignette * 0.32;
 
-  gl_FragColor = vec4(color, 0.95);
+  gl_FragColor = vec4(color, 0.72);
 }
 `;
 
