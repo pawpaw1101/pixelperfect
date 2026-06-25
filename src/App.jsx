@@ -452,7 +452,7 @@ function HeroVideoBrutalist() {
   return (
     <section
       aria-label="Pixel Perfect video"
-      className="relative isolate min-h-[calc(100svh-180px)] overflow-hidden border-b border-pixel-border"
+      className="relative isolate min-h-[calc(100svh-144px)] overflow-hidden border-b border-pixel-border"
     >
       <video
         aria-hidden="true"
@@ -478,10 +478,6 @@ function PartnerLogoCarousel() {
       className="relative overflow-hidden border-b border-pixel-border bg-[#090909]/82 py-7 backdrop-blur-sm"
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-pixel-cyan to-transparent" />
-      <div className="mx-auto mb-5 flex max-w-[1280px] items-center gap-3 px-4 sm:px-6 lg:px-8">
-        <Eyebrow>Partners</Eyebrow>
-        <div className="h-px flex-1 bg-white/10" />
-      </div>
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#090909] to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#090909] to-transparent" />
