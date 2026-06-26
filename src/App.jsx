@@ -106,14 +106,6 @@ const homeStats = [
   { value: "90+", label: "Projects delivered" },
 ];
 
-const homeSectors = [
-  "Brands",
-  "Government entities",
-  "Broadcast networks",
-  "Events",
-  "Game publishers",
-];
-
 const campusProvenResults = [
   { value: "51+", label: "Universities onboard" },
   { value: "20K+", label: "Student reach" },
@@ -534,19 +526,6 @@ function GlobalImpactStats() {
             <StatCard key={stat.label} {...stat} />
           ))}
         </div>
-        <div className="mt-6 flex flex-wrap items-center gap-2">
-          <span className="font-mono text-xs uppercase tracking-wider text-white/45">
-            Working with:
-          </span>
-          {homeSectors.map((sector) => (
-            <span
-              className="border border-pixel-border bg-[#141414] px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-white/70"
-              key={sector}
-            >
-              {sector}
-            </span>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -561,13 +540,12 @@ function ServicesPreview() {
             index="03"
             eyebrow="What we do"
             title="Full-stack gaming production."
-            intro={servicesContent.services_header}
           />
-          <CtaLink to="/services">All services</CtaLink>
+          <CtaLink to="/services">Read more</CtaLink>
         </div>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <ServiceCard index={index + 1} key={service.label} service={service} />
+            <ServiceCard index={index + 1} key={service.label} service={service} showCopy={false} />
           ))}
         </div>
       </div>
@@ -575,9 +553,14 @@ function ServicesPreview() {
   );
 }
 
-function ServiceCard({ index, service }) {
+function ServiceCard({ index, service, showCopy = true }) {
   return (
-    <article className="group flex h-full flex-col border border-pixel-border bg-[#141414] p-6 transition-colors duration-150 hover:border-pixel-cyan">
+    <article
+      className={cn(
+        "group flex h-full flex-col border border-pixel-border bg-[#141414] p-6 transition-colors duration-150 hover:border-pixel-cyan",
+        !showCopy && "p-5 sm:p-6",
+      )}
+    >
       <div className="flex items-center justify-between">
         <span className="font-mono text-xs text-pixel-cyan/60">
           {String(index).padStart(2, "0")}
@@ -587,10 +570,17 @@ function ServiceCard({ index, service }) {
           className="h-2.5 w-2.5 bg-pixel-border transition-colors duration-150 group-hover:bg-pixel-cyan"
         />
       </div>
-      <h3 className="mt-4 font-display text-lg font-light italic uppercase leading-tight text-white group-hover:text-pixel-cyan sm:text-xl">
+      <h3
+        className={cn(
+          "font-display font-light italic uppercase leading-tight text-white group-hover:text-pixel-cyan",
+          showCopy ? "mt-4 text-lg sm:text-xl" : "mt-5 text-xl sm:text-2xl",
+        )}
+      >
         {service.label}
       </h3>
-      <p className="mt-3 text-sm leading-relaxed text-white/60">{service.copy}</p>
+      {showCopy ? (
+        <p className="mt-3 text-sm leading-relaxed text-white/60">{service.copy}</p>
+      ) : null}
     </article>
   );
 }
@@ -603,15 +593,14 @@ function PortfolioPreviewGrid() {
           <SectionHeader
             index="04"
             eyebrow="Selected work"
-            title="Playable brand worlds."
+            title="Our Portfolio."
             tone="magenta"
-            intro={portfolioContent.portfolio_intro}
           />
           <CtaLink to="/portfolio">View portfolio</CtaLink>
         </div>
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
           {portfolioCases.map((item) => (
-            <PortfolioCard item={item} key={item.path} />
+            <PortfolioCard item={item} key={item.path} showCopy={false} />
           ))}
         </div>
       </div>
@@ -619,21 +608,28 @@ function PortfolioPreviewGrid() {
   );
 }
 
-function PortfolioCard({ item }) {
+function PortfolioCard({ item, showCopy = true }) {
   return (
     <Link
       className="group flex flex-col border border-pixel-border bg-[#141414] transition-colors duration-150 hover:border-pixel-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan"
       to={item.path}
     >
       <MediaFrame className="border-0 border-b border-pixel-border" src={item.image} />
-      <div className="flex flex-1 flex-col p-5">
+      <div className={cn("flex flex-1 flex-col", showCopy ? "p-5" : "p-4 sm:p-5")}>
         <span className="font-mono text-xs uppercase tracking-wider text-pixel-magenta">
           {item.tag}
         </span>
-        <h3 className="mt-2 font-display text-lg font-light italic uppercase leading-tight text-white group-hover:text-pixel-cyan sm:text-xl">
+        <h3
+          className={cn(
+            "font-display font-light italic uppercase leading-tight text-white group-hover:text-pixel-cyan",
+            showCopy ? "mt-2 text-lg sm:text-xl" : "mt-3 text-xl sm:text-2xl",
+          )}
+        >
           {item.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">{item.copy}</p>
+        {showCopy ? (
+          <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">{item.copy}</p>
+        ) : null}
         <span className="mt-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-pixel-cyan">
           Case study <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} />
         </span>
