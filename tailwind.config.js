@@ -20,6 +20,8 @@ export default {
         display: ["Roboto", "Inter", "Arial", "sans-serif"],
         mono: ["Roboto Mono", "Consolas", "Courier New", "monospace"],
         body: ["Roboto", "Inter", "Arial", "sans-serif"],
+        poppins: ["Poppins", "Inter", "Arial", "sans-serif"],
+        staatliches: ["Staatliches", "Roboto", "Arial", "sans-serif"],
       },
       boxShadow: {
         cyan: "0 0 0 1px #15ffff, 0 0 28px rgba(21, 255, 255, 0.2)",

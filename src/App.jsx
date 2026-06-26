@@ -101,6 +101,34 @@ const services = [
   { label: "Event Management", copy: servicesContent.service_event_management },
 ];
 
+const whoWeAreSocials = [
+  {
+    href: "https://www.linkedin.com/company/pixel-perfect-mena/",
+    label: "LinkedIn",
+    src: "/images/social/social-linkedin.png",
+  },
+  {
+    href: "https://www.instagram.com/pixelperfectgg/",
+    label: "Instagram",
+    src: "/images/social/social-instagram.png",
+  },
+  {
+    href: "https://www.youtube.com/@PixelPerfectmena",
+    label: "YouTube",
+    src: "/images/social/social-youtube.png",
+  },
+  {
+    href: "https://www.twitch.tv/pixelperfectgg",
+    label: "Twitch",
+    src: "/images/social/social-twitch.png",
+  },
+  {
+    href: "https://x.com/PixelPerfectGGX",
+    label: "X/Twitter",
+    src: "/images/social/social-x.png",
+  },
+];
+
 const homeStats = [
   { value: "6", label: "Years in market" },
   { value: "90+", label: "Projects delivered" },
@@ -494,23 +522,56 @@ function PartnerLogoCarousel() {
 
 function MissionStatementAvatars() {
   return (
-    <section className="relative overflow-hidden border-b border-pixel-border bg-pixel-bg/78 backdrop-blur-sm">
+    <section className="relative isolate overflow-hidden border-b border-pixel-border bg-black">
       <img
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-[-12%] z-0 w-[min(86vw,780px)] opacity-35 mix-blend-screen sm:right-[-6%] md:opacity-45"
-        src={assetPath(homeMedia.mission_avatars)}
+        className="absolute inset-0 -z-30 h-full w-full object-cover object-center"
+        src={assetPath(homeMedia.mission_background)}
       />
-      <div className="relative z-10 mx-auto grid min-h-[520px] max-w-[1280px] items-center px-4 py-16 sm:px-6 md:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
-        <div className="flex max-w-3xl flex-col gap-6">
-          <SectionHeader
-            index="01"
-            eyebrow="Who we are"
-            title="A creative agency built for gaming."
-            intro={homeContent.mission_statement_avatars}
-          />
+      <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(0,0,0,0.78)_0%,rgba(5,8,24,0.7)_42%,rgba(0,0,0,0.8)_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-pixel-bg/24" />
+
+      <div className="mx-auto grid min-h-[640px] max-w-[1680px] items-center gap-12 px-6 py-16 sm:px-12 lg:grid-cols-[1.35fr_0.8fr] lg:px-24 xl:px-36">
+        <div>
+          <h2 className="font-staatliches text-[clamp(4.2rem,9vw,11rem)] font-normal uppercase leading-[0.8] tracking-[-0.045em] text-pixel-magenta">
+            Who We Are
+          </h2>
+          <p className="mt-8 max-w-[780px] text-pretty font-poppins text-xl font-normal leading-[1.2] tracking-[-0.045em] text-white sm:text-2xl lg:text-[1.65rem]">
+            {homeContent.mission_statement_avatars}
+          </p>
+          <Link
+            className="mt-12 inline-flex items-center gap-5 border border-pixel-magenta px-8 py-3.5 font-poppins text-lg font-normal leading-[1.2] tracking-[-0.045em] text-white transition-colors duration-150 hover:bg-pixel-magenta hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-magenta sm:text-2xl"
+            to="/services"
+          >
+            View Our Services
+            <span className="grid h-8 w-8 place-items-center rounded-full border border-white/80">
+              <ArrowRight aria-hidden="true" className="h-5 w-5" strokeWidth={2.2} />
+            </span>
+          </Link>
         </div>
-        <div aria-hidden="true" className="hidden md:block" />
+
+        <div className="flex flex-col items-start lg:items-center">
+          <img
+            alt="Pixel Perfect"
+            className="w-[min(72vw,390px)] object-contain drop-shadow-[0_0_26px_rgba(21,255,255,0.2)]"
+            src={assetPath(homeMedia.nav_logo_global)}
+          />
+          <div aria-label="Pixel Perfect social channels" className="mt-9 flex items-center gap-5 sm:gap-6">
+            {whoWeAreSocials.map(({ href, label, src }) => (
+              <a
+                aria-label={label}
+                className="inline-flex h-12 w-12 items-center justify-center transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                href={href}
+                key={label}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <img alt="" aria-hidden="true" className="max-h-11 max-w-12 object-contain" src={src} />
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
