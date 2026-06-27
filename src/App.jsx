@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
@@ -428,6 +428,171 @@ function CtaLink({ children, to, tone = "cyan" }) {
   );
 }
 
+function wrapTickerOffset(offset, cycleWidth) {
+  if (!cycleWidth) {
+    return offset;
+  }
+
+  let nextOffset = offset;
+
+  while (nextOffset <= -cycleWidth) {
+    nextOffset += cycleWidth;
+  }
+
+  while (nextOffset > 0) {
+    nextOffset -= cycleWidth;
+  }
+
+  return nextOffset;
+}
+
+function InteractiveLogoTrack({ baseSpeed = 120, getKey, items, renderItem }) {
+  const trackRef = useRef(null);
+  const stateRef = useRef({
+    cycleWidth: 0,
+    isHovered: false,
+    isPointerDown: false,
+    lastPointerTime: 0,
+    lastTime: 0,
+    lastX: 0,
+    offset: 0,
+    reduceMotion: false,
+    speedFactor: 1,
+  });
+  const loopItems = [...items, ...items];
+
+  useEffect(() => {
+    const track = trackRef.current;
+
+    if (!track) {
+      return undefined;
+    }
+
+    const state = stateRef.current;
+    const applyTransform = () => {
+      track.style.transform = `translate3d(${state.offset}px, 0, 0)`;
+    };
+    const measure = () => {
+      state.cycleWidth = track.scrollWidth / 2;
+      state.offset = wrapTickerOffset(state.offset, state.cycleWidth);
+      applyTransform();
+    };
+    const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateReduceMotion = () => {
+      state.reduceMotion = reduceMotionQuery.matches;
+    };
+    let frame = 0;
+    let resizeObserver;
+
+    updateReduceMotion();
+    measure();
+
+    if (typeof ResizeObserver !== "undefined") {
+      resizeObserver = new ResizeObserver(measure);
+      resizeObserver.observe(track);
+    }
+
+    window.addEventListener("resize", measure);
+    reduceMotionQuery.addEventListener?.("change", updateReduceMotion);
+
+    const tick = (now) => {
+      const previousTime = state.lastTime || now;
+      const delta = Math.min((now - previousTime) / 1000, 0.064);
+      state.lastTime = now;
+
+      if (!state.isPointerDown && !state.reduceMotion) {
+        const targetSpeedFactor = state.isHovered ? 0.25 : 1;
+        const easing = Math.min(1, delta * 5);
+
+        state.speedFactor += (targetSpeedFactor - state.speedFactor) * easing;
+        state.offset = wrapTickerOffset(
+          state.offset - baseSpeed * state.speedFactor * delta,
+          state.cycleWidth,
+        );
+        applyTransform();
+      }
+
+      frame = requestAnimationFrame(tick);
+    };
+
+    frame = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", measure);
+      reduceMotionQuery.removeEventListener?.("change", updateReduceMotion);
+    };
+  }, [baseSpeed, items]);
+
+  const applyPointerOffset = (event) => {
+    const track = trackRef.current;
+
+    if (!track) {
+      return;
+    }
+
+    const state = stateRef.current;
+    const now = performance.now();
+    const deltaX = event.clientX - state.lastX;
+
+    state.offset = wrapTickerOffset(state.offset + deltaX, state.cycleWidth);
+    state.lastX = event.clientX;
+    state.lastPointerTime = now;
+    track.style.transform = `translate3d(${state.offset}px, 0, 0)`;
+  };
+
+  return (
+    <div
+      className="relative cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing"
+      onDragStart={(event) => event.preventDefault()}
+      onPointerCancel={(event) => {
+        stateRef.current.isPointerDown = false;
+        event.currentTarget.releasePointerCapture?.(event.pointerId);
+      }}
+      onPointerDown={(event) => {
+        const state = stateRef.current;
+
+        state.isPointerDown = true;
+        state.lastPointerTime = performance.now();
+        state.lastTime = performance.now();
+        state.lastX = event.clientX;
+        event.currentTarget.setPointerCapture?.(event.pointerId);
+        event.preventDefault();
+      }}
+      onPointerEnter={() => {
+        stateRef.current.isHovered = true;
+      }}
+      onPointerLeave={() => {
+        stateRef.current.isHovered = false;
+      }}
+      onPointerMove={(event) => {
+        if (!stateRef.current.isPointerDown) {
+          return;
+        }
+
+        applyPointerOffset(event);
+      }}
+      onPointerUp={(event) => {
+        stateRef.current.isPointerDown = false;
+        stateRef.current.lastTime = performance.now();
+        event.currentTarget.releasePointerCapture?.(event.pointerId);
+      }}
+    >
+      <div
+        className="flex w-max items-center gap-4 whitespace-nowrap will-change-transform"
+        ref={trackRef}
+      >
+        {loopItems.map((item, index) => (
+          <React.Fragment key={`${getKey(item)}-${index}`}>
+            {renderItem(item, index)}
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function PageShell({ backdrop = "pixel", children }) {
   return (
     <div className="relative isolate min-h-screen overflow-hidden bg-black">
@@ -472,7 +637,7 @@ function HeroVideoBrutalist() {
   return (
     <section
       aria-label="Pixel Perfect video"
-      className="relative isolate min-h-[calc(100svh-144px)] overflow-hidden border-b border-pixel-border"
+      className="relative isolate min-h-[calc(100svh-132px)] overflow-hidden border-b border-pixel-border"
     >
       <video
         aria-hidden="true"
@@ -490,31 +655,32 @@ function HeroVideoBrutalist() {
 }
 
 function PartnerLogoCarousel() {
-  const marqueeLogos = [...partnerLogos, ...partnerLogos];
-
   return (
     <section
       aria-label="Pixel Perfect partners"
-      className="relative overflow-hidden border-b border-pixel-border bg-[#090909]/82 py-7 backdrop-blur-sm"
+      className="relative overflow-hidden border-b border-pixel-border bg-[#090909]/82 py-8 backdrop-blur-sm"
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-pixel-cyan to-transparent" />
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#090909] to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#090909] to-transparent" />
-        <div className="flex w-max animate-ticker items-center gap-4 whitespace-nowrap">
-          {marqueeLogos.map((logo, index) => (
+        <InteractiveLogoTrack
+          baseSpeed={132}
+          getKey={(logo) => logo.label}
+          items={partnerLogos}
+          renderItem={(logo) => (
             <div
               className="grid h-20 w-40 place-items-center px-5 py-4 sm:w-48"
-              key={`${logo.label}-${index}`}
             >
               <img
                 alt={logo.label}
                 className="max-h-12 max-w-full object-contain"
+                draggable="false"
                 src={logo.src}
               />
             </div>
-          ))}
-        </div>
+          )}
+        />
       </div>
     </section>
   );
@@ -1007,8 +1173,6 @@ function CampusMastersShell() {
 }
 
 function CampusPartnersCarousel({ sponsors }) {
-  const sponsorLogos = [...sponsors, ...sponsors];
-
   return (
     <section className="overflow-hidden border-t border-campus-yellow/20 bg-[#0b1322]/86 px-4 py-16 backdrop-blur-sm sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1280px]">
@@ -1020,20 +1184,23 @@ function CampusPartnersCarousel({ sponsors }) {
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#0b1322] to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#0b1322] to-transparent" />
-        <div className="flex w-max animate-ticker items-center gap-4 whitespace-nowrap">
-          {sponsorLogos.map((sponsor, index) => (
+        <InteractiveLogoTrack
+          baseSpeed={118}
+          getKey={(sponsor) => sponsor.path}
+          items={sponsors}
+          renderItem={(sponsor) => (
             <div
               className="grid h-24 w-44 place-items-center px-6 py-4 sm:w-52"
-              key={`${sponsor.path}-${index}`}
             >
               <img
                 alt={sponsor.desc ?? ""}
                 className="max-h-14 max-w-full object-contain"
+                draggable="false"
                 src={sponsor.path}
               />
             </div>
-          ))}
-        </div>
+          )}
+        />
       </div>
     </section>
   );

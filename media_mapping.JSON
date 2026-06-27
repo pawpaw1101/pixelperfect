@@ -4,7 +4,7 @@
     "hero_video": { "path": "/videos/home-hero-video.mp4", "desc": "Primary high-energy mp4 background for the brutalist hero." },
     "hero_fallback": { "path": "/images/Main_Logo_Animation.gif", "desc": "Fallback loading gif if the mp4 is unsupported." },
     "mission_avatars": { "path": "/images/home-mission-avatars.png", "desc": "3D Gen Z gamers graphic to accompany the mission statement." },
-    "mission_background": { "path": "/images/home-whoweare-bg.png", "desc": "Full-bleed event background for the Who We Are section." }
+    "mission_background": { "path": "/images/home-who-we-are-bg.png", "desc": "Full-bleed event background for the Who We Are section." }
   },
   "/services": {
     "broadcast_gallery": [
