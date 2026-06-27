@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
@@ -73,24 +73,27 @@ const portfolioCases = [
   },
 ];
 
+const partnerLogoVersion = "natural-v4";
+const partnerLogoSrc = (fileName) => `/images/carousel/partners/${fileName}?${partnerLogoVersion}`;
+
 const partnerLogos = [
-  { label: "Abu Dhabi Gaming", src: "/images/carousel/partners/pp-partner-abudhabi-gaming.png" },
-  { label: "Abu Dhabi TV", src: "/images/carousel/partners/pp-partner-abudhabi-TV.png" },
-  { label: "AOC", src: "/images/carousel/partners/pp-partner-AOC.png" },
-  { label: "Blizzard", src: "/images/carousel/partners/pp-partner-blizzard.png" },
-  { label: "Dubai Esports and Games Festival", src: "/images/carousel/partners/pp-partner-DEF.png" },
-  { label: "Dubai Media", src: "/images/carousel/partners/pp-partner-dubai-media.png" },
-  { label: "Dubai Police", src: "/images/carousel/partners/pp-partner-dubai-police.png" },
-  { label: "ExitLag", src: "/images/carousel/partners/pp-partner-exitlag.png" },
-  { label: "Honor", src: "/images/carousel/partners/pp-partner-honor.png" },
-  { label: "Nestle", src: "/images/carousel/partners/pp-partner-nestle.png" },
-  { label: "Red Bull", src: "/images/carousel/partners/pp-partner-redbull.png" },
-  { label: "Riot Games", src: "/images/carousel/partners/pp-partner-Riot.png" },
-  { label: "StarLadder", src: "/images/carousel/partners/pp-partner-starladder.png" },
-  { label: "Subaru", src: "/images/carousel/partners/pp-partner-subaru.png" },
-  { label: "True Gamers", src: "/images/carousel/partners/pp-partner-truegamers.png" },
-  { label: "UAE Pro League", src: "/images/carousel/partners/pp-partner-UAE-pro.png" },
-  { label: "Wizzo", src: "/images/carousel/partners/pp-partner-wizzo.png" },
+  { label: "Abu Dhabi Gaming", src: partnerLogoSrc("pp-partner-abudhabi-gaming.png") },
+  { label: "Abu Dhabi TV", src: partnerLogoSrc("pp-partner-abudhabi-TV.png") },
+  { label: "AOC", src: partnerLogoSrc("pp-partner-AOC.png") },
+  { label: "Blizzard", src: partnerLogoSrc("pp-partner-blizzard.png") },
+  { label: "Dubai Esports and Games Festival", src: partnerLogoSrc("pp-partner-DEF.png") },
+  { label: "Dubai Media", src: partnerLogoSrc("pp-partner-dubai-media.png") },
+  { label: "Dubai Police", src: partnerLogoSrc("pp-partner-dubai-police.png") },
+  { label: "ExitLag", src: partnerLogoSrc("pp-partner-exitlag.png") },
+  { label: "Honor", src: partnerLogoSrc("pp-partner-honor.png") },
+  { label: "Nestle", src: partnerLogoSrc("pp-partner-nestle.png") },
+  { label: "Red Bull", src: partnerLogoSrc("pp-partner-redbull.png") },
+  { label: "Riot Games", src: partnerLogoSrc("pp-partner-Riot.png") },
+  { label: "StarLadder", src: partnerLogoSrc("pp-partner-starladder.png") },
+  { label: "Subaru", src: partnerLogoSrc("pp-partner-subaru.png") },
+  { label: "True Gamers", src: partnerLogoSrc("pp-partner-truegamers.png") },
+  { label: "UAE Pro League", src: partnerLogoSrc("pp-partner-UAE-pro.png") },
+  { label: "Wizzo", src: partnerLogoSrc("pp-partner-wizzo.png") },
 ];
 
 const services = [
@@ -133,6 +136,65 @@ const whoWeAreSocials = [
 const homeStats = [
   { value: "6", label: "Years in market" },
   { value: "90+", label: "Projects delivered" },
+];
+
+const homePortfolioAssetBase = "/images/portfolio/home-showcase";
+const demoYoutubeEmbed = "https://www.youtube.com/embed/c2V1SGz5eIE?rel=0&modestbranding=1";
+
+const homePortfolioFilters = [
+  { id: "all", label: "All" },
+  { id: "branded", label: "Branded Activation" },
+  { id: "broadcast", label: "Broadcast" },
+  { id: "marketing", label: "Marketing Materials" },
+];
+
+const homePortfolioProjects = [
+  {
+    id: "nestle-cereal-season",
+    title: "Nestle Cereal Season",
+    categories: ["branded", "marketing"],
+    background: `${homePortfolioAssetBase}/bg-nestle-cereal-season.png`,
+    video: demoYoutubeEmbed,
+    body:
+      "Led the development of Nestle's first branded Fortnite gaming experience for a global launch, supported by MENA campaign assets including POSM, key visuals, and video ads.",
+    bodyClassName: "leading-[1.7] tracking-normal",
+    partnerLogos: [
+      { label: "Fortnite", src: `${homePortfolioAssetBase}/logo-fortnite.png`, className: "max-h-8 sm:max-h-9" },
+      { label: "Nestle", src: `${homePortfolioAssetBase}/logo-nestle.png`, className: "max-h-10 sm:max-h-11" },
+    ],
+    playHref: "https://www.fortnite.com/@empireplay/7102-2377-4433",
+    projectHref: "/portfolio/nestle",
+  },
+  {
+    id: "campus-masters",
+    title: "Campus Masters",
+    categories: ["broadcast", "branded"],
+    background: `${homePortfolioAssetBase}/bg-campus-masters.png`,
+    video: demoYoutubeEmbed,
+    body:
+      "Built a university esports tournament platform with live production, brand integration, social content, and on-ground competitive moments for student communities.",
+    bodyClassName: "leading-[1.65] tracking-normal",
+    partnerLogos: [
+      { label: "Campus Masters", src: assetPath(campusMedia.hero_logo_main), className: "max-h-12 sm:max-h-14" },
+    ],
+    projectHref: "/campus-masters",
+  },
+  {
+    id: "nestle-metaclub",
+    title: "Nestle METACLUB",
+    categories: ["branded"],
+    background: `${homePortfolioAssetBase}/bg-nestle-metaclub.png`,
+    video: demoYoutubeEmbed,
+    body:
+      "I developed the Nestle Metaclub in Decentraland - a multi-brand metaverse experience featuring Lion, Koko Krunch, Cocoa Plan, Anghami, and the Rainforest Alliance, with interactive mini-games and sellable branded NFTs.",
+    bodyClassName: "leading-[1.4] tracking-[0.004em]",
+    partnerLogos: [
+      { label: "Nestle", src: `${homePortfolioAssetBase}/logo-nestle.png`, className: "max-h-10 sm:max-h-11" },
+      { label: "Decentraland", text: "Decentraland" },
+    ],
+    playHref: "https://decentraland.org/whats-on?id=1127102c-524c-45c1-8e31-6da4e9a62897",
+    projectHref: "/portfolio/meta",
+  },
 ];
 
 const campusProvenResults = [
@@ -415,7 +477,7 @@ function CtaLink({ children, to, tone = "cyan" }) {
   return (
     <Link
       className={cn(
-        "inline-flex items-center gap-2 border px-6 py-3 font-mono text-xs uppercase tracking-wider transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+        "inline-flex items-center gap-2 rounded-full border px-6 py-3 font-mono text-xs uppercase tracking-wider transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
         tone === "solid" &&
           "border-pixel-cyan bg-pixel-cyan text-black hover:bg-white hover:border-white focus-visible:outline-pixel-cyan",
         tone === "cyan" &&
@@ -615,9 +677,7 @@ function Home() {
       <HomeBodyShell>
         <PartnerLogoCarousel />
         <MissionStatementAvatars />
-        <GlobalImpactStats />
-        <ServicesPreview />
-        <PortfolioPreviewGrid />
+        <HomePortfolioShowcase />
         <FooterGlobal />
       </HomeBodyShell>
     </>
@@ -675,7 +735,7 @@ function PartnerLogoCarousel() {
             >
               <img
                 alt={logo.label}
-                className="max-h-12 max-w-full object-contain"
+                className="max-h-12 max-w-full scale-90 object-contain object-center"
                 draggable="false"
                 src={logo.src}
               />
@@ -708,7 +768,7 @@ function MissionStatementAvatars() {
             {homeContent.mission_statement_avatars}
           </p>
           <Link
-            className="mt-12 inline-flex items-center gap-5 border border-pixel-magenta px-8 py-3.5 font-poppins text-lg font-normal leading-[1.2] tracking-[-0.045em] text-white transition-colors duration-150 hover:bg-pixel-magenta hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-magenta sm:text-2xl"
+            className="mt-12 inline-flex items-center gap-5 rounded-full border border-pixel-magenta px-8 py-3.5 font-poppins text-lg font-normal leading-[1.2] tracking-[-0.045em] text-white transition-colors duration-150 hover:bg-pixel-magenta hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-magenta sm:text-2xl"
             to="/services"
           >
             View Our Services
@@ -741,6 +801,235 @@ function MissionStatementAvatars() {
         </div>
       </div>
     </section>
+  );
+}
+
+function HomePortfolioShowcase() {
+  const [activeFilter, setActiveFilter] = useState("all");
+  const filteredProjects =
+    activeFilter === "all"
+      ? homePortfolioProjects
+      : homePortfolioProjects.filter((project) => project.categories.includes(activeFilter));
+
+  return (
+    <section id="portfolio" className="relative isolate overflow-hidden border-b border-pixel-border bg-black px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-pixel-cyan to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_16%_12%,rgba(255,44,99,0.12),transparent_32%),radial-gradient(circle_at_88%_22%,rgba(21,255,255,0.08),transparent_26%)]" />
+
+      <div className="mx-auto max-w-[1180px]">
+        <div className="flex flex-col gap-7 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <h2 className="font-staatliches text-[clamp(4.5rem,10vw,9rem)] font-normal uppercase leading-[0.8] tracking-[-0.045em] text-white">
+              Our Portfolio
+            </h2>
+            <PortfolioFilterNav activeFilter={activeFilter} onChange={setActiveFilter} />
+          </div>
+
+          <div className="sm:text-right">
+            <p className="font-staatliches text-[clamp(4.4rem,8vw,7.8rem)] font-normal uppercase leading-[0.8] tracking-[-0.045em] text-pixel-magenta">
+              100+
+            </p>
+            <p className="mt-1 font-staatliches text-2xl uppercase leading-[0.8] tracking-[-0.045em] text-pixel-cyan sm:text-3xl">
+              Projects Delivered
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 grid gap-5 sm:mt-10">
+          {filteredProjects.map((project, index) => (
+            <HomePortfolioProjectCard index={index} key={project.id} project={project} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PortfolioFilterNav({ activeFilter, onChange }) {
+  return (
+    <nav aria-label="Portfolio filters" className="mt-3 flex flex-wrap items-center gap-2 sm:gap-3">
+      {homePortfolioFilters.map((filter, index) => (
+        <React.Fragment key={filter.id}>
+          <button
+            aria-pressed={activeFilter === filter.id}
+            className={cn(
+              "rounded-full px-2.5 py-1.5 font-staatliches text-xl uppercase leading-[0.8] tracking-[-0.045em] transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-magenta sm:text-2xl",
+              activeFilter === filter.id
+                ? "bg-pixel-magenta text-white"
+                : "text-pixel-cyan hover:bg-pixel-magenta hover:text-white",
+            )}
+            onClick={() => onChange(filter.id)}
+            type="button"
+          >
+            {filter.label}
+          </button>
+          {index < homePortfolioFilters.length - 1 ? (
+            <span aria-hidden="true" className="font-staatliches text-2xl leading-none text-pixel-cyan/55">
+              /
+            </span>
+          ) : null}
+        </React.Fragment>
+      ))}
+    </nav>
+  );
+}
+
+function HomePortfolioProjectCard({ project }) {
+  const isLight = project.id === "nestle-metaclub";
+
+  return (
+    <article
+      className={cn(
+        "group overflow-hidden rounded-lg border p-2 shadow-[0_24px_70px_rgba(0,0,0,0.34)] sm:p-3",
+        isLight
+          ? "border-white/55 bg-[#dfeaf0]"
+          : "border-white/10 bg-[#132032]",
+      )}
+    >
+      <div className="relative min-h-[560px] overflow-hidden rounded-md bg-black sm:min-h-[500px] lg:min-h-[430px]">
+        <img
+          alt=""
+          className={cn(
+            "absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]",
+            isLight ? "object-[38%_center]" : "object-left",
+          )}
+          loading="lazy"
+          src={project.background}
+        />
+        <div
+          aria-hidden="true"
+          className={cn(
+            "absolute inset-0",
+            isLight
+              ? "bg-gradient-to-r from-white/0 via-white/10 to-white/25"
+              : "bg-gradient-to-r from-black/4 via-black/8 to-black/36",
+          )}
+        />
+        <div className="relative z-10 flex min-h-[560px] items-end justify-end p-3 sm:min-h-[500px] sm:p-5 lg:min-h-[430px] lg:p-6">
+        <div
+          className={cn(
+            "flex w-[min(100%,430px)] flex-col justify-end rounded-md border p-3 shadow-[0_18px_44px_rgba(0,0,0,0.24)] backdrop-blur-[2px] sm:p-4",
+            isLight
+              ? "border-white/50 bg-white/58 text-[#17212a]"
+              : "border-white/18 bg-[#aeb6c4]/28 text-white",
+          )}
+        >
+          <h3 className="sr-only">{project.title}</h3>
+          <PortfolioVideo title={project.title} src={project.video} />
+
+          <div className="flex flex-1 flex-col justify-end">
+            <PortfolioPartnerLogos isLight={isLight} logos={project.partnerLogos} />
+            <p
+              className={cn(
+                "mt-4 font-poppins text-[0.95rem] font-normal sm:text-base",
+                isLight ? "text-[#17212a]" : "text-white/84",
+                project.bodyClassName,
+              )}
+            >
+              {project.body}
+            </p>
+
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              {project.playHref ? (
+                <PortfolioActionButton href={project.playHref} icon="joystick">
+                  Play Now
+                </PortfolioActionButton>
+              ) : null}
+              <PortfolioActionButton href={project.projectHref} icon="arrow" internal>
+                Explore Project
+              </PortfolioActionButton>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function PortfolioVideo({ src, title }) {
+  return (
+    <div className="relative aspect-video overflow-hidden rounded-md border border-white/15 bg-black shadow-[0_18px_34px_rgba(0,0,0,0.28)]">
+      <iframe
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        className="absolute inset-0 h-full w-full"
+        loading="lazy"
+        src={src}
+        title={`${title} video`}
+      />
+    </div>
+  );
+}
+
+function PortfolioPartnerLogos({ isLight, logos }) {
+  if (!logos?.length) {
+    return null;
+  }
+
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      {logos.map((logo, index) => (
+        <React.Fragment key={logo.label}>
+          {index > 0 ? (
+            <img
+              alt=""
+              aria-hidden="true"
+              className={cn("h-4 w-4 object-contain opacity-80", isLight && "invert")}
+              src={`${homePortfolioAssetBase}/icon-x-between-logos.png`}
+            />
+          ) : null}
+          {logo.src ? (
+            <img
+              alt={logo.label}
+              className={cn("max-w-[132px] object-contain", logo.className)}
+              loading="lazy"
+              src={logo.src}
+            />
+          ) : (
+            <span
+              className={cn(
+                "font-poppins text-sm font-medium tracking-normal",
+                isLight ? "text-[#17212a]" : "text-white",
+              )}
+            >
+              {logo.text}
+            </span>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+function PortfolioActionButton({ children, href, icon, internal = false }) {
+  const iconSrc =
+    icon === "joystick"
+      ? `${homePortfolioAssetBase}/icon-joystick.png`
+      : `${homePortfolioAssetBase}/icon-arrow.png`;
+  const className =
+    "inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-pixel-magenta px-5 py-2.5 font-poppins text-sm font-medium leading-[1.53] tracking-[-0.02em] text-white transition-colors duration-150 hover:bg-white hover:text-pixel-magenta focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-magenta";
+  const content = (
+    <>
+      {children}
+      <span className="grid h-6 w-6 shrink-0 place-items-center overflow-hidden rounded-full bg-white">
+        <img alt="" aria-hidden="true" className="h-4 w-4 object-contain" src={iconSrc} />
+      </span>
+    </>
+  );
+
+  if (internal) {
+    return (
+      <Link className={className} to={href}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a className={className} href={href} rel="noreferrer" target="_blank">
+      {content}
+    </a>
   );
 }
 
