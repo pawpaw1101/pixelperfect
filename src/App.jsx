@@ -74,22 +74,23 @@ const portfolioCases = [
 ];
 
 const partnerLogos = [
-  { label: "Abu Dhabi Gaming", src: "/images/carousel/partners/pp-partner-abudhabigaming.png" },
-  { label: "Anghami", src: "/images/carousel/partners/pp-partner-anghami.png" },
+  { label: "Abu Dhabi Gaming", src: "/images/carousel/partners/pp-partner-abudhabi-gaming.png" },
+  { label: "Abu Dhabi TV", src: "/images/carousel/partners/pp-partner-abudhabi-TV.png" },
+  { label: "AOC", src: "/images/carousel/partners/pp-partner-AOC.png" },
   { label: "Blizzard", src: "/images/carousel/partners/pp-partner-blizzard.png" },
-  { label: "Dubai Media", src: "/images/carousel/partners/pp-partner-dubaimedia.png" },
-  { label: "Geekay", src: "/images/carousel/partners/pp-partner-geekay.png" },
+  { label: "Dubai Esports and Games Festival", src: "/images/carousel/partners/pp-partner-DEF.png" },
+  { label: "Dubai Media", src: "/images/carousel/partners/pp-partner-dubai-media.png" },
+  { label: "Dubai Police", src: "/images/carousel/partners/pp-partner-dubai-police.png" },
+  { label: "ExitLag", src: "/images/carousel/partners/pp-partner-exitlag.png" },
   { label: "Honor", src: "/images/carousel/partners/pp-partner-honor.png" },
-  { label: "HyperX", src: "/images/carousel/partners/pp-partner-hyperx.png" },
-  { label: "Inzone", src: "/images/carousel/partners/pp-partner-inzone.png" },
-  { label: "MBC", src: "/images/carousel/partners/pp-partner-mbc.png" },
   { label: "Nestle", src: "/images/carousel/partners/pp-partner-nestle.png" },
-  { label: "Rainforest Alliance", src: "/images/carousel/partners/pp-partner-rainforestalliance.png" },
+  { label: "Red Bull", src: "/images/carousel/partners/pp-partner-redbull.png" },
+  { label: "Riot Games", src: "/images/carousel/partners/pp-partner-Riot.png" },
+  { label: "StarLadder", src: "/images/carousel/partners/pp-partner-starladder.png" },
   { label: "Subaru", src: "/images/carousel/partners/pp-partner-subaru.png" },
-  { label: "Tencent", src: "/images/carousel/partners/Tencent-Logo.png" },
-  { label: "Red Bull", src: "/images/carousel/partners/Red-Bull-Logo.png" },
-  { label: "StarLadder", src: "/images/carousel/partners/Starladder_logo.png" },
-  { label: "YaLLa Compass", src: "/images/carousel/partners/YaLLa_Compass_2025_lightmode.png" },
+  { label: "True Gamers", src: "/images/carousel/partners/pp-partner-truegamers.png" },
+  { label: "UAE Pro League", src: "/images/carousel/partners/pp-partner-UAE-pro.png" },
+  { label: "Wizzo", src: "/images/carousel/partners/pp-partner-wizzo.png" },
 ];
 
 const services = [
@@ -692,7 +693,7 @@ function MissionStatementAvatars() {
       <img
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 -z-30 h-full w-full object-cover object-center"
+        className="absolute inset-0 -z-30 h-full w-full object-cover object-[42%_center] lg:object-[36%_center]"
         src={assetPath(homeMedia.mission_background)}
       />
       <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(0,0,0,0.78)_0%,rgba(5,8,24,0.7)_42%,rgba(0,0,0,0.8)_100%)]" />
