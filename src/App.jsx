@@ -509,7 +509,7 @@ function wrapTickerOffset(offset, cycleWidth) {
   return nextOffset;
 }
 
-function InteractiveLogoTrack({ baseSpeed = 120, getKey, items, renderItem }) {
+function InteractiveLogoTrack({ baseSpeed = 120, gapClassName = "gap-4", getKey, items, renderItem }) {
   const trackRef = useRef(null);
   const stateRef = useRef({
     cycleWidth: 0,
@@ -643,7 +643,7 @@ function InteractiveLogoTrack({ baseSpeed = 120, getKey, items, renderItem }) {
       }}
     >
       <div
-        className="flex w-max items-center gap-4 whitespace-nowrap will-change-transform"
+        className={cn("flex w-max items-center whitespace-nowrap will-change-transform", gapClassName)}
         ref={trackRef}
       >
         {loopItems.map((item, index) => (
@@ -677,6 +677,7 @@ function Home() {
       <HomeBodyShell>
         <PartnerLogoCarousel />
         <MissionStatementAvatars />
+        <HomeSpotlightFeature />
         <HomePortfolioShowcase />
         <FooterGlobal />
       </HomeBodyShell>
@@ -727,6 +728,7 @@ function PartnerLogoCarousel() {
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#090909] to-transparent" />
         <InteractiveLogoTrack
           baseSpeed={132}
+          gapClassName="gap-[1.2rem]"
           getKey={(logo) => logo.label}
           items={partnerLogos}
           renderItem={(logo) => (
@@ -797,6 +799,39 @@ function MissionStatementAvatars() {
                 <img alt="" aria-hidden="true" className="max-h-11 max-w-12 object-contain" src={src} />
               </a>
             ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeSpotlightFeature() {
+  return (
+    <section className="relative isolate overflow-hidden border-b border-pixel-border bg-[#132032]">
+      <img
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 -z-30 h-full w-full object-cover object-center"
+        loading="lazy"
+        src={`${homePortfolioAssetBase}/spotlight-bg-campus-masters.png`}
+      />
+      <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.24)_46%,rgba(0,0,0,0.55)_100%)]" />
+      <div className="absolute inset-x-0 top-0 z-10 h-px bg-pixel-cyan/70" />
+      <div className="absolute -left-16 top-5 z-20 w-56 -rotate-45 bg-pixel-magenta py-2 text-center font-staatliches text-3xl uppercase leading-[0.8] tracking-[-0.045em] text-white shadow-[0_14px_30px_rgba(0,0,0,0.28)]">
+        New
+      </div>
+
+      <div className="mx-auto flex min-h-[560px] max-w-[1280px] items-center justify-end px-4 py-12 sm:px-8 lg:min-h-[530px] lg:px-14">
+        <div className="w-full max-w-[560px] rounded-md bg-[#aeb6c4]/18 p-4 text-center shadow-[0_20px_60px_rgba(0,0,0,0.28)] backdrop-blur-[1.5px] sm:p-5">
+          <PortfolioVideo src={demoYoutubeEmbed} title="Campus Masters spotlight" />
+          <p className="mx-auto mt-6 max-w-[520px] text-pretty font-poppins text-base font-normal leading-[1.35] tracking-[-0.02em] text-white sm:text-xl">
+            {homeContent.mission_statement_avatars}
+          </p>
+          <div className="mt-6 flex justify-center">
+            <PortfolioActionButton href="/campus-masters" icon="arrow" internal>
+              View The Project
+            </PortfolioActionButton>
           </div>
         </div>
       </div>
@@ -879,20 +914,12 @@ function HomePortfolioProjectCard({ project }) {
 
   return (
     <article
-      className={cn(
-        "group overflow-hidden rounded-lg border p-2 shadow-[0_24px_70px_rgba(0,0,0,0.34)] sm:p-3",
-        isLight
-          ? "border-white/55 bg-[#dfeaf0]"
-          : "border-white/10 bg-[#132032]",
-      )}
+      className="group overflow-hidden rounded-lg border border-white/10 bg-[#132032] p-2 shadow-[0_24px_70px_rgba(0,0,0,0.34)] sm:p-3"
     >
-      <div className="relative min-h-[560px] overflow-hidden rounded-md bg-black sm:min-h-[500px] lg:min-h-[430px]">
+      <div className="relative min-h-[560px] overflow-hidden rounded-md bg-[#132032] sm:min-h-[500px] lg:min-h-[430px]">
         <img
           alt=""
-          className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]",
-            isLight ? "object-[38%_center]" : "object-left",
-          )}
+          className="absolute inset-0 h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.01]"
           loading="lazy"
           src={project.background}
         />
@@ -968,7 +995,7 @@ function PortfolioPartnerLogos({ isLight, logos }) {
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-3">
+    <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-center">
       {logos.map((logo, index) => (
         <React.Fragment key={logo.label}>
           {index > 0 ? (
