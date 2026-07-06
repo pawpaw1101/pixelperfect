@@ -197,6 +197,16 @@ const homePortfolioProjects = [
   },
 ];
 
+const nestleCerealSeasonSlides = Array.from(
+  { length: 18 },
+  (_, index) => `/videos/portfolio/nestle-cereal-season/${index + 1}.mp4`,
+);
+
+const nestleMetaclubSlides = Array.from(
+  { length: 22 },
+  (_, index) => `/videos/portfolio/nestle-metaclub/${index + 1}.mp4`,
+);
+
 const campusProvenResults = [
   { value: "51+", label: "Universities onboard" },
   { value: "20K+", label: "Student reach" },
@@ -210,7 +220,7 @@ function App({ children, routeKey }) {
   const isCampus = routeKey === "/campus-masters";
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-black font-body text-white antialiased">
+    <div className="min-h-screen overflow-x-clip bg-black font-body text-white antialiased">
       <GlobalNav isCampus={isCampus} routeKey={routeKey} />
       <main>{children}</main>
     </div>
@@ -1281,21 +1291,7 @@ function PortfolioPage() {
 }
 
 function PortfolioNestlePage() {
-  return (
-    <CaseStudyLayout
-      tag="Fortnite Creative // Retail Activation"
-      title="Nestle Cereal Season"
-      heroCopy={nestleContent.case_study_hero}
-      heroImage={assetPath(nestleMedia.nestle_metaverse)}
-      panels={[
-        { label: "Fortnite island overview", copy: nestleContent.fortnite_island_overview },
-        { label: "Physical POS rollout", copy: nestleContent.physical_pos_gallery },
-        { label: "Campaign results", copy: nestleContent.campaign_results, highlight: true },
-        { label: "Our responsibilities", copy: nestleContent.campaign_responsibilities },
-      ]}
-      secondaryImage={assetPath(nestleMedia.nestle_pos)}
-    />
-  );
+  return <CaseStudyVideoPage slides={nestleCerealSeasonSlides} />;
 }
 
 function PortfolioSwatPage() {
@@ -1317,20 +1313,103 @@ function PortfolioSwatPage() {
 }
 
 function PortfolioMetaPage() {
+  return <CaseStudyVideoPage slides={nestleMetaclubSlides} />;
+}
+
+function CaseStudyVideoPage({ slides }) {
   return (
-    <CaseStudyLayout
-      tag="Decentraland // Unity // NFT"
-      title="Nestle Metaclub"
-      heroCopy={metaContent.case_study_hero}
-      heroImage={assetPath(metaMedia.meta_cover)}
-      panels={[
-        { label: "Project overview", copy: metaContent.project_overview },
-        { label: "NFT results", copy: metaContent.nft_results, highlight: true },
-        { label: "Media coverage", copy: metaContent.media_coverage },
-        { label: "Space overview", copy: metaContent.space_overview },
-      ]}
-      secondaryImage={assetPath(metaMedia.meta_world)}
-    />
+    <>
+      <div className="case-study-video-page">
+        <div className="case-study-video-stack">
+          {slides.map((src, index) => (
+            <CaseStudyVideoCard
+              initialLoad={index < 2}
+              index={index}
+              key={src}
+              src={src}
+            />
+          ))}
+        </div>
+      </div>
+      <FooterGlobal />
+    </>
+  );
+}
+
+function CaseStudyVideoCard({ index, initialLoad = false, src }) {
+  const videoRef = useRef(null);
+  const [shouldLoad, setShouldLoad] = useState(initialLoad);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return undefined;
+    }
+
+    if (typeof IntersectionObserver === "undefined") {
+      setShouldLoad(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      {
+        rootMargin: "70% 0px",
+        threshold: 0.01,
+      },
+    );
+
+    observer.observe(video);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!shouldLoad || !video) {
+      return undefined;
+    }
+
+    const playVideo = () => {
+      video.play().catch(() => {});
+    };
+
+    if (video.readyState >= 2) {
+      playVideo();
+      return undefined;
+    }
+
+    video.addEventListener("canplay", playVideo, { once: true });
+
+    return () => video.removeEventListener("canplay", playVideo);
+  }, [shouldLoad]);
+
+  return (
+    <article
+      aria-label={`Slide ${index + 1}`}
+      className="case-study-video-card"
+      style={{ zIndex: index + 1 }}
+    >
+      <video
+        aria-hidden="true"
+        className="case-study-video"
+        loop
+        muted
+        playsInline
+        preload={shouldLoad ? "auto" : "none"}
+        ref={videoRef}
+        src={shouldLoad ? src : undefined}
+      />
+    </article>
   );
 }
 

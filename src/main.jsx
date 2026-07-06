@@ -8,6 +8,10 @@ import App from "./App";
 function RoutedApp() {
   const location = useLocation();
 
+  React.useLayoutEffect(() => {
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+  }, [location.pathname]);
+
   return (
     <App routeKey={location.pathname}>
       <Routes>
