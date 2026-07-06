@@ -53,11 +53,19 @@ a {
   position: sticky;
   top: 10px;
   display: block;
-  width: 100%;
-  height: calc(100svh - 20px);
+  aspect-ratio: 16 / 9;
+  width: min(100%, calc(177.777778svh - 35.555556px));
+  height: auto;
+  max-height: calc(100svh - 20px);
+  margin-inline: auto;
+  margin-bottom: clamp(1.5rem, 4svh, 3rem);
   overflow: hidden;
   border-radius: 22px;
   background: #000000;
+}
+
+.case-study-video-card:last-child {
+  margin-bottom: clamp(3rem, 8svh, 6rem);
 }
 
 .case-study-video {
@@ -69,7 +77,8 @@ a {
 
 @media (max-width: 767px), (max-aspect-ratio: 4 / 3) {
   .case-study-video-page {
-    padding-bottom: 24svh;
+    padding-top: calc(5.25rem + 10px);
+    padding-bottom: 14svh;
   }
 
   .case-study-video-card {
@@ -78,10 +87,14 @@ a {
     height: auto;
     aspect-ratio: 16 / 9;
     margin-inline: auto;
-    margin-bottom: max(3rem, calc(82svh - 56.25vw - 5.25rem));
+    margin-bottom: max(1rem, calc(100svh - 5.25rem - 56.25vw + 1rem));
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 14px;
     box-shadow: 0 26px 80px rgba(0, 0, 0, 0.48);
+  }
+
+  .case-study-video-card:last-child {
+    margin-bottom: clamp(4rem, 16svh, 9rem);
   }
 
   .case-study-video {
