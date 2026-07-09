@@ -253,11 +253,11 @@ function GlobalNav({ isCampus, routeKey }) {
   ];
 
   return (
-    <header className="fixed inset-x-0 top-3 z-50 px-3">
+    <header className="fixed inset-x-0 top-3 z-[1000] px-3">
       <nav
         aria-label="Primary navigation"
         className={cn(
-          "mx-auto flex w-fit max-w-[calc(100vw-1.5rem)] items-center gap-1 overflow-visible border border-white/10 bg-black/72 px-2 py-2 shadow-[0_0_30px_rgba(0,0,0,0.52)] backdrop-blur-xl transition-[border-color,box-shadow] duration-300 ease-out",
+          "mx-auto flex w-fit max-w-[calc(100vw-1.5rem)] items-center gap-1 overflow-visible border border-white/20 bg-black/90 px-2 py-2 shadow-[0_18px_50px_rgba(0,0,0,0.74)] ring-1 ring-black/45 backdrop-blur-xl transition-[border-color,box-shadow] duration-300 ease-out",
           isCampus
             ? "text-campus-yellow hover:border-campus-yellow/50 hover:shadow-[0_0_28px_rgba(255,234,0,0.12)]"
             : "text-pixel-cyan hover:border-pixel-cyan/50 hover:shadow-[0_0_28px_rgba(21,255,255,0.12)]",
@@ -279,7 +279,7 @@ function HudNavLink({ active, icon: Icon, label, logo, to, tone = "cyan" }) {
     <Link
       aria-label={label}
       className={cn(
-        "group/hud relative flex h-11 w-11 items-center justify-center overflow-hidden bg-transparent px-0 font-mono text-[10px] uppercase tracking-wider text-white/55 transition-[width,color,background-color,padding] duration-300 ease-out hover:z-10 hover:bg-white/[0.045] hover:px-3 hover:text-white focus-visible:z-10 focus-visible:bg-white/[0.045] focus-visible:px-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan",
+        "group/hud relative flex h-11 w-11 items-center justify-center overflow-hidden bg-transparent px-0 font-mono text-[10px] uppercase tracking-wider text-white/70 transition-[width,color,background-color,padding] duration-300 ease-out hover:z-10 hover:bg-white/[0.065] hover:px-3 hover:text-white focus-visible:z-10 focus-visible:bg-white/[0.065] focus-visible:px-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan",
         expandedWidth,
         active && activeTone,
       )}
