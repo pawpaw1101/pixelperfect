@@ -207,6 +207,11 @@ const nestleMetaclubSlides = Array.from(
   (_, index) => `/videos/portfolio/nestle-metaclub/${index + 1}.mp4`,
 );
 
+const campusMastersSlides = Array.from(
+  { length: 20 },
+  (_, index) => `/videos/portfolio/campus-masters/${index + 4}.mp4`,
+);
+
 const campusProvenResults = [
   { value: "51+", label: "Universities onboard" },
   { value: "20K+", label: "Student reach" },
@@ -1471,101 +1476,7 @@ function CaseStudyPanel({ panel }) {
 /* ----------------------------- campus masters ----------------------------- */
 
 function CampusMastersShell() {
-  const eventImages = assetList(campusMedia.events_masonry_gallery).map((image) => image.path);
-  const sponsors = assetList(campusMedia.sponsors_marquee);
-
-  const venues = [
-    {
-      eyebrow: "Venue 01",
-      name: "Wafi City takeover",
-      blurb: "A mall-scale student arena drawing crowds through five days of open play and stage finals.",
-      lead: eventImages[0],
-      thumbs: eventImages.slice(1, 4),
-    },
-    {
-      eyebrow: "Venue 02",
-      name: "Yugo residence circuit",
-      blurb: "Pop-up tournaments inside student accommodation, bringing the league to where players live.",
-      lead: eventImages[5],
-      thumbs: eventImages.slice(6, 9),
-    },
-    {
-      eyebrow: "Venue 03",
-      name: "DEF showmatch finals",
-      blurb: "Headline showmatches with full broadcast production and a live student audience.",
-      lead: eventImages[9],
-      thumbs: eventImages.slice(10, 12),
-    },
-  ];
-
-  return (
-    <div className="relative isolate overflow-hidden bg-black">
-      <WebGLBackdrop className="fixed -z-20 opacity-[0.08]" variant="campus" />
-      <div className="absolute inset-0 -z-10 bg-black/88" />
-      <CampusHero heroImage={eventImages[4]} />
-
-      <section className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 lg:px-8">
-        <SectionHeader
-          index="01"
-          eyebrow="Proven results"
-          title="Reach that brands can measure."
-          tone="yellow"
-          intro="A consolidated snapshot of university reach, broadcast output, and sponsor-facing visibility across the league."
-        />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {campusProvenResults.map((stat) => (
-            <StatCard key={stat.label} tone="yellow" {...stat} />
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-[1280px] px-4 pb-4 sm:px-6 lg:px-8">
-        <BandImage caption="On-ground // Season 3" src={eventImages[4]} tone="yellow" />
-      </section>
-
-      <section className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="On-ground events"
-          title="Three venues, one league."
-          tone="yellow"
-          intro="From mall arenas to residence pop-ups and broadcast finals, the league showed up across the country."
-        />
-        <div className="mt-12 flex flex-col gap-16 lg:gap-24">
-          {venues.map((venue, index) => (
-            <CampusVenueFeature key={venue.name} reverse={index % 2 === 1} venue={venue} />
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto flex max-w-[1280px] flex-col gap-16 px-4 py-16 sm:px-6 lg:gap-24 lg:px-8">
-        <FeatureRow
-          eyebrow="Brand integration"
-          image={eventImages[2]}
-          title="Your brand, built into the play."
-          tone="yellow"
-          body={campusContent.brand_integration}
-        />
-        <FeatureRow
-          eyebrow="On-ground activations"
-          image={eventImages[7]}
-          reverse
-          title="Activations students actually join."
-          tone="yellow"
-          body={campusContent.on_ground_activations}
-        />
-      </section>
-
-      <CampusPartnersCarousel sponsors={sponsors} />
-
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-balance font-display text-3xl font-light italic uppercase leading-[1.1] text-campus-yellow sm:text-4xl lg:text-5xl">
-            {campusContent.closing_statement}
-          </h2>
-        </div>
-      </section>
-    </div>
-  );
+  return <CaseStudyVideoPage slides={campusMastersSlides} />;
 }
 
 function CampusPartnersCarousel({ sponsors }) {
