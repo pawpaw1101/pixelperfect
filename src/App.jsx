@@ -26,7 +26,6 @@ const metaContent = content["/portfolio/meta"];
 const campusContent = content["/campus-masters"];
 
 const homeMedia = mediaMapping["/"];
-const servicesMedia = mediaMapping["/services"];
 const nestleMedia = mediaMapping["/portfolio/nestle"];
 const swatMedia = mediaMapping["/portfolio/swat"];
 const metaMedia = mediaMapping["/portfolio/meta"];
@@ -103,6 +102,62 @@ const services = [
   { label: "Influencer Campaigns", copy: servicesContent.service_influencer_campaigns },
   { label: "Content Production", copy: servicesContent.service_content_production },
   { label: "Event Management", copy: servicesContent.service_event_management },
+];
+
+const servicesPosterAssetBase = "/images/services-poster";
+
+const servicesPosterSections = [
+  {
+    banner: `${servicesPosterAssetBase}/esports-banner.png`,
+    bannerAlt: "Esports broadcast production equipment",
+    body:
+      "We provide end-to-end livestream production for on-ground and digital events, supported by an experienced crew, in-house broadcast hardware, and complete technical execution.",
+    visual: `${servicesPosterAssetBase}/broadcast-control-room.png`,
+    visualAlt: "Livestream broadcast control room",
+    visualClassName:
+      "h-28 w-52 rounded-xl object-cover sm:h-36 sm:w-64 md:h-44 md:w-80 lg:h-52 lg:w-96 xl:h-60 xl:w-[28rem]",
+    services: [
+      "Static and motion graphics",
+      "On-site and remote production",
+      "Virtual studio setup",
+      "Full production crew",
+      "In-house broadcast hardware",
+    ],
+  },
+  {
+    banner: `${servicesPosterAssetBase}/gaming-marketing-banner.png`,
+    bannerAlt: "Gaming marketing island scene",
+    body:
+      "Gaming has become one of the most powerful entertainment channels worldwide. We help brands enter the gaming space through tailored marketing campaigns across platforms such as Fortnite, Roblox, Minecraft, and other popular gaming ecosystems, allowing them to connect with younger audiences in a more engaging and authentic way.",
+    visual: `${servicesPosterAssetBase}/gaming-island.png`,
+    visualAlt: "Branded gaming island",
+    visualClassName: "w-56 sm:w-72 md:w-96 lg:w-[30rem] xl:w-[36rem]",
+    services: [
+      "Static and motion graphics",
+      "On-site and remote production",
+      "Virtual studio setup",
+      "Full production crew",
+      "In-house broadcast hardware",
+    ],
+  },
+  {
+    banner: `${servicesPosterAssetBase}/marketing-banner.png`,
+    bannerAlt: "Retail brand marketing activation",
+    body:
+      "Our team provides complete support for your brand marketing activities, from campaign concepts and asset design to production and execution across events, retail spaces, venues, and digital channels.",
+    visual: `${servicesPosterAssetBase}/retail-activation.png`,
+    visualAlt: "Retail point-of-sale brand activation",
+    visualClassName: "w-56 sm:w-72 md:w-96 lg:w-[30rem] xl:w-[36rem]",
+    services: [
+      "Market research & concept development",
+      "On-ground branding",
+      "Social media asset design",
+      "Influencer campaigns",
+      "POSM design & production",
+      "Event services",
+      "Full on-ground activations",
+    ],
+  },
 ];
 
 const whoWeAreSocials = [
@@ -1223,53 +1278,68 @@ function ClientTrust() {
 /* -------------------------------- services -------------------------------- */
 
 function ServicesPage() {
-  const gallery = assetList(servicesMedia.broadcast_gallery);
-
   return (
-    <PageShell backdrop="pixel">
-      <SectionHeader
-        index="00"
-        eyebrow="Services"
-        level="h1"
-        title={servicesContent.services_header}
-        intro={servicesContent.service_marketing_campaigns}
-      />
+    <>
+      <div className="relative isolate min-h-screen bg-black px-4 pb-16 pt-28 sm:px-6 md:pt-32 lg:px-8 lg:pb-24">
+        <section
+          aria-labelledby="services-poster-title"
+          className="mx-auto w-full max-w-[1440px] bg-black"
+        >
+          <h1
+            className="text-center font-staatliches text-5xl font-normal uppercase leading-none tracking-normal text-white sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10.5rem]"
+            id="services-poster-title"
+          >
+            <span className="text-pixel-magenta">View Our</span>{" "}
+            <span>Services</span>
+          </h1>
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service, index) => (
-          <ServiceCard index={index + 1} key={service.label} service={service} />
-        ))}
+          <div className="mt-8 flex flex-col gap-8 sm:mt-10 sm:gap-10 lg:mt-14 lg:gap-14">
+            {servicesPosterSections.map((section) => (
+              <ServicesPosterCard key={section.banner} section={section} />
+            ))}
+          </div>
+        </section>
       </div>
+      <FooterGlobal />
+    </>
+  );
+}
 
-      <div className="mt-4 border border-pixel-cyan/40 bg-[#0e1414] p-6 sm:p-8">
-        <Eyebrow>Software & capabilities</Eyebrow>
-        <p className="mt-4 text-pretty text-base leading-relaxed text-white/75 sm:text-lg">
-          {servicesContent.software_capabilities_grid}
-        </p>
-      </div>
-
-      <div className="mt-20 flex flex-col gap-6">
-        <SectionHeader
-          eyebrow="Live broadcast & production"
-          title="On the ground and on air."
-          tone="magenta"
-          intro={servicesContent.service_live_broadcast_gallery}
+function ServicesPosterCard({ section }) {
+  return (
+    <article className="overflow-visible rounded-xl bg-white text-black sm:rounded-2xl lg:rounded-[26px]">
+      <div className="overflow-hidden rounded-t-xl sm:rounded-t-2xl lg:rounded-t-[26px]">
+        <img
+          alt={section.bannerAlt}
+          className="aspect-[1512/359] w-full object-cover"
+          loading="lazy"
+          src={section.banner}
         />
-        <div className="mt-6 flex flex-col gap-16 lg:gap-24">
-          {gallery.map((image, index) => (
-            <FeatureRow
-              aspect="aspect-[16/10]"
-              eyebrow={`Production ${String(index + 1).padStart(2, "0")}`}
-              image={image.path}
-              key={image.path}
-              reverse={index % 2 === 1}
-              title={image.desc}
-              tone={index % 2 === 1 ? "magenta" : "cyan"}
-            />
-          ))}
+      </div>
+      <p className="mx-auto max-w-[1120px] px-5 py-7 text-center font-poppins text-base font-normal leading-[1.12] tracking-normal text-black sm:px-10 sm:py-9 sm:text-xl md:text-2xl lg:px-16 lg:py-12 lg:text-3xl xl:text-[2.35rem]">
+        {section.body}
+      </p>
+      <div className="px-5 pb-6 sm:px-9 sm:pb-9 lg:px-14 lg:pb-14">
+        <div className="flex min-h-64 flex-col gap-5 overflow-visible rounded-lg border border-[#5fb6bd] bg-[#b9fbfd] px-5 py-5 text-black sm:min-h-72 sm:flex-row sm:items-end sm:justify-between sm:px-8 sm:py-7 lg:min-h-[23rem] lg:rounded-xl lg:px-12 lg:py-10 xl:min-h-[27rem]">
+          <div className="min-w-0 flex-1 self-start">
+            <h2 className="font-staatliches text-3xl font-normal uppercase leading-none tracking-normal text-black sm:text-4xl lg:text-5xl">
+              Services
+            </h2>
+            <ul className="mt-4 list-disc pl-5 font-poppins text-base font-normal leading-[1.35] tracking-normal sm:mt-5 sm:pl-7 sm:text-lg md:text-xl lg:text-2xl xl:text-[1.6rem]">
+              {section.services.map((service) => (
+                <li key={service}>{service}</li>
+              ))}
+            </ul>
+          </div>
+          <img
+            alt={section.visualAlt}
+            className={cn("relative z-10 shrink-0 self-end object-contain drop-shadow-[12px_16px_8px_rgba(0,0,0,0.28)]", section.visualClassName)}
+            loading="lazy"
+            src={section.visual}
+          />
         </div>
       </div>
-    </PageShell>
+    </article>
   );
 }
 
