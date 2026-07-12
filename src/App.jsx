@@ -5,6 +5,8 @@ import {
   ArrowRight,
   BriefcaseBusiness,
   Home as HomeIcon,
+  Minus,
+  Plus,
   RadioTower,
   Trophy,
 } from "lucide-react";
@@ -110,6 +112,7 @@ const servicesPosterSections = [
   {
     banner: `${servicesPosterAssetBase}/esports-banner.png`,
     bannerAlt: "Esports broadcast production equipment",
+    title: "Livestream production",
     body:
       "We provide end-to-end livestream production for on-ground and digital events, supported by an experienced crew, in-house broadcast hardware, and complete technical execution.",
     visual: `${servicesPosterAssetBase}/broadcast-control-room.png`,
@@ -127,6 +130,7 @@ const servicesPosterSections = [
   {
     banner: `${servicesPosterAssetBase}/gaming-marketing-banner.png`,
     bannerAlt: "Gaming marketing island scene",
+    title: "Gaming Marketing Campaigns",
     body:
       "Gaming has become one of the most powerful entertainment channels worldwide. We help brands enter the gaming space through tailored marketing campaigns across platforms such as Fortnite, Roblox, Minecraft, and other popular gaming ecosystems, allowing them to connect with younger audiences in a more engaging and authentic way.",
     visual: `${servicesPosterAssetBase}/gaming-island.png`,
@@ -143,6 +147,7 @@ const servicesPosterSections = [
   {
     banner: `${servicesPosterAssetBase}/marketing-banner.png`,
     bannerAlt: "Retail brand marketing activation",
+    title: "General Brand Marketing",
     body:
       "Our team provides complete support for your brand marketing activities, from campaign concepts and asset design to production and execution across events, retail spaces, venues, and digital channels.",
     visual: `${servicesPosterAssetBase}/retail-activation.png`,
@@ -230,7 +235,48 @@ const homePortfolioProjects = [
       "Built a university esports tournament platform with live production, brand integration, social content, and on-ground competitive moments for student communities.",
     bodyClassName: "leading-[1.65] tracking-normal",
     partnerLogos: [
-      { label: "Campus Masters", src: assetPath(campusMedia.hero_logo_main), className: "max-h-12 sm:max-h-14" },
+      {
+        label: "Red Bull Gaming",
+        src: "/images/cm-partner-redbull.png",
+        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
+        className: "h-full w-full max-w-none scale-[1.85]",
+      },
+      {
+        label: "ExitLag",
+        src: "/images/cm-partner-exitlag.png",
+        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
+        className: "h-full w-full max-w-none scale-[1.85]",
+      },
+      {
+        label: "Street Origins",
+        src: "/images/cm-partner-streetorigins.png",
+        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
+        className: "h-full w-full max-w-none scale-[1.85]",
+      },
+      {
+        label: "Z Games",
+        src: "/images/cm-partner-zgames.png",
+        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
+        className: "h-full w-full max-w-none scale-[1.85]",
+      },
+      {
+        label: "Propath",
+        src: "/images/cm-partner-propath.png",
+        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
+        className: "h-full w-full max-w-none scale-[1.85]",
+      },
+      {
+        label: "Link",
+        src: "/images/cm-partner-link.png",
+        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
+        className: "h-full w-full max-w-none scale-[1.85]",
+      },
+      {
+        label: "Wafi",
+        src: "/images/cm-partner-wafi.png",
+        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
+        className: "h-full w-full max-w-none scale-[1.85]",
+      },
     ],
     projectHref: "/campus-masters",
   },
@@ -244,8 +290,16 @@ const homePortfolioProjects = [
       "I developed the Nestle Metaclub in Decentraland - a multi-brand metaverse experience featuring Lion, Koko Krunch, Cocoa Plan, Anghami, and the Rainforest Alliance, with interactive mini-games and sellable branded NFTs.",
     bodyClassName: "leading-[1.4] tracking-[0.004em]",
     partnerLogos: [
-      { label: "Nestle", src: `${homePortfolioAssetBase}/logo-nestle.png`, className: "max-h-10 sm:max-h-11" },
-      { label: "Decentraland", text: "Decentraland" },
+      {
+        label: "Nestle",
+        src: `${homePortfolioAssetBase}/logo-nestle.png`,
+        className: "max-h-10 brightness-0 sm:max-h-11",
+      },
+      {
+        label: "Decentraland",
+        src: `${homePortfolioAssetBase}/logo-decentraland.svg`,
+        className: "max-h-9 sm:max-h-10",
+      },
     ],
     playHref: "https://decentraland.org/whats-on?id=1127102c-524c-45c1-8e31-6da4e9a62897",
     projectHref: "/portfolio/meta",
@@ -831,7 +885,7 @@ function MissionStatementAvatars() {
       <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(0,0,0,0.78)_0%,rgba(5,8,24,0.7)_42%,rgba(0,0,0,0.8)_100%)]" />
       <div className="absolute inset-0 -z-10 bg-pixel-bg/24" />
 
-      <div className="mx-auto grid min-h-[640px] max-w-[1680px] items-center gap-12 px-6 py-16 sm:px-12 lg:grid-cols-[1.35fr_0.8fr] lg:px-24 xl:px-36">
+      <div className="mx-auto grid min-h-[960px] max-w-[1680px] items-center gap-12 px-6 py-16 sm:px-12 lg:grid-cols-[1.35fr_0.8fr] lg:px-24 xl:px-36">
         <div>
           <h2 className="font-staatliches text-[clamp(4.2rem,9vw,11rem)] font-normal uppercase leading-[0.8] tracking-[-0.045em] text-pixel-magenta">
             Who We Are
@@ -892,8 +946,8 @@ function HomeSpotlightFeature() {
         New
       </div>
 
-      <div className="mx-auto flex min-h-[560px] max-w-[1280px] items-center justify-end px-4 py-12 sm:px-8 lg:min-h-[530px] lg:px-14">
-        <div className="w-full max-w-[560px] rounded-md bg-[#aeb6c4]/18 p-4 text-center shadow-[0_20px_60px_rgba(0,0,0,0.28)] backdrop-blur-[1.5px] sm:p-5">
+      <div className="mx-auto flex min-h-[840px] max-w-[1280px] items-center justify-end px-4 py-12 sm:px-8 lg:min-h-[795px] lg:px-14">
+        <div className="w-full max-w-[560px] rounded-md bg-[#aeb6c4]/[0.24] p-4 text-center shadow-[0_20px_60px_rgba(0,0,0,0.28)] backdrop-blur-[1.5px] sm:p-5">
           <PortfolioVideo src={demoYoutubeEmbed} title="Campus Masters spotlight" />
           <p className="mx-auto mt-6 max-w-[520px] text-pretty font-poppins text-base font-normal leading-[1.35] tracking-[-0.02em] text-white sm:text-xl">
             {homeContent.mission_statement_avatars}
@@ -1002,13 +1056,13 @@ function HomePortfolioProjectCard({ project }) {
               : "bg-gradient-to-r from-black/4 via-black/8 to-black/36",
           )}
         />
-        <div className="relative z-10 flex min-h-[560px] items-end justify-end p-3 sm:min-h-[500px] sm:p-5 lg:min-h-[430px] lg:p-6">
+        <div className="relative z-10 flex min-h-[560px] items-end justify-center p-3 sm:min-h-[500px] sm:p-5 lg:min-h-[430px] lg:p-6">
         <div
           className={cn(
-            "flex w-[min(100%,430px)] flex-col justify-end rounded-md border p-3 shadow-[0_18px_44px_rgba(0,0,0,0.24)] backdrop-blur-[2px] sm:p-4",
+            "flex w-[min(100%,430px)] flex-col justify-end rounded-md border p-3 text-center shadow-[0_18px_44px_rgba(0,0,0,0.24)] backdrop-blur-[2px] sm:p-4",
             isLight
               ? "border-white/50 bg-white/58 text-[#17212a]"
-              : "border-white/18 bg-[#aeb6c4]/28 text-white",
+              : "border-white/18 bg-[#aeb6c4]/[0.28] text-white",
           )}
         >
           <h3 className="sr-only">{project.title}</h3>
@@ -1026,7 +1080,7 @@ function HomePortfolioProjectCard({ project }) {
               {project.body}
             </p>
 
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
               {project.playHref ? (
                 <PortfolioActionButton href={project.playHref} icon="joystick">
                   Play Now
@@ -1066,23 +1120,26 @@ function PortfolioPartnerLogos({ isLight, logos }) {
 
   return (
     <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-center">
-      {logos.map((logo, index) => (
+      {logos.map((logo) => (
         <React.Fragment key={logo.label}>
-          {index > 0 ? (
-            <img
-              alt=""
-              aria-hidden="true"
-              className={cn("h-4 w-4 object-contain opacity-80", isLight && "invert")}
-              src={`${homePortfolioAssetBase}/icon-x-between-logos.png`}
-            />
-          ) : null}
           {logo.src ? (
-            <img
-              alt={logo.label}
-              className={cn("max-w-[132px] object-contain", logo.className)}
-              loading="lazy"
-              src={logo.src}
-            />
+            logo.frameClassName ? (
+              <span className={cn("block overflow-hidden", logo.frameClassName)}>
+                <img
+                  alt={logo.label}
+                  className={cn("max-w-[132px] object-contain", logo.className)}
+                  loading="lazy"
+                  src={logo.src}
+                />
+              </span>
+            ) : (
+              <img
+                alt={logo.label}
+                className={cn("max-w-[132px] object-contain", logo.className)}
+                loading="lazy"
+                src={logo.src}
+              />
+            )
           ) : (
             <span
               className={cn(
@@ -1306,37 +1363,103 @@ function ServicesPage() {
 }
 
 function ServicesPosterCard({ section }) {
+  const [isExpanded, setIsExpanded] = useState(() => false);
+  const [hasFinePointer, setHasFinePointer] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches,
+  );
+  const panelId = `services-panel-${section.banner
+    .split("/")
+    .at(-1)
+    .replace(/\.png$/, "")}`;
+
+  useEffect(() => {
+    const pointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const updateFinePointer = () => setHasFinePointer(pointerQuery.matches);
+
+    updateFinePointer();
+    pointerQuery.addEventListener?.("change", updateFinePointer);
+
+    return () => {
+      pointerQuery.removeEventListener?.("change", updateFinePointer);
+    };
+  }, []);
+
   return (
-    <article className="overflow-visible rounded-xl bg-white text-black sm:rounded-2xl lg:rounded-[26px]">
-      <div className="overflow-hidden rounded-t-xl sm:rounded-t-2xl lg:rounded-t-[26px]">
+    <article
+      className="overflow-hidden rounded-xl bg-white text-black sm:rounded-2xl lg:rounded-[26px]"
+      onPointerEnter={() => {
+        if (hasFinePointer) {
+          setIsExpanded(true);
+        }
+      }}
+      onPointerLeave={() => {
+        if (hasFinePointer) {
+          setIsExpanded(false);
+        }
+      }}
+    >
+      <button
+        aria-controls={panelId}
+        aria-expanded={isExpanded}
+        className="relative block w-full cursor-pointer overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-pixel-cyan"
+        onClick={() => setIsExpanded((expanded) => !expanded)}
+        type="button"
+      >
         <img
           alt={section.bannerAlt}
           className="aspect-[1512/359] w-full object-cover"
           loading="lazy"
           src={section.banner}
         />
-      </div>
-      <p className="mx-auto max-w-[1120px] px-5 py-7 text-center font-poppins text-base font-normal leading-[1.12] tracking-normal text-black sm:px-10 sm:py-9 sm:text-xl md:text-2xl lg:px-16 lg:py-12 lg:text-3xl xl:text-[2.35rem]">
-        {section.body}
-      </p>
-      <div className="px-5 pb-6 sm:px-9 sm:pb-9 lg:px-14 lg:pb-14">
-        <div className="flex min-h-64 flex-col gap-5 overflow-visible rounded-lg border border-[#5fb6bd] bg-[#b9fbfd] px-5 py-5 text-black sm:min-h-72 sm:flex-row sm:items-end sm:justify-between sm:px-8 sm:py-7 lg:min-h-[23rem] lg:rounded-xl lg:px-12 lg:py-10 xl:min-h-[27rem]">
-          <div className="min-w-0 flex-1 self-start">
-            <h2 className="font-staatliches text-3xl font-normal uppercase leading-none tracking-normal text-black sm:text-4xl lg:text-5xl">
-              Services
-            </h2>
-            <ul className="mt-4 list-disc pl-5 font-poppins text-base font-normal leading-[1.35] tracking-normal sm:mt-5 sm:pl-7 sm:text-lg md:text-xl lg:text-2xl xl:text-[1.6rem]">
-              {section.services.map((service) => (
-                <li key={service}>{service}</li>
-              ))}
-            </ul>
+        <span aria-hidden="true" className="absolute inset-0 bg-black/40" />
+        <span className="absolute inset-0 flex items-center justify-center px-14 text-center font-poppins text-xl font-bold leading-tight text-white sm:text-3xl lg:text-5xl">
+          {section.title}
+        </span>
+        <span
+          aria-hidden="true"
+          className="absolute right-4 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/65 bg-black/30 text-white md:hidden"
+        >
+          {isExpanded ? <Minus className="h-5 w-5" strokeWidth={2.5} /> : <Plus className="h-5 w-5" strokeWidth={2.5} />}
+        </span>
+      </button>
+      <div
+        aria-hidden={!isExpanded}
+        aria-label={`${section.title} services`}
+        className={cn(
+          "grid transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none",
+          isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+        )}
+        id={panelId}
+        role="region"
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className="bg-white">
+            <p className="mx-auto max-w-[1120px] px-5 py-7 text-center font-poppins text-base font-normal leading-[1.12] tracking-normal text-black sm:px-10 sm:py-9 sm:text-xl md:text-2xl lg:px-16 lg:py-12 lg:text-3xl xl:text-[2.35rem]">
+              {section.body}
+            </p>
+            <div className="px-5 pb-6 sm:px-9 sm:pb-9 lg:px-14 lg:pb-14">
+              <div className="flex min-h-64 flex-col gap-5 rounded-lg border border-black/15 bg-white px-5 py-5 text-black sm:min-h-72 sm:flex-row sm:items-end sm:justify-between sm:px-8 sm:py-7 lg:min-h-[23rem] lg:rounded-xl lg:px-12 lg:py-10 xl:min-h-[27rem]">
+                <div className="min-w-0 flex-1 self-start">
+                  <h2 className="font-staatliches text-3xl font-normal uppercase leading-none tracking-normal text-black sm:text-4xl lg:text-5xl">
+                    Services
+                  </h2>
+                  <ul className="mt-4 list-disc pl-5 font-poppins text-base font-normal leading-[1.35] tracking-normal sm:mt-5 sm:pl-7 sm:text-lg md:text-xl lg:text-2xl xl:text-[1.6rem]">
+                    {section.services.map((service) => (
+                      <li key={service}>{service}</li>
+                    ))}
+                  </ul>
+                </div>
+                <img
+                  alt={section.visualAlt}
+                  className={cn("relative z-10 shrink-0 self-end object-contain drop-shadow-[12px_16px_8px_rgba(0,0,0,0.28)]", section.visualClassName)}
+                  loading="lazy"
+                  src={section.visual}
+                />
+              </div>
+            </div>
           </div>
-          <img
-            alt={section.visualAlt}
-            className={cn("relative z-10 shrink-0 self-end object-contain drop-shadow-[12px_16px_8px_rgba(0,0,0,0.28)]", section.visualClassName)}
-            loading="lazy"
-            src={section.visual}
-          />
         </div>
       </div>
     </article>
