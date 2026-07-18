@@ -3,12 +3,8 @@ import { Link } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
-  BriefcaseBusiness,
-  Home as HomeIcon,
   Minus,
   Plus,
-  RadioTower,
-  Trophy,
 } from "lucide-react";
 
 import contentRaw from "../content.JSON?raw";
@@ -22,15 +18,11 @@ const mediaMapping = JSON.parse(mediaMappingRaw);
 const homeContent = content["/"];
 const servicesContent = content["/services"];
 const portfolioContent = content["/portfolio"];
-const nestleContent = content["/portfolio/nestle"];
 const swatContent = content["/portfolio/swat"];
-const metaContent = content["/portfolio/meta"];
 const campusContent = content["/campus-masters"];
 
 const homeMedia = mediaMapping["/"];
-const nestleMedia = mediaMapping["/portfolio/nestle"];
 const swatMedia = mediaMapping["/portfolio/swat"];
-const metaMedia = mediaMapping["/portfolio/meta"];
 const campusMedia = mediaMapping["/campus-masters"];
 
 function assetPath(entry) {
@@ -49,30 +41,6 @@ function assetList(entries = []) {
 }
 
 /* ---------------------------------- data ---------------------------------- */
-
-const portfolioCases = [
-  {
-    path: "/portfolio/nestle",
-    tag: "Fortnite // Retail",
-    title: "Nestle Cereal Season",
-    copy: nestleContent.case_study_hero,
-    image: assetPath(nestleMedia.nestle_metaverse),
-  },
-  {
-    path: "/portfolio/swat",
-    tag: "Counter-Strike 2 // Gov",
-    title: "UAE SWAT Challenge",
-    copy: swatContent.case_study_hero,
-    image: assetPath(swatMedia.swat_cover),
-  },
-  {
-    path: "/portfolio/meta",
-    tag: "Metaverse // NFT",
-    title: "Nestle Metaclub",
-    copy: metaContent.case_study_hero,
-    image: assetPath(metaMedia.meta_cover),
-  },
-];
 
 const partnerLogoVersion = "natural-v4";
 const partnerLogoSrc = (fileName) => `/images/carousel/partners/${fileName}?${partnerLogoVersion}`;
@@ -208,7 +176,8 @@ const homePortfolioFilters = [
   { id: "marketing", label: "Marketing Materials" },
 ];
 
-const homePortfolioProjects = [
+// Keep projects newest-first. The homepage previews only the first three entries.
+const portfolioProjects = [
   {
     id: "nestle-cereal-season",
     title: "Nestle Cereal Season",
@@ -306,6 +275,8 @@ const homePortfolioProjects = [
   },
 ];
 
+const homePortfolioProjects = portfolioProjects.slice(0, 3);
+
 const nestleCerealSeasonSlides = Array.from(
   { length: 18 },
   (_, index) => `/videos/portfolio/nestle-cereal-season/${index + 1}.mp4`,
@@ -343,19 +314,29 @@ function App({ children, routeKey }) {
 
 function GlobalNav({ isCampus, routeKey }) {
   const navItems = [
-    { active: routeKey === "/", icon: HomeIcon, label: "Home", to: "/" },
-    { active: routeKey === "/services", icon: RadioTower, label: "Services", to: "/services" },
+    {
+      active: routeKey === "/",
+      iconSrc: "/images/navbar/navbar-icon-home.png",
+      label: "Home",
+      to: "/",
+    },
+    {
+      active: routeKey === "/services",
+      iconSrc: "/images/navbar/navbar-icon-services.png",
+      label: "Services",
+      to: "/services",
+    },
     {
       active: routeKey.startsWith("/portfolio"),
-      icon: BriefcaseBusiness,
+      iconSrc: "/images/navbar/navbar-icon-portfolio.png",
       label: "Portfolio",
       to: "/portfolio",
     },
     {
       active: routeKey === "/campus-masters",
-      icon: Trophy,
+      iconSrc: "/images/navbar/navbar-icon-campusmasters.png",
+      expandedWidth: "hover:w-44 focus-visible:w-44",
       label: "Campus Masters",
-      logo: assetPath(campusMedia.nav_logo_cm_button),
       to: "/campus-masters",
       tone: "yellow",
     },
@@ -380,9 +361,15 @@ function GlobalNav({ isCampus, routeKey }) {
   );
 }
 
-function HudNavLink({ active, icon: Icon, label, logo, to, tone = "cyan" }) {
+function HudNavLink({
+  active,
+  expandedWidth = "hover:w-32 focus-visible:w-32",
+  iconSrc,
+  label,
+  to,
+  tone = "cyan",
+}) {
   const activeTone = tone === "yellow" ? "text-campus-yellow" : "text-pixel-cyan";
-  const expandedWidth = logo ? "hover:w-48 focus-visible:w-48" : "hover:w-32 focus-visible:w-32";
 
   return (
     <Link
@@ -401,16 +388,10 @@ function HudNavLink({ active, icon: Icon, label, logo, to, tone = "cyan" }) {
           active && (tone === "yellow" ? "bg-campus-yellow" : "bg-pixel-cyan"),
         )}
       />
-      <Icon aria-hidden="true" className="h-5 w-5 shrink-0" strokeWidth={1.8} />
-      {logo ? (
-        <span className="ml-0 max-w-0 overflow-hidden opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/hud:ml-2.5 group-hover/hud:max-w-[128px] group-hover/hud:opacity-100 group-focus-visible/hud:ml-2.5 group-focus-visible/hud:max-w-[128px] group-focus-visible/hud:opacity-100">
-          <img alt="" aria-hidden="true" className="h-6 w-auto max-w-[128px] object-contain" src={logo} />
-        </span>
-      ) : (
-        <span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/hud:ml-2.5 group-hover/hud:max-w-[92px] group-hover/hud:opacity-100 group-focus-visible/hud:ml-2.5 group-focus-visible/hud:max-w-[92px] group-focus-visible/hud:opacity-100">
-          {label}
-        </span>
-      )}
+      <img alt="" aria-hidden="true" className="h-7 w-7 shrink-0 object-contain" src={iconSrc} />
+      <span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-[max-width,margin,opacity] duration-300 ease-out group-hover/hud:ml-2.5 group-hover/hud:max-w-[92px] group-hover/hud:opacity-100 group-focus-visible/hud:ml-2.5 group-focus-visible/hud:max-w-[92px] group-focus-visible/hud:opacity-100">
+        {label}
+      </span>
     </Link>
   );
 }
@@ -995,8 +976,8 @@ function HomePortfolioShowcase() {
         </div>
 
         <div className="mt-8 grid gap-5 sm:mt-10">
-          {filteredProjects.map((project, index) => (
-            <HomePortfolioProjectCard index={index} key={project.id} project={project} />
+          {filteredProjects.map((project) => (
+            <PortfolioProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>
@@ -1033,7 +1014,7 @@ function PortfolioFilterNav({ activeFilter, onChange }) {
   );
 }
 
-function HomePortfolioProjectCard({ project }) {
+function PortfolioProjectCard({ project }) {
   const isLight = project.id === "nestle-metaclub";
 
   return (
@@ -1056,7 +1037,7 @@ function HomePortfolioProjectCard({ project }) {
               : "bg-gradient-to-r from-black/4 via-black/8 to-black/36",
           )}
         />
-        <div className="relative z-10 flex min-h-[560px] items-end justify-center p-3 sm:min-h-[500px] sm:p-5 lg:min-h-[430px] lg:p-6">
+        <div className="relative z-10 flex min-h-[560px] items-end justify-end p-3 sm:min-h-[500px] sm:p-5 lg:min-h-[430px] lg:p-6">
         <div
           className={cn(
             "flex w-[min(100%,430px)] flex-col justify-end rounded-md border p-3 text-center shadow-[0_18px_44px_rgba(0,0,0,0.24)] backdrop-blur-[2px] sm:p-4",
@@ -1256,59 +1237,6 @@ function ServiceCard({ index, service, showCopy = true }) {
   );
 }
 
-function PortfolioPreviewGrid() {
-  return (
-    <section className="border-b border-pixel-border bg-[#191919]/74 px-4 py-16 backdrop-blur-sm sm:px-6 lg:px-8 lg:py-24">
-      <div className="mx-auto max-w-[1280px]">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <SectionHeader
-            index="04"
-            eyebrow="Selected work"
-            title="Our Portfolio."
-            tone="magenta"
-          />
-          <CtaLink to="/portfolio">View portfolio</CtaLink>
-        </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {portfolioCases.map((item) => (
-            <PortfolioCard item={item} key={item.path} showCopy={false} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PortfolioCard({ item, showCopy = true }) {
-  return (
-    <Link
-      className="group flex flex-col border border-pixel-border bg-[#141414] transition-colors duration-150 hover:border-pixel-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan"
-      to={item.path}
-    >
-      <MediaFrame className="border-0 border-b border-pixel-border" src={item.image} />
-      <div className={cn("flex flex-1 flex-col", showCopy ? "p-5" : "p-4 sm:p-5")}>
-        <span className="font-mono text-xs uppercase tracking-wider text-pixel-magenta">
-          {item.tag}
-        </span>
-        <h3
-          className={cn(
-            "font-display font-light italic uppercase leading-tight text-white group-hover:text-pixel-cyan",
-            showCopy ? "mt-2 text-lg sm:text-xl" : "mt-3 text-xl sm:text-2xl",
-          )}
-        >
-          {item.title}
-        </h3>
-        {showCopy ? (
-          <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">{item.copy}</p>
-        ) : null}
-        <span className="mt-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-pixel-cyan">
-          Case study <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} />
-        </span>
-      </div>
-    </Link>
-  );
-}
-
 function ClientTrust() {
   const label = homeContent.client_trust_marquee.replace(/^TRUSTED BY:\s*/i, "");
   const brands = label.replace(/\.$/, "").split(",").map((item) => item.trim());
@@ -1470,21 +1398,28 @@ function ServicesPosterCard({ section }) {
 
 function PortfolioPage() {
   return (
-    <PageShell backdrop="magenta">
-      <SectionHeader
-        index="00"
-        eyebrow="Portfolio"
-        level="h1"
-        title="Selected work."
-        tone="magenta"
-        intro={portfolioContent.portfolio_intro}
-      />
-      <div className="mt-12 grid gap-4 md:grid-cols-3">
-        {portfolioCases.map((item) => (
-          <PortfolioCard item={item} key={item.path} />
-        ))}
+    <>
+      <div className="relative isolate min-h-screen bg-black px-4 pb-16 pt-28 sm:px-6 md:pt-32 lg:px-8 lg:pb-24">
+        <section aria-labelledby="portfolio-page-title" className="mx-auto w-full max-w-[1440px] bg-black">
+          <h1
+            className="text-center font-staatliches text-5xl font-normal uppercase leading-none tracking-normal text-white sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10.5rem]"
+            id="portfolio-page-title"
+          >
+            <span className="text-pixel-magenta">Our</span> <span>Work</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-pretty text-center text-base leading-relaxed text-white/65 sm:mt-8 sm:text-lg">
+            {portfolioContent.portfolio_intro}
+          </p>
+
+          <div className="mt-8 grid gap-5 sm:mt-10">
+            {portfolioProjects.map((project) => (
+              <PortfolioProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </section>
       </div>
-    </PageShell>
+      <FooterGlobal />
+    </>
   );
 }
 
