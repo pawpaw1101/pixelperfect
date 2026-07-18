@@ -1400,7 +1400,7 @@ function PortfolioPage() {
   return (
     <>
       <div className="relative isolate min-h-screen bg-black px-4 pb-16 pt-28 sm:px-6 md:pt-32 lg:px-8 lg:pb-24">
-        <section aria-labelledby="portfolio-page-title" className="mx-auto w-full max-w-[1440px] bg-black">
+        <section aria-labelledby="portfolio-page-title" className="mx-auto w-full max-w-[1180px] bg-black">
           <h1
             className="text-center font-staatliches text-5xl font-normal uppercase leading-none tracking-normal text-white sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10.5rem]"
             id="portfolio-page-title"
