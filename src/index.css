@@ -39,33 +39,46 @@ a {
 }
 
 .case-study-video-page {
-  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(11rem, 17vw, 16rem);
+  gap: 10px;
+  height: 100svh;
   background: #000000;
   padding: 10px;
+  overflow: hidden;
 }
 
-.case-study-video-stack {
+.case-study-video-stage {
   position: relative;
   isolation: isolate;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #05080b;
+  outline: none;
 }
 
 .case-study-video-card {
-  position: sticky;
-  top: 10px;
-  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: min(calc(100% - 24px), calc((100svh - 30px) * 1.77777778));
   aspect-ratio: 16 / 9;
-  width: min(100%, calc(177.777778svh - 35.555556px));
-  height: auto;
-  max-height: calc(100svh - 20px);
-  margin-inline: auto;
-  margin-bottom: clamp(1.5rem, 4svh, 3rem);
+  place-items: center;
+  margin: 0;
   overflow: hidden;
-  border-radius: 22px;
+  border-radius: 16px;
   background: #000000;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, calc(-50% + 7%)) scale(0.96);
+  transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.case-study-video-card:last-child {
-  margin-bottom: clamp(3rem, 8svh, 6rem);
+.case-study-video-card.is-active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .case-study-video {
@@ -75,30 +88,124 @@ a {
   object-fit: cover;
 }
 
+.case-study-thumbnail-pane {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(126, 238, 255, 0.18);
+  border-radius: 14px;
+  background: rgba(7, 28, 44, 0.78);
+  padding: 12px;
+  scrollbar-color: rgba(126, 238, 255, 0.65) rgba(255, 255, 255, 0.08);
+  scrollbar-width: thin;
+}
+
+.case-study-thumbnail-pane::-webkit-scrollbar {
+  width: 8px;
+}
+
+.case-study-thumbnail-pane::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.case-study-thumbnail-pane::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(126, 238, 255, 0.65);
+}
+
+.case-study-thumbnail-list {
+  display: grid;
+  gap: 10px;
+}
+
+.case-study-thumbnail {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: #000000;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.64;
+  transition: border-color 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+.case-study-thumbnail:hover,
+.case-study-thumbnail:focus-visible,
+.case-study-thumbnail.is-active {
+  border-color: #7eeeff;
+  opacity: 1;
+  transform: translateX(-2px);
+}
+
+.case-study-thumbnail:focus-visible {
+  outline: 2px solid #ff00ae;
+  outline-offset: 2px;
+}
+
+.case-study-thumbnail-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.case-study-thumbnail-number {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  min-width: 1.7rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.76);
+  padding: 3px 6px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.65rem;
+  line-height: 1;
+  color: #ffffff;
+}
+
 @media (max-width: 767px), (max-aspect-ratio: 4 / 3) {
   .case-study-video-page {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+    height: 100svh;
     padding-top: calc(5.25rem + 10px);
-    padding-bottom: 14svh;
+  }
+
+  .case-study-video-stage {
+    border-radius: 12px;
   }
 
   .case-study-video-card {
-    top: calc(5.25rem + 10px);
-    width: min(100%, 720px);
-    height: auto;
-    aspect-ratio: 16 / 9;
-    margin-inline: auto;
-    margin-bottom: max(1rem, calc(100svh - 5.25rem - 56.25vw + 1rem));
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 14px;
-    box-shadow: 0 26px 80px rgba(0, 0, 0, 0.48);
+    width: min(calc(100% - 16px), calc((100svh - 13rem) * 1.77777778));
+    border-radius: 10px;
   }
 
-  .case-study-video-card:last-child {
-    margin-bottom: clamp(4rem, 16svh, 9rem);
+  .case-study-thumbnail-pane {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px;
   }
 
-  .case-study-video {
-    object-fit: contain;
+  .case-study-thumbnail-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  .case-study-thumbnail {
+    width: 7.25rem;
+    flex: 0 0 7.25rem;
+  }
+
+  .case-study-thumbnail:hover,
+  .case-study-thumbnail:focus-visible,
+  .case-study-thumbnail.is-active {
+    transform: none;
   }
 }
 

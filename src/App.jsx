@@ -186,11 +186,8 @@ const portfolioProjects = [
     video: demoYoutubeEmbed,
     body:
       "Led the development of Nestle's first branded Fortnite gaming experience for a global launch, supported by MENA campaign assets including POSM, key visuals, and video ads.",
+    highlights: ["Nestle's first branded Fortnite gaming experience", "MENA campaign assets"],
     bodyClassName: "leading-[1.7] tracking-normal",
-    partnerLogos: [
-      { label: "Fortnite", src: `${homePortfolioAssetBase}/logo-fortnite.png`, className: "max-h-8 sm:max-h-9" },
-      { label: "Nestle", src: `${homePortfolioAssetBase}/logo-nestle.png`, className: "max-h-10 sm:max-h-11" },
-    ],
     playHref: "https://www.fortnite.com/@empireplay/7102-2377-4433",
     projectHref: "/portfolio/nestle",
   },
@@ -202,51 +199,8 @@ const portfolioProjects = [
     video: demoYoutubeEmbed,
     body:
       "Built a university esports tournament platform with live production, brand integration, social content, and on-ground competitive moments for student communities.",
+    highlights: ["live production, brand integration, social content, and on-ground competitive moments"],
     bodyClassName: "leading-[1.65] tracking-normal",
-    partnerLogos: [
-      {
-        label: "Red Bull Gaming",
-        src: "/images/cm-partner-redbull.png",
-        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
-        className: "h-full w-full max-w-none scale-[1.85]",
-      },
-      {
-        label: "ExitLag",
-        src: "/images/cm-partner-exitlag.png",
-        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
-        className: "h-full w-full max-w-none scale-[1.85]",
-      },
-      {
-        label: "Street Origins",
-        src: "/images/cm-partner-streetorigins.png",
-        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
-        className: "h-full w-full max-w-none scale-[1.85]",
-      },
-      {
-        label: "Z Games",
-        src: "/images/cm-partner-zgames.png",
-        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
-        className: "h-full w-full max-w-none scale-[1.85]",
-      },
-      {
-        label: "Propath",
-        src: "/images/cm-partner-propath.png",
-        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
-        className: "h-full w-full max-w-none scale-[1.85]",
-      },
-      {
-        label: "Link",
-        src: "/images/cm-partner-link.png",
-        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
-        className: "h-full w-full max-w-none scale-[1.85]",
-      },
-      {
-        label: "Wafi",
-        src: "/images/cm-partner-wafi.png",
-        frameClassName: "h-10 w-[72px] sm:h-11 sm:w-[82px]",
-        className: "h-full w-full max-w-none scale-[1.85]",
-      },
-    ],
     projectHref: "/campus-masters",
   },
   {
@@ -257,19 +211,8 @@ const portfolioProjects = [
     video: demoYoutubeEmbed,
     body:
       "I developed the Nestle Metaclub in Decentraland - a multi-brand metaverse experience featuring Lion, Koko Krunch, Cocoa Plan, Anghami, and the Rainforest Alliance, with interactive mini-games and sellable branded NFTs.",
+    highlights: ["multi-brand metaverse experience", "interactive mini-games and sellable branded NFTs"],
     bodyClassName: "leading-[1.4] tracking-[0.004em]",
-    partnerLogos: [
-      {
-        label: "Nestle",
-        src: `${homePortfolioAssetBase}/logo-nestle.png`,
-        className: "max-h-10 brightness-0 sm:max-h-11",
-      },
-      {
-        label: "Decentraland",
-        src: `${homePortfolioAssetBase}/logo-decentraland.svg`,
-        className: "max-h-9 sm:max-h-10",
-      },
-    ],
     playHref: "https://decentraland.org/whats-on?id=1127102c-524c-45c1-8e31-6da4e9a62897",
     projectHref: "/portfolio/meta",
   },
@@ -927,8 +870,8 @@ function HomeSpotlightFeature() {
         New
       </div>
 
-      <div className="mx-auto flex min-h-[840px] max-w-[1280px] items-center justify-end px-4 py-12 sm:px-8 lg:min-h-[795px] lg:px-14">
-        <div className="w-full max-w-[560px] rounded-md bg-[#aeb6c4]/[0.24] p-4 text-center shadow-[0_20px_60px_rgba(0,0,0,0.28)] backdrop-blur-[1.5px] sm:p-5">
+      <div className="mx-auto flex min-h-[960px] max-w-[1440px] items-center justify-end px-4 py-12 sm:px-8 lg:px-14">
+      <div className="w-full max-w-[560px] rounded-md border border-[#7eeeff]/25 bg-[#071c2c]/[0.78] p-4 text-center shadow-[0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:p-5">
           <PortfolioVideo src={demoYoutubeEmbed} title="Campus Masters spotlight" />
           <p className="mx-auto mt-6 max-w-[520px] text-pretty font-poppins text-base font-normal leading-[1.35] tracking-[-0.02em] text-white sm:text-xl">
             {homeContent.mission_statement_avatars}
@@ -1024,7 +967,7 @@ function PortfolioProjectCard({ project }) {
       <div className="relative min-h-[560px] overflow-hidden rounded-md bg-[#132032] sm:min-h-[500px] lg:min-h-[430px]">
         <img
           alt=""
-          className="absolute inset-0 h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.01]"
+          className="absolute inset-0 h-full w-full object-cover object-left transition-transform duration-500 group-hover:scale-[1.01]"
           loading="lazy"
           src={project.background}
         />
@@ -1040,25 +983,21 @@ function PortfolioProjectCard({ project }) {
         <div className="relative z-10 flex min-h-[560px] items-end justify-end p-3 sm:min-h-[500px] sm:p-5 lg:min-h-[430px] lg:p-6">
         <div
           className={cn(
-            "flex w-[min(100%,430px)] flex-col justify-end rounded-md border p-3 text-center shadow-[0_18px_44px_rgba(0,0,0,0.24)] backdrop-blur-[2px] sm:p-4",
-            isLight
-              ? "border-white/50 bg-white/58 text-[#17212a]"
-              : "border-white/18 bg-[#aeb6c4]/[0.28] text-white",
+      "flex w-[min(100%,430px)] flex-col justify-end rounded-md border border-[#7eeeff]/25 bg-[#071c2c]/[0.78] p-3 text-center text-white shadow-[0_18px_44px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:p-4",
           )}
         >
           <h3 className="sr-only">{project.title}</h3>
           <PortfolioVideo title={project.title} src={project.video} />
 
           <div className="flex flex-1 flex-col justify-end">
-            <PortfolioPartnerLogos isLight={isLight} logos={project.partnerLogos} />
             <p
               className={cn(
                 "mt-4 font-poppins text-[0.95rem] font-normal sm:text-base",
-                isLight ? "text-[#17212a]" : "text-white/84",
+          "text-white/84",
                 project.bodyClassName,
               )}
             >
-              {project.body}
+              <HighlightedPortfolioText text={project.body} highlights={project.highlights} />
             </p>
 
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
@@ -1079,6 +1018,25 @@ function PortfolioProjectCard({ project }) {
   );
 }
 
+function HighlightedPortfolioText({ text, highlights = [] }) {
+  if (!highlights.length) return text;
+
+  const escapedHighlights = highlights.map((highlight) => highlight.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const highlightPattern = new RegExp(`(${escapedHighlights.join("|")})`, "gi");
+
+  return text.split(highlightPattern).map((part, index) => {
+    const isHighlight = highlights.some((highlight) => highlight.toLowerCase() === part.toLowerCase());
+
+    return isHighlight ? (
+      <span key={index} className="font-medium text-[#f4da3a]">
+        {part}
+      </span>
+    ) : (
+      part
+    );
+  });
+}
+
 function PortfolioVideo({ src, title }) {
   return (
     <div className="relative aspect-video overflow-hidden rounded-md border border-white/15 bg-black shadow-[0_18px_34px_rgba(0,0,0,0.28)]">
@@ -1090,49 +1048,6 @@ function PortfolioVideo({ src, title }) {
         src={src}
         title={`${title} video`}
       />
-    </div>
-  );
-}
-
-function PortfolioPartnerLogos({ isLight, logos }) {
-  if (!logos?.length) {
-    return null;
-  }
-
-  return (
-    <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-center">
-      {logos.map((logo) => (
-        <React.Fragment key={logo.label}>
-          {logo.src ? (
-            logo.frameClassName ? (
-              <span className={cn("block overflow-hidden", logo.frameClassName)}>
-                <img
-                  alt={logo.label}
-                  className={cn("max-w-[132px] object-contain", logo.className)}
-                  loading="lazy"
-                  src={logo.src}
-                />
-              </span>
-            ) : (
-              <img
-                alt={logo.label}
-                className={cn("max-w-[132px] object-contain", logo.className)}
-                loading="lazy"
-                src={logo.src}
-              />
-            )
-          ) : (
-            <span
-              className={cn(
-                "font-poppins text-sm font-medium tracking-normal",
-                isLight ? "text-[#17212a]" : "text-white",
-              )}
-            >
-              {logo.text}
-            </span>
-          )}
-        </React.Fragment>
-      ))}
     </div>
   );
 }
@@ -1342,7 +1257,7 @@ function ServicesPosterCard({ section }) {
           src={section.banner}
         />
         <span aria-hidden="true" className="absolute inset-0 bg-black/40" />
-        <span className="absolute inset-0 flex items-center justify-center px-14 text-center font-poppins text-xl font-bold leading-tight text-white sm:text-3xl lg:text-5xl">
+        <span className="absolute inset-0 flex items-center justify-center px-14 text-center font-staatliches text-3xl font-normal uppercase leading-none tracking-normal text-white sm:text-5xl lg:text-7xl">
           {section.title}
         </span>
         <span
@@ -1364,7 +1279,7 @@ function ServicesPosterCard({ section }) {
       >
         <div className="min-h-0 overflow-hidden">
           <div className="bg-white">
-            <p className="mx-auto max-w-[1120px] px-5 py-7 text-center font-poppins text-base font-normal leading-[1.12] tracking-normal text-black sm:px-10 sm:py-9 sm:text-xl md:text-2xl lg:px-16 lg:py-12 lg:text-3xl xl:text-[2.35rem]">
+            <p className="mx-auto max-w-[1120px] px-5 py-7 text-center font-poppins text-xs font-normal leading-[1.12] tracking-normal text-black sm:px-10 sm:py-9 sm:text-[0.9375rem] md:text-lg lg:px-16 lg:py-12 lg:text-[1.40625rem] xl:text-[1.7625rem]">
               {section.body}
             </p>
             <div className="px-5 pb-6 sm:px-9 sm:pb-9 lg:px-14 lg:pb-14">
@@ -1450,65 +1365,124 @@ function PortfolioMetaPage() {
 }
 
 function CaseStudyVideoPage({ slides }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartY = useRef(null);
+  const wheelLocked = useRef(false);
+
+  const goToSlide = (index) => {
+    setActiveIndex(Math.max(0, Math.min(index, slides.length - 1)));
+  };
+
+  const moveSlide = (direction) => {
+    setActiveIndex((currentIndex) => Math.max(0, Math.min(currentIndex + direction, slides.length - 1)));
+  };
+
+  const handleWheel = (event) => {
+    if (Math.abs(event.deltaY) < 8) return;
+
+    event.preventDefault();
+    if (wheelLocked.current) return;
+
+    wheelLocked.current = true;
+    moveSlide(event.deltaY > 0 ? 1 : -1);
+    window.setTimeout(() => {
+      wheelLocked.current = false;
+    }, 520);
+  };
+
+  const handleTouchStart = (event) => {
+    touchStartY.current = event.touches[0]?.clientY ?? null;
+  };
+
+  const handleTouchEnd = (event) => {
+    if (touchStartY.current === null) return;
+
+    const distance = touchStartY.current - (event.changedTouches[0]?.clientY ?? touchStartY.current);
+    touchStartY.current = null;
+    if (Math.abs(distance) > 50) moveSlide(distance > 0 ? 1 : -1);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowDown" || event.key === "PageDown") {
+        event.preventDefault();
+        moveSlide(1);
+      }
+      if (event.key === "ArrowUp" || event.key === "PageUp") {
+        event.preventDefault();
+        moveSlide(-1);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <>
       <div className="case-study-video-page">
-        <div className="case-study-video-stack">
+        <main
+          aria-label="Case study slide viewer"
+          className="case-study-video-stage"
+          onTouchEnd={handleTouchEnd}
+          onTouchStart={handleTouchStart}
+          onWheel={handleWheel}
+          tabIndex={0}
+        >
           {slides.map((src, index) => (
             <CaseStudyVideoCard
-              initialLoad={index < 2}
+              active={index === activeIndex}
+              initialLoad={index <= 1}
               index={index}
               key={src}
+              preload={Math.abs(index - activeIndex) <= 1}
               src={src}
             />
           ))}
-        </div>
+        </main>
+        <aside aria-label="Slide previews" className="case-study-thumbnail-pane">
+          <div className="case-study-thumbnail-list">
+            {slides.map((src, index) => (
+              <button
+                aria-current={index === activeIndex ? "step" : undefined}
+                aria-label={`Go to slide ${index + 1}`}
+                className={cn("case-study-thumbnail", index === activeIndex && "is-active")}
+                key={src}
+                onClick={() => goToSlide(index)}
+                type="button"
+              >
+                <video
+                  aria-hidden="true"
+                  className="case-study-thumbnail-video"
+                  muted
+                  playsInline
+                  preload="metadata"
+                  src={src}
+                />
+                <span className="case-study-thumbnail-number">{String(index + 1).padStart(2, "0")}</span>
+              </button>
+            ))}
+          </div>
+        </aside>
       </div>
-      <FooterGlobal />
+      {activeIndex === slides.length - 1 ? <FooterGlobal /> : null}
     </>
   );
 }
 
-function CaseStudyVideoCard({ index, initialLoad = false, src }) {
+function CaseStudyVideoCard({ active, index, initialLoad = false, preload = false, src }) {
   const videoRef = useRef(null);
-  const [shouldLoad, setShouldLoad] = useState(initialLoad);
+  const [shouldLoad, setShouldLoad] = useState(initialLoad || preload);
+
+  useEffect(() => {
+    if (preload || active) setShouldLoad(true);
+  }, [active, preload]);
 
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video) {
-      return undefined;
-    }
-
-    if (typeof IntersectionObserver === "undefined") {
-      setShouldLoad(true);
-      return undefined;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoad(true);
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      {
-        rootMargin: "70% 0px",
-        threshold: 0.01,
-      },
-    );
-
-    observer.observe(video);
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const video = videoRef.current;
-
-    if (!shouldLoad || !video) {
+    if (!shouldLoad || !video || !active) {
+      video?.pause();
       return undefined;
     }
 
@@ -1529,18 +1503,23 @@ function CaseStudyVideoCard({ index, initialLoad = false, src }) {
   return (
     <article
       aria-label={`Slide ${index + 1}`}
-      className="case-study-video-card"
-      style={{ zIndex: index + 1 }}
+      className={cn("case-study-video-card", active && "is-active")}
+      style={{ zIndex: active ? 2 : 1 }}
     >
       <video
         aria-hidden="true"
+        autoPlay={active}
         className="case-study-video"
+        key={`${src}-${active ? "active" : "idle"}`}
         loop
         muted
+        onCanPlay={(event) => {
+          if (active) event.currentTarget.play().catch(() => {});
+        }}
         playsInline
-        preload={shouldLoad ? "auto" : "none"}
+        preload={active ? "auto" : shouldLoad ? "metadata" : "none"}
         ref={videoRef}
-        src={shouldLoad ? src : undefined}
+        src={src}
       />
     </article>
   );
@@ -1725,11 +1704,22 @@ function FooterGlobal() {
             className="h-10 w-auto object-contain"
             src={assetPath(homeMedia.nav_logo_global)}
           />
-          <nav className="flex flex-wrap gap-2">
-            <FooterLink to="/services">Services</FooterLink>
-            <FooterLink to="/portfolio">Portfolio</FooterLink>
-            <FooterLink to="/campus-masters">Campus Masters</FooterLink>
-          </nav>
+          <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8">
+            <nav className="flex flex-wrap gap-2">
+              <FooterLink to="/services">Services</FooterLink>
+              <FooterLink to="/portfolio">Portfolio</FooterLink>
+              <FooterLink to="/campus-masters">Campus Masters</FooterLink>
+            </nav>
+            <section aria-label="Contact" className="border-l-0 border-pixel-border pl-0 sm:border-l sm:pl-8">
+              <p className="font-mono text-[0.65rem] uppercase tracking-wider text-white/40">Contact</p>
+              <a
+                className="mt-1 inline-block font-mono text-xs tracking-wider text-white/70 transition-colors hover:text-pixel-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pixel-cyan"
+                href="mailto:info@pixelperfectmena.com"
+              >
+                info@pixelperfectmena.com
+              </a>
+            </section>
+          </div>
         </div>
         <div className="flex flex-col gap-2 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-xs uppercase tracking-wider text-white/40">
