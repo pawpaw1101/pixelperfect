@@ -167,7 +167,8 @@ const homeStats = [
 ];
 
 const homePortfolioAssetBase = "/images/portfolio/home-showcase";
-const demoYoutubeEmbed = "https://www.youtube.com/embed/c2V1SGz5eIE?rel=0&modestbranding=1";
+const nestleCerealYoutubeEmbed = "https://www.youtube.com/embed/KYC5QPbQK6o?rel=0&modestbranding=1";
+const campusMastersYoutubeEmbed = "https://www.youtube.com/embed/f4BMNGumRMw?rel=0&modestbranding=1";
 
 const homePortfolioFilters = [
   { id: "all", label: "All" },
@@ -183,7 +184,7 @@ const portfolioProjects = [
     title: "Nestle Cereal Season",
     categories: ["branded", "marketing"],
     background: `${homePortfolioAssetBase}/bg-nestle-cereal-season.png`,
-    video: demoYoutubeEmbed,
+    video: nestleCerealYoutubeEmbed,
     body:
       "Led the development of Nestle's first branded Fortnite gaming experience for a global launch, supported by MENA campaign assets including POSM, key visuals, and video ads.",
     highlights: ["Nestle's first branded Fortnite gaming experience", "MENA campaign assets"],
@@ -196,7 +197,7 @@ const portfolioProjects = [
     title: "Campus Masters",
     categories: ["broadcast", "branded"],
     background: `${homePortfolioAssetBase}/bg-campus-masters.png`,
-    video: "https://www.youtube.com/embed/f4BMNGumRMw?rel=0&modestbranding=1",
+    video: campusMastersYoutubeEmbed,
     body:
       "Built a university esports tournament platform with live production, brand integration, social content, and on-ground competitive moments for student communities.",
     highlights: ["live production, brand integration, social content, and on-ground competitive moments"],
@@ -1065,7 +1066,7 @@ function HomeSpotlightFeature() {
 
       <div className="mx-auto flex min-h-[960px] max-w-[1440px] items-center justify-end px-4 py-12 sm:px-8 lg:px-14">
       <div className="w-full max-w-[560px] rounded-md border border-[#7eeeff]/25 bg-[#071c2c]/[0.78] p-4 text-center shadow-[0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:p-5">
-          <PortfolioVideo src={demoYoutubeEmbed} title="Campus Masters spotlight" />
+          <PortfolioVideo src={campusMastersYoutubeEmbed} title="Campus Masters spotlight" />
           <p className="mx-auto mt-6 max-w-[520px] text-pretty font-poppins text-base font-normal leading-[1.35] tracking-[-0.02em] text-white sm:text-xl">
             {homeContent.mission_statement_avatars}
           </p>
