@@ -176,7 +176,7 @@ const homePortfolioFilters = [
   { id: "marketing", label: "Marketing Materials" },
 ];
 
-// Keep projects newest-first. The homepage previews only the first three entries.
+// Keep the original three projects first. The homepage previews only these three entries.
 const portfolioProjects = [
   {
     id: "nestle-cereal-season",
@@ -196,7 +196,7 @@ const portfolioProjects = [
     title: "Campus Masters",
     categories: ["broadcast", "branded"],
     background: `${homePortfolioAssetBase}/bg-campus-masters.png`,
-    video: demoYoutubeEmbed,
+    video: "https://www.youtube.com/embed/f4BMNGumRMw?rel=0&modestbranding=1",
     body:
       "Built a university esports tournament platform with live production, brand integration, social content, and on-ground competitive moments for student communities.",
     highlights: ["live production, brand integration, social content, and on-ground competitive moments"],
@@ -208,13 +208,181 @@ const portfolioProjects = [
     title: "Nestle METACLUB",
     categories: ["branded"],
     background: `${homePortfolioAssetBase}/bg-nestle-metaclub.png`,
-    video: demoYoutubeEmbed,
+    video: "https://www.youtube.com/embed/XsYt_QNy92k?rel=0&modestbranding=1",
     body:
       "I developed the Nestle Metaclub in Decentraland - a multi-brand metaverse experience featuring Lion, Koko Krunch, Cocoa Plan, Anghami, and the Rainforest Alliance, with interactive mini-games and sellable branded NFTs.",
     highlights: ["multi-brand metaverse experience", "interactive mini-games and sellable branded NFTs"],
     bodyClassName: "leading-[1.4] tracking-[0.004em]",
     playHref: "https://decentraland.org/whats-on?id=1127102c-524c-45c1-8e31-6da4e9a62897",
     projectHref: "/portfolio/meta",
+  },
+  {
+    id: "buy-win-crosstrek-2025",
+    title: "Buy & Win Crosstrek 2025",
+    categories: ["branded", "marketing"],
+    background: `${homePortfolioAssetBase}/bg-buy-win-crosstrek-2025.jpg`,
+    body:
+      "Pixel Perfect developed the complete visual campaign for the Subaru × Nestlé collaboration, including key visuals, promotional stands, wobblers, and gift hampers for a UAE mall rollout in English and Arabic.",
+    highlights: ["complete visual campaign", "UAE mall rollout"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    projectHref: "/portfolio/buy-win-crosstrek-2025",
+  },
+  {
+    id: "buy-win-magnite-2025",
+    title: "Buy & Win Magnite 2025",
+    categories: ["branded", "marketing"],
+    background: `${homePortfolioAssetBase}/bg-buy-win-magnite-2025.jpg`,
+    body:
+      "Pixel Perfect developed the complete visual campaign for the Nestlé × Nissan collaboration, including key visuals, POSM stands, wobblers, and promotional hampers for retail and outdoor placements across Lebanon in English and Arabic.",
+    highlights: ["complete visual campaign", "across Lebanon"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    projectHref: "/portfolio/buy-win-magnite-2025",
+  },
+  {
+    id: "dubai-police-esports",
+    title: "Dubai Police Esports",
+    categories: ["broadcast"],
+    background: `${homePortfolioAssetBase}/bg-dubai-police-esports.jpg`,
+    video: "https://www.youtube.com/embed/ARS1E7B1cd4?rel=0&modestbranding=1",
+    body:
+      "Pixel Perfect developed consecutive full broadcast design packages for the Dubai Police Esports Event, collaborating with the production team on the complete technical setup and backend infrastructure for the live broadcast.",
+    highlights: ["full broadcast design packages", "technical setup and backend infrastructure"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    watchHref: "https://www.youtube.com/watch?v=0nEECCPi9JI&list=PL5ox97F98X0QI_1DZbStSOUv-EOrIuXg1&index=6",
+  },
+  {
+    id: "hearthstone-mena-tournament",
+    title: "Hearthstone MENA Tournament",
+    categories: ["broadcast"],
+    background: `${homePortfolioAssetBase}/bg-hearthstone-mena-tournament.jpg`,
+    video: "https://www.youtube.com/embed/FIlxc2uF_TI?start=3&rel=0&modestbranding=1",
+    body:
+      "Pixel Perfect contributed to multiple Blizzard projects throughout the year, culminating in the Hearthstone MENA Tournament. Our team developed the event's studio setup, delivered a complete broadcast graphics package for the livestream, and produced supporting visual assets including promotional posters and announcement videos.",
+    highlights: ["Hearthstone MENA Tournament", "complete broadcast graphics package"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    watchHref: "https://www.youtube.com/watch?v=xaGoltz1wP8&t=24958s",
+  },
+  {
+    id: "kitkat-hazelnut-cereals",
+    title: "KitKat Hazelnut Cereals",
+    categories: ["marketing"],
+    background: `${homePortfolioAssetBase}/bg-kitkat-hazelnut-cereals.jpg`,
+    body:
+      "Pixel Perfect developed the key visual adaptation and POSM materials for the launch of KitKat's new Choco Hazelnut Flavour cereal, adapting campaign assets across the required retail and promotional touchpoints.",
+    highlights: ["key visual adaptation", "POSM materials"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    projectHref: "/portfolio/kitkat-hazelnut-cereals",
+  },
+  {
+    id: "masters-of-esports",
+    title: "Masters of Esports",
+    categories: ["broadcast"],
+    background: `${homePortfolioAssetBase}/bg-masters-of-esports.jpg`,
+    video: "https://www.youtube.com/embed/4ROlOjNOy8c?rel=0&modestbranding=1",
+    body:
+      "Pixel Perfect developed a full broadcast graphics package, virtual set design, and overall show branding for Masters of Esports, a 25-episode live TV show produced for Abu Dhabi Media.",
+    highlights: ["full broadcast graphics package", "25-episode live TV show"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    watchHref: "https://starzplay.com/en/admn/series/masters-of-esports/715017256446",
+    watchLabel: "Watch Show",
+  },
+  {
+    id: "nestle-dubai-it",
+    title: "Nestlé Dubai-it",
+    categories: ["marketing"],
+    background: `${homePortfolioAssetBase}/bg-nestle-dubai-it.jpg`,
+    body:
+      "Pixel Perfect adapted Nestlé Dubai campaign assets for an internal office launch, tailoring and preparing the existing visual materials for the activation.",
+    highlights: ["adapted Nestlé Dubai campaign assets", "internal office launch"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    projectHref: "/portfolio/nestle-dubai-it",
+  },
+  {
+    id: "play-like-a-lion",
+    title: "Play Like a Lion",
+    categories: ["broadcast"],
+    background: `${homePortfolioAssetBase}/bg-play-like-a-lion.jpg`,
+    video: "https://www.youtube.com/embed/KsH__Y70thE?rel=0&modestbranding=1",
+    body:
+      "Pixel Perfect delivered a complete creative package for the Nestlé Esports Event, including the virtual set, full visual identity, and end-to-end technical setup of the broadcast studio, plus a four-episode interview series featuring leading gaming influencers from across MENA.",
+    highlights: ["complete creative package", "four-episode interview series"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    watchHref: "https://www.youtube.com/watch?v=SPpDTvcd56E&t=2877s",
+    watchLabel: "Watch Stream",
+    episodesHref: "https://www.canva.com/design/DAHLeIdEOSI/PrBQ7BEyc9EOYLR3i0Xn4w/view?utm_content=DAHLeIdEOSI&utm_campaign=designshare&utm_medium=link&utm_source=viewer",
+    episodesLabel: "Watch Episodes",
+  },
+  {
+    id: "redbull-meo-season-5",
+    title: "Red Bull M.E.O. Season 5",
+    categories: ["broadcast"],
+    background: `${homePortfolioAssetBase}/bg-redbull-meo-season-5.jpg`,
+    video: "https://www.youtube.com/embed/LhnCT5qHI2s?rel=0&modestbranding=1",
+    body:
+      "Pixel Perfect created a virtual set and full design package for Red Bull M.E.O. Season 5, while also supporting the complete technical setup for the broadcast studio event.",
+    highlights: ["virtual set", "full design package"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+  },
+  {
+    id: "strike-arabia-valorant",
+    title: "Strike Arabia Valorant",
+    categories: ["broadcast"],
+    background: `${homePortfolioAssetBase}/bg-strike-arabia-valorant.jpg`,
+    video: "https://www.youtube.com/embed/Lv6u473oqjI?rel=0&modestbranding=1",
+    body:
+      "Pixel Perfect managed the full project lifecycle for the Strike Arabia League, delivering the complete broadcast design package, a dedicated studio built for consistent live league broadcasts, and weekly editorial content including announcement and promotional videos.",
+    highlights: ["full project lifecycle", "complete broadcast design package"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    watchHref: "https://www.youtube.com/watch?v=ixqNu9OXPWA&t=2291s",
+    watchLabel: "Watch Stream",
+  },
+  {
+    id: "true-gamers-tournaments",
+    title: "True Gamers Tournaments",
+    categories: ["broadcast"],
+    background: `${homePortfolioAssetBase}/bg-true-gamers-tournaments.jpg`,
+    body:
+      "Pixel Perfect developed full broadcast design packages for True Gamers net café tournament events, creating cohesive visual identities and on-screen graphics tailored for live esports broadcasts.",
+    highlights: ["full broadcast design packages", "live esports broadcasts"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    watchHref: "https://www.youtube.com/watch?v=w0VBQ7CI9cI&t=3433s",
+    watchLabel: "Watch Stream",
+  },
+  {
+    id: "uae-swat-challenge-broadcast",
+    title: "UAE SWAT Challenge",
+    categories: ["broadcast"],
+    background: `${homePortfolioAssetBase}/bg-uae-swat-challenge-broadcast.jpg`,
+    video: "https://www.youtube.com/embed/_qlH7BZCa4c?rel=0&modestbranding=1",
+    body:
+      "Pixel Perfect developed the broadcast graphics layout and real-time graphics control system for the UAE SWAT Challenge, enhancing the event's visual identity and live viewing experience across TV and digital platforms.",
+    highlights: ["broadcast graphics layout", "real-time graphics control system"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    watchHref: "https://www.youtube.com/watch?v=BBtj1UR2f4w&t=528s",
+    watchLabel: "Watch Stream",
+  },
+  {
+    id: "uae-swat-challenge-game",
+    title: "UAE SWAT Challenge Game",
+    categories: ["branded"],
+    background: `${homePortfolioAssetBase}/bg-uae-swat-challenge-game.jpg`,
+    video: "https://www.youtube.com/embed/RGNtIs9avNY?rel=0&modestbranding=1",
+    body:
+      "As part of the SWAT Challenge event, Pixel Perfect developed a custom Counter-Strike 2 map that brings the intensity of the live competition into a digital experience, recreating the event's visual identity, layout, and tactical atmosphere.",
+    highlights: ["custom Counter-Strike 2 map", "digital experience"],
+    bodyClassName: "leading-[1.65] tracking-normal",
+    projectHref: "/portfolio/uae-swat-challenge-game",
+  },
+  {
+    id: "yalla-compass-2024",
+    title: "Yalla Compass 2024",
+    categories: ["broadcast"],
+    background: `${homePortfolioAssetBase}/bg-yalla-compass-2024.jpg`,
+    video: "https://www.youtube.com/embed/4ROlOjNOy8c?rel=0&modestbranding=1",
+    body:
+      "In collaboration with Starladder, Pixel Perfect supported the Yalla Compass Summer 2025 event as engineers, handling the full technical setup including PC installations, cable management, and network infrastructure, while also producing a Russian-language broadcast studio.",
+    highlights: ["full technical setup", "Russian-language broadcast studio"],
+    bodyClassName: "leading-[1.65] tracking-normal",
   },
 ];
 
@@ -233,6 +401,31 @@ const nestleMetaclubSlides = Array.from(
 const campusMastersSlides = Array.from(
   { length: 20 },
   (_, index) => `/videos/portfolio/campus-masters/${index + 4}.mp4`,
+);
+
+const crosstrekSlides = Array.from(
+  { length: 8 },
+  (_, index) => `/images/portfolio/buy-win-crosstrek-2025/slides/${index + 1}.jpg`,
+);
+
+const magniteSlides = Array.from(
+  { length: 16 },
+  (_, index) => `/images/portfolio/buy-win-magnite-2025/slides/${index + 1}.jpg`,
+);
+
+const kitkatSlides = Array.from(
+  { length: 13 },
+  (_, index) => `/images/portfolio/kitkat-hazelnut-cereals/slides/${index + 1}.jpg`,
+);
+
+const nestleDubaiItSlides = Array.from(
+  { length: 9 },
+  (_, index) => `/images/portfolio/nestle-dubai-it/slides/${index + 1}.jpg`,
+);
+
+const uaeSwatChallengeGameSlides = Array.from(
+  { length: 13 },
+  (_, index) => `/videos/portfolio/uae-swat-challenge-game/${index + 1}.mp4`,
 );
 
 const campusProvenResults = [
@@ -986,8 +1179,10 @@ function PortfolioProjectCard({ project }) {
       "flex w-[min(100%,430px)] flex-col justify-end rounded-md border border-[#7eeeff]/25 bg-[#071c2c]/[0.78] p-3 text-center text-white shadow-[0_18px_44px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:p-4",
           )}
         >
-          <h3 className="sr-only">{project.title}</h3>
-          <PortfolioVideo title={project.title} src={project.video} />
+          <h3 className={cn(project.video ? "sr-only" : "font-staatliches text-4xl uppercase leading-[0.85] tracking-[-0.035em] text-white sm:text-5xl")}>
+            {project.title}
+          </h3>
+          {project.video ? <PortfolioVideo title={project.title} src={project.video} /> : null}
 
           <div className="flex flex-1 flex-col justify-end">
             <p
@@ -1006,9 +1201,21 @@ function PortfolioProjectCard({ project }) {
                   Play Now
                 </PortfolioActionButton>
               ) : null}
-              <PortfolioActionButton href={project.projectHref} icon="arrow" internal>
-                Explore Project
-              </PortfolioActionButton>
+              {project.watchHref ? (
+                <PortfolioActionButton href={project.watchHref} icon="joystick">
+                  {project.watchLabel ?? "Watch Stream"}
+                </PortfolioActionButton>
+              ) : null}
+              {project.episodesHref ? (
+                <PortfolioActionButton href={project.episodesHref} icon="arrow">
+                  {project.episodesLabel ?? "Watch Episodes"}
+                </PortfolioActionButton>
+              ) : null}
+              {project.projectHref ? (
+                <PortfolioActionButton href={project.projectHref} icon="arrow" internal>
+                  Explore Project
+                </PortfolioActionButton>
+              ) : null}
             </div>
           </div>
         </div>
@@ -1360,6 +1567,26 @@ function PortfolioSwatPage() {
   );
 }
 
+function PortfolioCrosstrekPage() {
+  return <CaseStudyVideoPage slides={crosstrekSlides} />;
+}
+
+function PortfolioMagnitePage() {
+  return <CaseStudyVideoPage slides={magniteSlides} />;
+}
+
+function PortfolioKitKatPage() {
+  return <CaseStudyVideoPage slides={kitkatSlides} />;
+}
+
+function PortfolioNestleDubaiItPage() {
+  return <CaseStudyVideoPage slides={nestleDubaiItSlides} />;
+}
+
+function PortfolioUaeSwatChallengeGamePage() {
+  return <CaseStudyVideoPage slides={uaeSwatChallengeGameSlides} />;
+}
+
 function PortfolioMetaPage() {
   return <CaseStudyVideoPage slides={nestleMetaclubSlides} />;
 }
@@ -1430,7 +1657,7 @@ function CaseStudyVideoPage({ slides }) {
           tabIndex={0}
         >
           {slides.map((src, index) => (
-            <CaseStudyVideoCard
+            <CaseStudySlideCard
               active={index === activeIndex}
               initialLoad={index <= 1}
               index={index}
@@ -1451,14 +1678,24 @@ function CaseStudyVideoPage({ slides }) {
                 onClick={() => goToSlide(index)}
                 type="button"
               >
-                <video
-                  aria-hidden="true"
-                  className="case-study-thumbnail-video"
-                  muted
-                  playsInline
-                  preload="metadata"
-                  src={src}
-                />
+                {isVideoSlide(src) ? (
+                  <video
+                    aria-hidden="true"
+                    className="case-study-thumbnail-video"
+                    muted
+                    playsInline
+                    preload="metadata"
+                    src={src}
+                  />
+                ) : (
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    className="case-study-thumbnail-video"
+                    loading="lazy"
+                    src={src}
+                  />
+                )}
                 <span className="case-study-thumbnail-number">{String(index + 1).padStart(2, "0")}</span>
               </button>
             ))}
@@ -1470,15 +1707,22 @@ function CaseStudyVideoPage({ slides }) {
   );
 }
 
-function CaseStudyVideoCard({ active, index, initialLoad = false, preload = false, src }) {
+function isVideoSlide(src) {
+  return /\.(mp4|webm)(?:\?.*)?$/i.test(src);
+}
+
+function CaseStudySlideCard({ active, index, initialLoad = false, preload = false, src }) {
   const videoRef = useRef(null);
   const [shouldLoad, setShouldLoad] = useState(initialLoad || preload);
+  const isVideo = isVideoSlide(src);
 
   useEffect(() => {
     if (preload || active) setShouldLoad(true);
   }, [active, preload]);
 
   useEffect(() => {
+    if (!isVideo) return undefined;
+
     const video = videoRef.current;
 
     if (!shouldLoad || !video || !active) {
@@ -1498,7 +1742,7 @@ function CaseStudyVideoCard({ active, index, initialLoad = false, preload = fals
     video.addEventListener("canplay", playVideo, { once: true });
 
     return () => video.removeEventListener("canplay", playVideo);
-  }, [shouldLoad]);
+  }, [isVideo, shouldLoad]);
 
   return (
     <article
@@ -1506,21 +1750,30 @@ function CaseStudyVideoCard({ active, index, initialLoad = false, preload = fals
       className={cn("case-study-video-card", active && "is-active")}
       style={{ zIndex: active ? 2 : 1 }}
     >
-      <video
-        aria-hidden="true"
-        autoPlay={active}
-        className="case-study-video"
-        key={`${src}-${active ? "active" : "idle"}`}
-        loop
-        muted
-        onCanPlay={(event) => {
-          if (active) event.currentTarget.play().catch(() => {});
-        }}
-        playsInline
-        preload={active ? "auto" : shouldLoad ? "metadata" : "none"}
-        ref={videoRef}
-        src={src}
-      />
+      {isVideo ? (
+        <video
+          aria-hidden="true"
+          autoPlay={active}
+          className="case-study-video"
+          key={`${src}-${active ? "active" : "idle"}`}
+          loop
+          muted
+          onCanPlay={(event) => {
+            if (active) event.currentTarget.play().catch(() => {});
+          }}
+          playsInline
+          preload={active ? "auto" : shouldLoad ? "metadata" : "none"}
+          ref={videoRef}
+          src={src}
+        />
+      ) : (
+        <img
+          alt={`Slide ${index + 1}`}
+          className="case-study-video"
+          loading={active ? "eager" : "lazy"}
+          src={src}
+        />
+      )}
     </article>
   );
 }
@@ -1748,6 +2001,11 @@ App.ServicesPage = ServicesPage;
 App.PortfolioPage = PortfolioPage;
 App.PortfolioNestlePage = PortfolioNestlePage;
 App.PortfolioSwatPage = PortfolioSwatPage;
+App.PortfolioCrosstrekPage = PortfolioCrosstrekPage;
+App.PortfolioMagnitePage = PortfolioMagnitePage;
+App.PortfolioKitKatPage = PortfolioKitKatPage;
+App.PortfolioNestleDubaiItPage = PortfolioNestleDubaiItPage;
+App.PortfolioUaeSwatChallengeGamePage = PortfolioUaeSwatChallengeGamePage;
 App.PortfolioMetaPage = PortfolioMetaPage;
 App.CampusMastersShell = CampusMastersShell;
 

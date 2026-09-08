@@ -56,6 +56,56 @@
       ]
     },
     {
+      "path": "/portfolio/buy-win-crosstrek-2025",
+      "sections": [
+        "case_study_hero",
+        "project_overview",
+        "campaign_assets",
+        "campaign_rollout",
+        "footer_global"
+      ]
+    },
+    {
+      "path": "/portfolio/buy-win-magnite-2025",
+      "sections": [
+        "case_study_hero",
+        "project_overview",
+        "campaign_assets",
+        "campaign_rollout",
+        "footer_global"
+      ]
+    },
+    {
+      "path": "/portfolio/kitkat-hazelnut-cereals",
+      "sections": [
+        "case_study_hero",
+        "project_overview",
+        "campaign_assets",
+        "campaign_rollout",
+        "footer_global"
+      ]
+    },
+    {
+      "path": "/portfolio/nestle-dubai-it",
+      "sections": [
+        "case_study_hero",
+        "project_overview",
+        "campaign_assets",
+        "campaign_rollout",
+        "footer_global"
+      ]
+    },
+    {
+      "path": "/portfolio/uae-swat-challenge-game",
+      "sections": [
+        "case_study_hero",
+        "project_overview",
+        "gameplay_experience",
+        "digital_activation",
+        "footer_global"
+      ]
+    },
+    {
       "path": "/portfolio/meta",
       "sections": [
         "case_study_hero",

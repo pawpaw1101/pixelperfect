@@ -23,6 +23,21 @@
     "swat_cover": { "path": "/images/portfolio-UAE-SWAT.jpg", "desc": "UAE SWAT Challenge key visual." },
     "swat_event": { "path": "/images/portfolio-UAE-SWAT.jpg", "desc": "UAE SWAT Challenge key visual." }
   },
+  "/portfolio/buy-win-crosstrek-2025": {
+    "crosstrek_cover": { "path": "/images/portfolio/home-showcase/bg-buy-win-crosstrek-2025.jpg", "desc": "Buy & Win Crosstrek 2025 campaign cover featuring the Subaru Crosstrek and Nestlé cereals." }
+  },
+  "/portfolio/buy-win-magnite-2025": {
+    "magnite_cover": { "path": "/images/portfolio/home-showcase/bg-buy-win-magnite-2025.jpg", "desc": "Buy & Win Magnite 2025 campaign cover featuring the Nissan Magnite and Nestlé cereals." }
+  },
+  "/portfolio/kitkat-hazelnut-cereals": {
+    "kitkat_cover": { "path": "/images/portfolio/home-showcase/bg-kitkat-hazelnut-cereals.jpg", "desc": "KitKat Choco Hazelnut cereal campaign cover." }
+  },
+  "/portfolio/nestle-dubai-it": {
+    "nestle_dubai_it_cover": { "path": "/images/portfolio/home-showcase/bg-nestle-dubai-it.jpg", "desc": "Nestlé Dubai-it campaign cover featuring Fitness Granola." }
+  },
+  "/portfolio/uae-swat-challenge-game": {
+    "uae_swat_game_cover": { "path": "/images/portfolio/home-showcase/bg-uae-swat-challenge-game.jpg", "desc": "UAE SWAT Challenge custom Counter-Strike 2 map cover." }
+  },
   "/portfolio/meta": {
     "meta_cover": { "path": "/images/portfolio-nestle.jpg", "desc": "Nestle Metaclub key visual." },
     "meta_world": { "path": "/images/portfolio-nestle.jpg", "desc": "3D render of a Nestle interactive world." }

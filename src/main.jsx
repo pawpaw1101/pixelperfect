@@ -20,6 +20,11 @@ function RoutedApp() {
         <Route path="/portfolio" element={<App.PortfolioPage />} />
         <Route path="/portfolio/nestle" element={<App.PortfolioNestlePage />} />
         <Route path="/portfolio/swat" element={<App.PortfolioSwatPage />} />
+        <Route path="/portfolio/buy-win-crosstrek-2025" element={<App.PortfolioCrosstrekPage />} />
+        <Route path="/portfolio/buy-win-magnite-2025" element={<App.PortfolioMagnitePage />} />
+        <Route path="/portfolio/kitkat-hazelnut-cereals" element={<App.PortfolioKitKatPage />} />
+        <Route path="/portfolio/nestle-dubai-it" element={<App.PortfolioNestleDubaiItPage />} />
+        <Route path="/portfolio/uae-swat-challenge-game" element={<App.PortfolioUaeSwatChallengeGamePage />} />
         <Route path="/portfolio/meta" element={<App.PortfolioMetaPage />} />
         <Route path="/campus-masters" element={<App.CampusMastersShell />} />
       </Routes>
