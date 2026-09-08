@@ -21,6 +21,7 @@ function RoutedApp() {
         <Route path="/portfolio/nestle" element={<App.PortfolioNestlePage />} />
         <Route path="/portfolio/swat" element={<App.PortfolioSwatPage />} />
         <Route path="/portfolio/meta" element={<App.PortfolioMetaPage />} />
+        <Route path="/portfolio/buy-win-crosstrek" element={<App.PortfolioBuyWinCrosstrekPage />} />
         <Route path="/campus-masters" element={<App.CampusMastersShell />} />
       </Routes>
     </App>
