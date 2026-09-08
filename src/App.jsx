@@ -179,6 +179,16 @@ const homePortfolioFilters = [
 // Keep the original three projects first. The homepage previews only these three entries.
 const portfolioProjects = [
   {
+    id: "buy-win-crosstrek",
+    title: "Buy & Win Crosstrek 2025",
+    categories: ["marketing"],
+    background: `${homePortfolioAssetBase}/bg-buy-win-crosstrek.jpg`,
+    body:
+      "We developed the complete visual campaign for the Subaru × Nestlé collaboration, including key visuals, promotional stands, wobblers, and gift hampers. The campaign was rolled out across malls throughout the UAE, with all materials adapted into both English and Arabic.",
+    bodyClassName: "leading-[1.55] tracking-normal",
+    projectHref: "/portfolio/buy-win-crosstrek",
+  },
+  {
     id: "nestle-cereal-season",
     title: "Nestle Cereal Season",
     categories: ["branded", "marketing"],
@@ -1187,7 +1197,8 @@ function PortfolioProjectCard({ project }) {
           <div className="flex flex-1 flex-col justify-end">
             <p
               className={cn(
-                "mt-4 font-poppins text-[0.95rem] font-normal sm:text-base",
+                project.video ? "mt-4" : "mt-0",
+                "font-poppins text-[0.95rem] font-normal sm:text-base",
           "text-white/84",
                 project.bodyClassName,
               )}
@@ -1591,6 +1602,10 @@ function PortfolioMetaPage() {
   return <CaseStudyVideoPage slides={nestleMetaclubSlides} />;
 }
 
+function PortfolioBuyWinCrosstrekPage() {
+  return <CaseStudyImagePage slides={buyWinCrosstrekSlides} />;
+}
+
 function CaseStudyVideoPage({ slides }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const touchStartY = useRef(null);
@@ -1775,6 +1790,116 @@ function CaseStudySlideCard({ active, index, initialLoad = false, preload = fals
         />
       )}
     </article>
+  );
+}
+
+function CaseStudyImagePage({ slides }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartY = useRef(null);
+  const wheelLocked = useRef(false);
+
+  const goToSlide = (index) => {
+    setActiveIndex(Math.max(0, Math.min(index, slides.length - 1)));
+  };
+
+  const moveSlide = (direction) => {
+    setActiveIndex((currentIndex) => Math.max(0, Math.min(currentIndex + direction, slides.length - 1)));
+  };
+
+  const handleWheel = (event) => {
+    if (Math.abs(event.deltaY) < 8) return;
+
+    event.preventDefault();
+    if (wheelLocked.current) return;
+
+    wheelLocked.current = true;
+    moveSlide(event.deltaY > 0 ? 1 : -1);
+    window.setTimeout(() => {
+      wheelLocked.current = false;
+    }, 520);
+  };
+
+  const handleTouchStart = (event) => {
+    touchStartY.current = event.touches[0]?.clientY ?? null;
+  };
+
+  const handleTouchEnd = (event) => {
+    if (touchStartY.current === null) return;
+
+    const distance = touchStartY.current - (event.changedTouches[0]?.clientY ?? touchStartY.current);
+    touchStartY.current = null;
+    if (Math.abs(distance) > 50) moveSlide(distance > 0 ? 1 : -1);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowDown" || event.key === "PageDown") {
+        event.preventDefault();
+        moveSlide(1);
+      }
+      if (event.key === "ArrowUp" || event.key === "PageUp") {
+        event.preventDefault();
+        moveSlide(-1);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  return (
+    <>
+      <div className="case-study-video-page">
+        <main
+          aria-label="Buy & Win Crosstrek case study slide viewer"
+          className="case-study-video-stage"
+          onTouchEnd={handleTouchEnd}
+          onTouchStart={handleTouchStart}
+          onWheel={handleWheel}
+          tabIndex={0}
+        >
+          {slides.map((src, index) => (
+            <article
+              aria-label={`Slide ${index + 1}`}
+              className={cn("case-study-video-card case-study-image-card", index === activeIndex && "is-active")}
+              key={src}
+              style={{ zIndex: index === activeIndex ? 2 : 1 }}
+            >
+              <img
+                alt={`Buy & Win Crosstrek campaign slide ${index + 1}`}
+                className="case-study-video case-study-image"
+                loading={index <= 1 ? "eager" : "lazy"}
+                src={src}
+              />
+            </article>
+          ))}
+        </main>
+        <aside aria-label="Slide previews" className="case-study-thumbnail-pane">
+          <div className="case-study-thumbnail-list">
+            {slides.map((src, index) => (
+              <button
+                aria-current={index === activeIndex ? "step" : undefined}
+                aria-label={`Go to slide ${index + 1}`}
+                className={cn("case-study-thumbnail is-image", index === activeIndex && "is-active")}
+                key={src}
+                onClick={() => goToSlide(index)}
+                type="button"
+              >
+                <img
+                  alt=""
+                  aria-hidden="true"
+                  className="case-study-thumbnail-video case-study-thumbnail-image"
+                  loading="lazy"
+                  src={src}
+                />
+                <span className="case-study-thumbnail-number">{String(index + 1).padStart(2, "0")}</span>
+              </button>
+            ))}
+          </div>
+        </aside>
+      </div>
+      {activeIndex === slides.length - 1 ? <FooterGlobal /> : null}
+    </>
   );
 }
 
@@ -2007,6 +2132,7 @@ App.PortfolioKitKatPage = PortfolioKitKatPage;
 App.PortfolioNestleDubaiItPage = PortfolioNestleDubaiItPage;
 App.PortfolioUaeSwatChallengeGamePage = PortfolioUaeSwatChallengeGamePage;
 App.PortfolioMetaPage = PortfolioMetaPage;
+App.PortfolioBuyWinCrosstrekPage = PortfolioBuyWinCrosstrekPage;
 App.CampusMastersShell = CampusMastersShell;
 
 export default App;
