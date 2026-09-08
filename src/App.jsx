@@ -179,16 +179,6 @@ const homePortfolioFilters = [
 // Keep the original three projects first. The homepage previews only these three entries.
 const portfolioProjects = [
   {
-    id: "buy-win-crosstrek",
-    title: "Buy & Win Crosstrek 2025",
-    categories: ["marketing"],
-    background: `${homePortfolioAssetBase}/bg-buy-win-crosstrek.jpg`,
-    body:
-      "We developed the complete visual campaign for the Subaru × Nestlé collaboration, including key visuals, promotional stands, wobblers, and gift hampers. The campaign was rolled out across malls throughout the UAE, with all materials adapted into both English and Arabic.",
-    bodyClassName: "leading-[1.55] tracking-normal",
-    projectHref: "/portfolio/buy-win-crosstrek",
-  },
-  {
     id: "nestle-cereal-season",
     title: "Nestle Cereal Season",
     categories: ["branded", "marketing"],
